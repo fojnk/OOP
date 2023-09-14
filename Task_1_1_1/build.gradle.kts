@@ -20,9 +20,5 @@ tasks.test {
 }
 
 tasks.jacocoTestReport {
-    reports {
-        xml.required.set(true)
-        html.required.set(true)
-        html.outputLocation.set(layout.buildDirectory.dir("jacocoHtml"))
-    }
+    dependsOn(tasks.test) // tests are required to run before generating the report
 }
