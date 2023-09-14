@@ -3,7 +3,7 @@ package org.example;
 
 public class Main {
 
-    public static void siftDown(int[] number_array, int root, int len){
+    private static void siftDown(int[] number_array, int root, int len){
         int maxElem = root;
         int leftChild = root * 2 + 1;
         int rightChild = root * 2 + 2;
