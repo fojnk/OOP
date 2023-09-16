@@ -1,6 +1,4 @@
 package org.example;
-
-
 import java.util.Arrays;
 
 public class Heapsort {
@@ -40,6 +38,13 @@ public class Heapsort {
             siftDown(number_array, 0, i);
         }
         return number_array;
+    }
+
+    public static void main(String[] Args) {
+        int[] input_array = new int[] {2, 3, 1, 5, 3, 4, 1};
+        int[] result_array = Heapsort.heapsort(input_array);
+        System.out.println(Arrays.toString(input_array));
+        System.out.println(Arrays.toString(result_array));
     }
 
 }
