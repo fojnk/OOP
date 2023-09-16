@@ -121,13 +121,25 @@ public class Polynomial {
     }
 
     public boolean equals(Polynomial p) {
+        boolean result = true;
+        int len_1 = p.getSize();
+        int len_2 = this.size;
+        int[] p_cofArray = p.getCofArray();
 
-        return true;
+        if (len_1 != len_2) result = false;
+        for (int i = 0; i < len_1; i ++) {
+            if (p_cofArray[i] != this.cofArray[i]) {
+                result = false;
+                break;
+            }
+        }
+
+        return result;
     }
 
     public static void main (String[] args) {
         Polynomial p1 = new Polynomial(new int[]{1, 2});
-        Polynomial p2 = new Polynomial(new int[]{1});
-        System.out.println(p1.times(p2.differentiate(2)).evaluate(4));
+        Polynomial p2 = new Polynomial(new int[]{1, 3});
+        System.out.println(p1.equals(p2));
     }
 }
