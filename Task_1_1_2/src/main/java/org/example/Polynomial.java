@@ -4,8 +4,6 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import static java.lang.Math.pow;
-import static sun.security.krb5.Confounder.intValue;
-import static sun.swing.MenuItemLayoutHelper.max;
 
 public class Polynomial {
 
@@ -22,70 +20,82 @@ public class Polynomial {
     }
 
     public int[] getCofArray(){
-        return cofArray;
+        return this.cofArray;
+    }
+
+    public int getSize(){
+        return this.size;
     }
 
     public void set_value(int index, int value){
         this.cofArray[index] = value;
     }
 
-    public Polynomial plus(Polynomial p) {
-        int[] p2_cofArray = p.getCofArray();
-        int n = p2_cofArray.length;
-        int main_len = this.cofArray.length;
+    public int get_value(int index){
+        return this.cofArray[index];
+    }
 
-        int max_len = max(main_len, n);
+    private int mymax(int num1, int num2) {
+        int result = num1;
+        if (num1 < num2) result = num2;
+        return result;
+    }
+
+    private Polynomial exec_operation(Polynomial p, byte op){
+        int[] p2_cofArray = p.getCofArray();
+        int n = p.getSize();
+        int main_len = this.size;
+
+        int max_len = mymax(main_len, n);
         Polynomial new_p = new Polynomial(max_len);
 
         for (int i = 0; i < max_len; i ++){
-            if (i >= n) {
-                new_p.set_value(i, this.cofArray[i]);
-            }
-            else if (main_len <= i) {
-                new_p.set_value(i, p2_cofArray[i]);
-            }
+            if (i >= n) { new_p.set_value(i, this.cofArray[i]); }
+            else if (main_len <= i) { new_p.set_value(i, p2_cofArray[i]);}
             else {
-                new_p.set_value(i, p2_cofArray[i] + this.cofArray[i]);
+                if (op == '+') {
+                    new_p.set_value(i, p2_cofArray[i] + this.cofArray[i]);
+                }
+                else {
+                    new_p.set_value(i, p2_cofArray[i] - this.cofArray[i]);
+                }
             }
         }
 
         return new_p;
+    }
+
+    public Polynomial plus(Polynomial p) {
+        return exec_operation(p, (byte) '+');
     }
 
     public Polynomial minus(Polynomial p){
-        int[] p2_cofArray = p.getCofArray();
-        int n = p2_cofArray.length;
-        int main_len = this.cofArray.length;
-
-        int max_len = max(main_len, n);
-        Polynomial new_p = new Polynomial(max_len);
-
-        for (int i = 0; i < max_len; i ++){
-            if (i >= n) {
-                new_p.set_value(i, this.cofArray[i]);
-            }
-            else if (main_len <= i) {
-                new_p.set_value(i, p2_cofArray[i]);
-            }
-            else {
-                new_p.set_value(i, p2_cofArray[i] - this.cofArray[i]);
-            }
-        }
-
-        return new_p;
+        return exec_operation(p, (byte) '-');
     }
 
-    public void times(){
+    public Polynomial times(Polynomial p2){
+        int len_1 = this.size;
+        int len_2 = p2.getSize();
+        int[] p2_cofArray = p2.getCofArray();
 
+        Polynomial new_p = new Polynomial(len_1 + len_2);
+        for (int i = 0; i < len_1; i ++) {
+            for (int j = 0; j < len_2; j ++) {
+                new_p.set_value(i + j, new_p.get_value(i + j) + this.cofArray[i] * p2_cofArray[j]);
+            }
+        }
+        return new_p;
     }
 
     public int evaluate(int x) {
         int result = 0;
         for (int i = 0; i < this.size; i ++){
-            result += this.cofArray[i] * intValue(pow(x, i));
+            result += this.cofArray[i] * pow(x, i);
         }
+        return result;
     }
     public Polynomial differentiate(int n){
+        if (this.size <= n) return new Polynomial(0);
         Polynomial new_p = new Polynomial(this.size - n);
         for (int i = 0; i < this.size - n; i ++){
             new_p.set_value(i, this.cofArray[i + n]);
@@ -94,10 +104,30 @@ public class Polynomial {
     }
 
     public String toString(){
+        String result = "";
 
+        if (this.size == 0) return result;
+
+        boolean first_word = true;
+        for (int i = this.size - 1; i > 0; i --) {
+            if (this.cofArray[i] != 0){
+                if (!first_word)  {result += " + ";}
+                else {first_word = false;}
+                result += this.cofArray[i] + "x^" + i;
+            }
+        }
+        if (this.cofArray[0] != 0) result += " + " + this.cofArray[0];
+        return result;
     }
 
-    public int equals() {
+    public boolean equals(Polynomial p) {
 
+        return true;
+    }
+
+    public static void main (String[] args) {
+        Polynomial p1 = new Polynomial(new int[]{1, 2});
+        Polynomial p2 = new Polynomial(new int[]{1});
+        System.out.println(p1.times(p2.differentiate(2)).evaluate(4));
     }
 }
