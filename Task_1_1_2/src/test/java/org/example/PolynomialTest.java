@@ -100,8 +100,8 @@ public class PolynomialTest {
 
     static Stream<Arguments> generateDataForStrings() {
         return Stream.of(
-                Arguments.arguments("2 + 3x", new Polynomial(new int[] {2, 3})),
-                Arguments.arguments("2 + 3x + 4x^2 + 5x^3", new Polynomial(new int[] {2, 3, 4, 5})),
+                Arguments.arguments("3x + 2", new Polynomial(new int[] {2, 3})),
+                Arguments.arguments("5x^3 + 4x^2 + 3x + 2", new Polynomial(new int[] {2, 3, 4, 5})),
                 Arguments.arguments("", new Polynomial(new int[] {}))
         );
     }

@@ -3,6 +3,7 @@ package org.example;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 
 public class Polynomial {
@@ -23,9 +24,13 @@ public class Polynomial {
         return this.cofArray;
     }
 
+    public void setCofArray(int [] array) { this.cofArray = array; }
+
     public int getSize(){
         return this.size;
     }
+
+    public void set_size(int size){ this.size = size; }
 
     public void set_value(int index, int value){
         this.cofArray[index] = value;
@@ -62,6 +67,17 @@ public class Polynomial {
             }
         }
 
+        int k = 0;
+        while (k < max_len && new_p.get_value(max_len - 1 - k) == 0) {
+            k++;
+        }
+        new_p.set_size(main_len - k);
+        if (k != 0){
+            int[] array = new int[main_len - k];
+            System.arraycopy(new_p.getCofArray(), 0, array, 0, max_len - k);
+            new_p.setCofArray(array);
+        }
+
         return new_p;
     }
 
@@ -84,6 +100,18 @@ public class Polynomial {
                 new_p.set_value(i + j, new_p.get_value(i + j) + this.cofArray[i] * p2_cofArray[j]);
             }
         }
+
+        int k = 0;
+        while (k < len_2 + len_1 && new_p.get_value(len_2 + len_1 - 1 - k) == 0) {
+            k++;
+        }
+        new_p.set_size(len_2 + len_1 - k);
+        if (k != 0){
+            int[] array = new int[len_2 + len_1 - k];
+            System.arraycopy(new_p.getCofArray(), 0, array, 0, len_2 + len_1 - k);
+            new_p.setCofArray(array);
+        }
+
         return new_p;
     }
 
@@ -111,9 +139,22 @@ public class Polynomial {
         boolean first_word = true;
         for (int i = this.size - 1; i > 0; i --) {
             if (this.cofArray[i] != 0){
-                if (!first_word)  {result += " + ";}
-                else {first_word = false;}
-                result += this.cofArray[i] + "x^" + i;
+                if (!first_word)  {
+                    if (this.cofArray[i] < 0) {
+                        result += " - ";
+                    }
+                    else {
+                        result += " + ";
+                    }
+                }
+                else {
+                    if (this.cofArray[i] < 0){
+                        result += "- ";
+                    }
+                    first_word = false;
+                }
+                if (i != 1){ result += abs(this.cofArray[i]) + "x^" + i; }
+                else { result += abs(this.cofArray[i]) + "x"; }
             }
         }
         if (this.cofArray[0] != 0) result += " + " + this.cofArray[0];
