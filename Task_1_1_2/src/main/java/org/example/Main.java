@@ -1,3 +1,5 @@
+package org.example;
+
 import org.example.Polynomial;
 
 public class Main {
