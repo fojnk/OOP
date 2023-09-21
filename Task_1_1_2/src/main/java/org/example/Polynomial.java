@@ -7,7 +7,6 @@ import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 
 public class Polynomial {
-
     private int[] cofArray;
     private int size;
     public Polynomial(int[] cofArray) {
@@ -15,30 +14,22 @@ public class Polynomial {
         this.cofArray = cofArray;
     }
 
-    public Polynomial(int size){
+    public Polynomial(int size) {
         this.size = size;
         this.cofArray = new int[size];
     }
 
-    public int[] getCofArray(){
-        return this.cofArray;
-    }
+    public int[] getCofArray() { return this.cofArray; }
 
     public void setCofArray(int [] array) { this.cofArray = array; }
 
-    public int getSize(){
-        return this.size;
-    }
+    public int getSize() { return this.size; }
 
-    public void set_size(int size){ this.size = size; }
+    public void set_size(int size) { this.size = size; }
 
-    public void set_value(int index, int value){
-        this.cofArray[index] = value;
-    }
+    public void set_value(int index, int value) { this.cofArray[index] = value; }
 
-    public int get_value(int index){
-        return this.cofArray[index];
-    }
+    public int get_value(int index) { return this.cofArray[index]; }
 
     private int mymax(int num1, int num2) {
         int result = num1;
@@ -46,7 +37,7 @@ public class Polynomial {
         return result;
     }
 
-    private Polynomial exec_operation(Polynomial p, byte op){
+    private Polynomial exec_operation(Polynomial p, byte op) {
         int[] p2_cofArray = p.getCofArray();
         int n = p.getSize();
         int main_len = this.size;
@@ -54,15 +45,15 @@ public class Polynomial {
         int max_len = mymax(main_len, n);
         Polynomial new_p = new Polynomial(max_len);
 
-        for (int i = 0; i < max_len; i ++){
+        for (int i = 0; i < max_len; i ++) {
             if (i >= n) { new_p.set_value(i, this.cofArray[i]); }
-            else if (main_len <= i) { new_p.set_value(i, p2_cofArray[i]);}
+            else if (main_len <= i) { new_p.set_value(i, p2_cofArray[i]); }
             else {
                 if (op == '+') {
                     new_p.set_value(i, p2_cofArray[i] + this.cofArray[i]);
                 }
                 else {
-                    new_p.set_value(i, p2_cofArray[i] - this.cofArray[i]);
+                    new_p.set_value(i, this.cofArray[i] - p2_cofArray[i]);
                 }
             }
         }
@@ -72,7 +63,7 @@ public class Polynomial {
             k++;
         }
         new_p.set_size(main_len - k);
-        if (k != 0){
+        if (k != 0) {
             int[] array = new int[main_len - k];
             System.arraycopy(new_p.getCofArray(), 0, array, 0, max_len - k);
             new_p.setCofArray(array);
@@ -85,11 +76,11 @@ public class Polynomial {
         return exec_operation(p, (byte) '+');
     }
 
-    public Polynomial minus(Polynomial p){
+    public Polynomial minus(Polynomial p) {
         return exec_operation(p, (byte) '-');
     }
 
-    public Polynomial times(Polynomial p2){
+    public Polynomial times(Polynomial p2) {
         int len_1 = this.size;
         int len_2 = p2.getSize();
         int[] p2_cofArray = p2.getCofArray();
@@ -117,12 +108,12 @@ public class Polynomial {
 
     public int evaluate(int x) {
         int result = 0;
-        for (int i = 0; i < this.size; i ++){
+        for (int i = 0; i < this.size; i ++) {
             result += this.cofArray[i] * pow(x, i);
         }
         return result;
     }
-    public Polynomial differentiate(int n){
+    public Polynomial differentiate(int n) {
         if (this.size <= n) return new Polynomial(0);
         Polynomial new_p = new Polynomial(this.size - n);
         for (int i = 0; i < this.size - n; i ++){
@@ -131,14 +122,14 @@ public class Polynomial {
         return new_p;
     }
 
-    public String toString(){
+    public String toString() {
         String result = "";
 
         if (this.size == 0) return result;
 
         boolean first_word = true;
         for (int i = this.size - 1; i > 0; i --) {
-            if (this.cofArray[i] != 0){
+            if (this.cofArray[i] != 0) {
                 if (!first_word)  {
                     if (this.cofArray[i] < 0) {
                         result += " - ";
@@ -148,7 +139,7 @@ public class Polynomial {
                     }
                 }
                 else {
-                    if (this.cofArray[i] < 0){
+                    if (this.cofArray[i] < 0) {
                         result += "- ";
                     }
                     first_word = false;

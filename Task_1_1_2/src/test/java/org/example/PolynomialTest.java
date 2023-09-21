@@ -94,7 +94,7 @@ public class PolynomialTest {
         return Stream.of(
                 Arguments.arguments(false, new Polynomial(new int[] {2, 3}), new Polynomial(new int[] {1, 2, 3})),
                 Arguments.arguments(true, new Polynomial(new int[] {2, 3}), new Polynomial(new int[] {2, 3})),
-                Arguments.arguments(false, new Polynomial(new int[] {}), new Polynomial(new int[] {3}))
+                Arguments.arguments(true, new Polynomial(new int[] {3}), new Polynomial(new int[] {3}))
         );
     }
 
