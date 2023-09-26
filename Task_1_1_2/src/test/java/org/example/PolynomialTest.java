@@ -1,6 +1,5 @@
 package org.example;
 
-import org.example.Polynomial;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -76,7 +75,7 @@ public class PolynomialTest {
 
     static Stream<Arguments> generateDataForDiff() {
         return Stream.of(
-                Arguments.arguments(new Polynomial(new int[] {2, 3}), new Polynomial(new int[] {1, 2, 3})),
+                Arguments.arguments(new Polynomial(new int[] {2, 6}), new Polynomial(new int[] {1, 2, 3})),
                 Arguments.arguments(new Polynomial(new int[] {3}), new Polynomial(new int[] {2, 3})),
                 Arguments.arguments(new Polynomial(new int[] {}), new Polynomial(new int[] {3}))
         );
