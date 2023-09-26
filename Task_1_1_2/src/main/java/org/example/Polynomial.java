@@ -7,7 +7,10 @@ import static java.lang.Math.pow;
 // -> you get polynom 5x^4 + 4x^3 + 3x^2 + 2x^1 + 1
 public class Polynomial {
 
-    enum Operation { plus, minus }
+    enum Operation {
+        plus,
+        minus
+    }
     private final int[] cofArray;
     private final int size;
     public Polynomial(int[] cofArray) {
@@ -48,13 +51,14 @@ public class Polynomial {
         int[] resultArray = new int[max_len];
 
         for (int i = 0; i < max_len; i++) {
-            if (i >= n) { resultArray[i] = this.cofArray[i]; }
-            else if (main_len <= i) { resultArray[i] = p2_cofArray[i]; }
-            else {
+            if (i >= n) {
+                resultArray[i] = this.cofArray[i];
+            } else if (main_len <= i) {
+                resultArray[i] = p2_cofArray[i];
+            } else {
                 if (op == Operation.plus) {
                     resultArray[i] = p2_cofArray[i] + this.cofArray[i];
-                }
-                else {
+                } else {
                     resultArray[i] = this.cofArray[i] - p2_cofArray[i];
                 }
             }
@@ -79,7 +83,7 @@ public class Polynomial {
         int[] resultArray = new int[len_1 + len_2];
         for (int i = 0; i < len_1; i++) {
             for (int j = 0; j < len_2; j++) {
-                resultArray[i + j] =  resultArray[i + j] + this.cofArray[i] * p2_cofArray[j];
+                resultArray[i + j] = resultArray[i + j] + this.cofArray[i] * p2_cofArray[j];
             }
         }
 
@@ -89,7 +93,7 @@ public class Polynomial {
     public int evaluate(int x) {
         int result = 0;
         for (int i = 0; i < this.size; i++) {
-            result += this.cofArray[i] * (int)pow(x, i);
+            result += this.cofArray[i] * (int) pow(x, i);
         }
         return result;
     }
@@ -98,11 +102,11 @@ public class Polynomial {
         if (this.size <= n) return new Polynomial(new int[] {});
         int[] resultArray = new int[this.size - n];
 
-        for (int i = 0; i < this.size - n; i++){
+        for (int i = 0; i < this.size - n; i++) {
             resultArray[i] = this.cofArray[i + 1] * (i + 1);
         }
 
-        return check_resultArray_and_return_correct_Polynomial(this.size - n,  resultArray);
+        return check_resultArray_and_return_correct_Polynomial(this.size - n, resultArray);
     }
 
     @Override
@@ -114,22 +118,23 @@ public class Polynomial {
         boolean first_word = true;
         for (int i = this.size - 1; i > 0; i--) {
             if (this.cofArray[i] != 0) {
-                if (!first_word)  {
+                if (!first_word) {
                     if (this.cofArray[i] < 0) {
                         result.append(" - ");
-                    }
-                    else {
+                    } else {
                         result.append(" + ");
                     }
-                }
-                else {
+                } else {
                     if (this.cofArray[i] < 0) {
                         result.append("- ");
                     }
                     first_word = false;
                 }
-                if (i != 1){ result.append(abs(this.cofArray[i])).append("x^").append(i); }
-                else { result.append(abs(this.cofArray[i])).append("x"); }
+                if (i != 1) {
+                    result.append(abs(this.cofArray[i])).append("x^").append(i);
+                } else {
+                    result.append(abs(this.cofArray[i])).append("x");
+                }
             }
         }
         if (this.cofArray[0] != 0) result.append(" + ").append(this.cofArray[0]);
