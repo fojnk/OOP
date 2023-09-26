@@ -51,25 +51,43 @@ public class PolynomialTest {
 
     static Stream<Arguments> generateDataForPlus() {
         return Stream.of(
-                Arguments.arguments(new Polynomial(new int[] {1, 2, 3, 4}), new Polynomial(new int[] {1, 2, 3, 3}), new Polynomial(new int[] {0, 0, 0, 1})),
-                Arguments.arguments(new Polynomial(new int[] {1, 2, 3}), new Polynomial(new int[] {1, 2, 3, 3}), new Polynomial(new int[] {0, 0, 0, -3})),
-                Arguments.arguments(new Polynomial(new int[] {}), new Polynomial(new int[] {-1, -2, -3, -4}), new Polynomial(new int[] {1, 2, 3, 4}))
+                Arguments.arguments(new Polynomial(new int[] {1, 2, 3, 4}),
+                                                    new Polynomial(new int[] {1, 2, 3, 3}),
+                                                    new Polynomial(new int[] {0, 0, 0, 1})),
+                Arguments.arguments(new Polynomial(new int[] {1, 2, 3}),
+                                                    new Polynomial(new int[] {1, 2, 3, 3}),
+                                                    new Polynomial(new int[] {0, 0, 0, -3})),
+                Arguments.arguments(new Polynomial(new int[] {}),
+                                                    new Polynomial(new int[] {-1, -2, -3, -4}),
+                                                    new Polynomial(new int[] {1, 2, 3, 4}))
         );
     }
 
     static Stream<Arguments> generateDataForMinus() {
         return Stream.of(
-                Arguments.arguments(new Polynomial(new int[] {1, 2, 3, 2}), new Polynomial(new int[] {1, 2, 3, 3}), new Polynomial(new int[] {0, 0, 0, 1})),
-                Arguments.arguments(new Polynomial(new int[] {0, 0, 0, 6}), new Polynomial(new int[] {1, 2, 3, 3}), new Polynomial(new int[] {1, 2, 3, -3})),
-                Arguments.arguments(new Polynomial(new int[] {-2, -4, -6, -8}), new Polynomial(new int[] {-1, -2, -3, -4}), new Polynomial(new int[] {1, 2, 3, 4}))
+                Arguments.arguments(new Polynomial(new int[] {1, 2, 3, 2}),
+                                                    new Polynomial(new int[] {1, 2, 3, 3}),
+                                                    new Polynomial(new int[] {0, 0, 0, 1})),
+                Arguments.arguments(new Polynomial(new int[] {0, 0, 0, 6}),
+                                                    new Polynomial(new int[] {1, 2, 3, 3}),
+                                                    new Polynomial(new int[] {1, 2, 3, -3})),
+                Arguments.arguments(new Polynomial(new int[] {-2, -4, -6, -8}),
+                                                    new Polynomial(new int[] {-1, -2, -3, -4}),
+                                                    new Polynomial(new int[] {1, 2, 3, 4}))
                 );
     }
 
     static Stream<Arguments> generateDataForTimes() {
         return Stream.of(
-                Arguments.arguments(new Polynomial(new int[] {}), new Polynomial(new int[] {}), new Polynomial(new int[] {0, 0, 0, 1})),
-                Arguments.arguments(new Polynomial(new int[] {0, 0, 0, 6}), new Polynomial(new int[] {0, 2}), new Polynomial(new int[] {0, 0, 3})),
-                Arguments.arguments(new Polynomial(new int[] {1, 1, 1, 1}), new Polynomial(new int[] {1}), new Polynomial(new int[] {1, 1, 1, 1}))
+                Arguments.arguments(new Polynomial(new int[] {}),
+                                                    new Polynomial(new int[] {}),
+                                                    new Polynomial(new int[] {0, 0, 0, 1})),
+                Arguments.arguments(new Polynomial(new int[] {0, 0, 0, 6}),
+                                                    new Polynomial(new int[] {0, 2}),
+                                                    new Polynomial(new int[] {0, 0, 3})),
+                Arguments.arguments(new Polynomial(new int[] {1, 1, 1, 1}),
+                                                    new Polynomial(new int[] {1}),
+                                                    new Polynomial(new int[] {1, 1, 1, 1}))
                 );
     }
 

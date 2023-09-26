@@ -3,13 +3,11 @@ package org.example;
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 
-enum Operation {
-    plus,
-    minus
-}
 // Polynomial example: if you put array (new int[] {1, 2, 3, 4, 5}) ->
 // -> you get polynom 5x^4 + 4x^3 + 3x^2 + 2x^1 + 1
 public class Polynomial {
+
+    enum Operation { plus, minus }
     private final int[] cofArray;
     private final int size;
     public Polynomial(int[] cofArray) {
@@ -17,9 +15,13 @@ public class Polynomial {
         this.cofArray = cofArray;
     }
 
-    public int[] getCofArray() { return this.cofArray; }
+    public int[] getCofArray() {
+        return this.cofArray;
+    }
 
-    public int getSize() { return this.size; }
+    public int getSize() {
+        return this.size;
+    }
 
     private Polynomial check_resultArray_and_return_correct_Polynomial(int len, int[] resultArray) {
         int k = 0;
@@ -31,8 +33,7 @@ public class Polynomial {
             int[] array = new int[len - k];
             System.arraycopy(resultArray, 0, array, 0, len - k);
             new_p = new Polynomial(array);
-        }
-        else {
+        } else {
             new_p = new Polynomial(resultArray);
         }
         return new_p;
@@ -46,7 +47,7 @@ public class Polynomial {
         int max_len = Math.max(main_len, n);
         int[] resultArray = new int[max_len];
 
-        for (int i = 0; i < max_len; i ++) {
+        for (int i = 0; i < max_len; i++) {
             if (i >= n) { resultArray[i] = this.cofArray[i]; }
             else if (main_len <= i) { resultArray[i] = p2_cofArray[i]; }
             else {
@@ -62,9 +63,13 @@ public class Polynomial {
         return check_resultArray_and_return_correct_Polynomial(max_len, resultArray);
     }
 
-    public Polynomial plus(Polynomial p) { return exec_operation(p, Operation.plus); }
+    public Polynomial plus(Polynomial p) {
+        return exec_operation(p, Operation.plus);
+    }
 
-    public Polynomial minus(Polynomial p) { return exec_operation(p, Operation.minus); }
+    public Polynomial minus(Polynomial p) {
+        return exec_operation(p, Operation.minus);
+    }
 
     public Polynomial times(Polynomial p2) {
         int len_1 = this.size;
@@ -72,8 +77,8 @@ public class Polynomial {
         int[] p2_cofArray = p2.getCofArray();
 
         int[] resultArray = new int[len_1 + len_2];
-        for (int i = 0; i < len_1; i ++) {
-            for (int j = 0; j < len_2; j ++) {
+        for (int i = 0; i < len_1; i++) {
+            for (int j = 0; j < len_2; j++) {
                 resultArray[i + j] =  resultArray[i + j] + this.cofArray[i] * p2_cofArray[j];
             }
         }
@@ -83,7 +88,7 @@ public class Polynomial {
 
     public int evaluate(int x) {
         int result = 0;
-        for (int i = 0; i < this.size; i ++) {
+        for (int i = 0; i < this.size; i++) {
             result += this.cofArray[i] * (int)pow(x, i);
         }
         return result;
@@ -93,7 +98,7 @@ public class Polynomial {
         if (this.size <= n) return new Polynomial(new int[] {});
         int[] resultArray = new int[this.size - n];
 
-        for (int i = 0; i < this.size - n; i ++){
+        for (int i = 0; i < this.size - n; i++){
             resultArray[i] = this.cofArray[i + 1] * (i + 1);
         }
 
@@ -107,7 +112,7 @@ public class Polynomial {
         if (this.size == 0) return result.toString();
 
         boolean first_word = true;
-        for (int i = this.size - 1; i > 0; i --) {
+        for (int i = this.size - 1; i > 0; i--) {
             if (this.cofArray[i] != 0) {
                 if (!first_word)  {
                     if (this.cofArray[i] < 0) {
@@ -137,7 +142,7 @@ public class Polynomial {
         int[] p_cofArray = p.getCofArray();
 
         if (len_1 != this.size) result = false;
-        for (int i = 0; i < len_1; i ++) {
+        for (int i = 0; i < len_1; i++) {
             if (p_cofArray[i] != this.cofArray[i]) {
                 result = false;
                 break;
