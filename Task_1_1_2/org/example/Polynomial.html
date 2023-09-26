@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -152,10 +152,6 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int)">Polynomial</a></span>&#8203;(int&nbsp;size)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int%5B%5D)">Polynomial</a></span>&#8203;(int[]&nbsp;cofArray)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
@@ -193,52 +189,31 @@ extends java.lang.Object</pre>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#get_value(int)">get_value</a></span>&#8203;(int&nbsp;index)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i4" class="altColor">
 <td class="colFirst"><code>int[]</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCofArray()">getCofArray</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSize()">getSize</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="Polynomial.html" title="class in org.example">Polynomial</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#minus(org.example.Polynomial)">minus</a></span>&#8203;(<a href="Polynomial.html" title="class in org.example">Polynomial</a>&nbsp;p)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="Polynomial.html" title="class in org.example">Polynomial</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#plus(org.example.Polynomial)">plus</a></span>&#8203;(<a href="Polynomial.html" title="class in org.example">Polynomial</a>&nbsp;p)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i8" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#set_size(int)">set_size</a></span>&#8203;(int&nbsp;size)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i9" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#set_value(int,int)">set_value</a></span>&#8203;(int&nbsp;index,
-         int&nbsp;value)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i10" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setCofArray(int%5B%5D)">setCofArray</a></span>&#8203;(int[]&nbsp;array)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i11" class="rowColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="Polynomial.html" title="class in org.example">Polynomial</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#times(org.example.Polynomial)">times</a></span>&#8203;(<a href="Polynomial.html" title="class in org.example">Polynomial</a>&nbsp;p2)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
@@ -270,19 +245,10 @@ extends java.lang.Object</pre>
 <a id="&lt;init&gt;(int[])">
 <!--   -->
 </a>
-<ul class="blockList">
-<li class="blockList">
-<h4>Polynomial</h4>
-<pre>public&nbsp;Polynomial&#8203;(int[]&nbsp;cofArray)</pre>
-</li>
-</ul>
-<a id="&lt;init&gt;(int)">
-<!--   -->
-</a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Polynomial</h4>
-<pre>public&nbsp;Polynomial&#8203;(int&nbsp;size)</pre>
+<pre>public&nbsp;Polynomial&#8203;(int[]&nbsp;cofArray)</pre>
 </li>
 </ul>
 </li>
@@ -304,15 +270,6 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;int[]&nbsp;getCofArray()</pre>
 </li>
 </ul>
-<a id="setCofArray(int[])">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setCofArray</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;setCofArray&#8203;(int[]&nbsp;array)</pre>
-</li>
-</ul>
 <a id="getSize()">
 <!--   -->
 </a>
@@ -320,34 +277,6 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getSize</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getSize()</pre>
-</li>
-</ul>
-<a id="set_size(int)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>set_size</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;set_size&#8203;(int&nbsp;size)</pre>
-</li>
-</ul>
-<a id="set_value(int,int)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>set_value</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;set_value&#8203;(int&nbsp;index,
-                      int&nbsp;value)</pre>
-</li>
-</ul>
-<a id="get_value(int)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>get_value</h4>
-<pre class="methodSignature">public&nbsp;int&nbsp;get_value&#8203;(int&nbsp;index)</pre>
 </li>
 </ul>
 <a id="plus(org.example.Polynomial)">
