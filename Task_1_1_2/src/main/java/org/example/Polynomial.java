@@ -103,7 +103,11 @@ public class Polynomial {
         int[] resultArray = new int[this.size - n];
 
         for (int i = 0; i < this.size - n; i++) {
-            resultArray[i] = this.cofArray[i + 1] * (i + 1);
+            int new_cof = this.cofArray[i + n];
+            for (int j = 0; j < n; j ++){
+                new_cof *= i + n - j;
+            }
+            resultArray[i] = new_cof;
         }
 
         return check_resultArray_and_return_correct_Polynomial(this.size - n, resultArray);
@@ -137,7 +141,17 @@ public class Polynomial {
                 }
             }
         }
-        if (this.cofArray[0] != 0) result.append(" + ").append(this.cofArray[0]);
+        if (this.cofArray[0] != 0) {
+            if (!first_word) {
+                if (this.cofArray[0] < 0){
+                    result.append(" - ");
+                }
+                else {
+                    result.append(" + ");
+                }
+            }
+            result.append(this.cofArray[0]);
+        }
         return result.toString();
     }
 

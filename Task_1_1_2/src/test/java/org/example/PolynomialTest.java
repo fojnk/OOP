@@ -32,9 +32,15 @@ public class PolynomialTest {
     }
 
     @ParameterizedTest
-    @MethodSource("generateDataForDiff")
-    public void differentiateTest(Polynomial expected, Polynomial p1) {
+    @MethodSource("generateDataForDiff1")
+    public void differentiateTest1(Polynomial expected, Polynomial p1) {
         Assertions.assertArrayEquals(expected.getCofArray(), p1.differentiate(1).getCofArray());
+    }
+
+    @ParameterizedTest
+    @MethodSource("generateDataForDiff2")
+    public void differentiateTest2(Polynomial expected, Polynomial p1) {
+        Assertions.assertArrayEquals(expected.getCofArray(), p1.differentiate(2).getCofArray());
     }
 
     @ParameterizedTest
@@ -91,11 +97,27 @@ public class PolynomialTest {
                 );
     }
 
-    static Stream<Arguments> generateDataForDiff() {
+    static Stream<Arguments> generateDataForDiff1() {
         return Stream.of(
-                Arguments.arguments(new Polynomial(new int[] {2, 6}), new Polynomial(new int[] {1, 2, 3})),
-                Arguments.arguments(new Polynomial(new int[] {3}), new Polynomial(new int[] {2, 3})),
-                Arguments.arguments(new Polynomial(new int[] {}), new Polynomial(new int[] {3}))
+                Arguments.arguments(new Polynomial(new int[] {2, 6}),
+                        new Polynomial(new int[] {1, 2, 3})),
+                Arguments.arguments(new Polynomial(new int[] {3}),
+                        new Polynomial(new int[] {2, 3})),
+                Arguments.arguments(new Polynomial(new int[] {}),
+                        new Polynomial(new int[] {3})),
+                Arguments.arguments(new Polynomial(new int[] {}),
+                        new Polynomial(new int[] {}))
+        );
+    }
+
+    static Stream<Arguments> generateDataForDiff2() {
+        return Stream.of(
+                Arguments.arguments(new Polynomial(new int[] {6}),
+                        new Polynomial(new int[] {1, 2, 3})),
+                Arguments.arguments(new Polynomial(new int[] {}),
+                        new Polynomial(new int[] {2, 3})),
+                Arguments.arguments(new Polynomial(new int[] {}),
+                        new Polynomial(new int[] {3}))
         );
     }
 
@@ -109,9 +131,12 @@ public class PolynomialTest {
 
     static Stream<Arguments> generateDataForEquals() {
         return Stream.of(
-                Arguments.arguments(false, new Polynomial(new int[] {2, 3}), new Polynomial(new int[] {1, 2, 3})),
-                Arguments.arguments(true, new Polynomial(new int[] {2, 3}), new Polynomial(new int[] {2, 3})),
-                Arguments.arguments(true, new Polynomial(new int[] {3}), new Polynomial(new int[] {3}))
+                Arguments.arguments(false, new Polynomial(new int[] {2, 3}),
+                        new Polynomial(new int[] {1, 2, 3})),
+                Arguments.arguments(true, new Polynomial(new int[] {2, 3}),
+                        new Polynomial(new int[] {2, 3})),
+                Arguments.arguments(true, new Polynomial(new int[] {3}),
+                        new Polynomial(new int[] {3}))
         );
     }
 
