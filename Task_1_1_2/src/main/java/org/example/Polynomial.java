@@ -14,32 +14,38 @@ public class Polynomial {
     private final int[] cofArray;
     private final int size;
     public Polynomial(int[] cofArray) {
-        this.size = cofArray.length;
-        this.cofArray = cofArray;
+        var new_arr = fix_input_arr(cofArray.length, cofArray.clone());
+        var n = new_arr.length;
+        if (n == 0) {
+            this.cofArray = new int[] {0};
+            this.size = 1;
+        }
+        else {
+            this.size = n;
+            this.cofArray = new_arr;
+        }
     }
 
     public int[] getCofArray() {
-        return this.cofArray;
+        return this.cofArray.clone();
     }
 
     public int getSize() {
         return this.size;
     }
 
-    private Polynomial check_resultArray_and_return_correct_Polynomial(int len, int[] resultArray) {
+    private int[] fix_input_arr(int len, int[] cofArray){
         int k = 0;
-        while (k < len && resultArray[len - 1 - k] == 0) {
+        while (k < len && cofArray[len - 1 - k] == 0) {
             k++;
         }
-        Polynomial new_p;
         if (k != 0) {
             int[] array = new int[len - k];
-            System.arraycopy(resultArray, 0, array, 0, len - k);
-            new_p = new Polynomial(array);
+            System.arraycopy(cofArray, 0, array, 0, len - k);
+            return array;
         } else {
-            new_p = new Polynomial(resultArray);
+            return cofArray;
         }
-        return new_p;
     }
 
     private Polynomial exec_operation(Polynomial p, Operation op) {
@@ -53,8 +59,13 @@ public class Polynomial {
         for (int i = 0; i < max_len; i++) {
             if (i >= n) {
                 resultArray[i] = this.cofArray[i];
-            } else if (main_len <= i) {
-                resultArray[i] = p2_cofArray[i];
+            } else if (i >= main_len) {
+                if (op == Operation.minus){
+                    resultArray[i] -= p2_cofArray[i];
+                }
+                else {
+                    resultArray[i] = p2_cofArray[i];
+                }
             } else {
                 if (op == Operation.plus) {
                     resultArray[i] = p2_cofArray[i] + this.cofArray[i];
@@ -64,7 +75,7 @@ public class Polynomial {
             }
         }
 
-        return check_resultArray_and_return_correct_Polynomial(max_len, resultArray);
+        return new Polynomial(resultArray);
     }
 
     public Polynomial plus(Polynomial p) {
@@ -87,7 +98,7 @@ public class Polynomial {
             }
         }
 
-        return check_resultArray_and_return_correct_Polynomial(len_2 + len_1, resultArray);
+        return new Polynomial(resultArray);
     }
 
     public int evaluate(int x) {
@@ -110,17 +121,17 @@ public class Polynomial {
             resultArray[i] = new_cof;
         }
 
-        return check_resultArray_and_return_correct_Polynomial(this.size - n, resultArray);
+        return new Polynomial(resultArray);
     }
 
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder();
+        var result = new StringBuilder();
 
-        if (this.size == 0) return result.toString();
+        if (this.size == 1 && this.cofArray[0] == 0) return "0";
 
         boolean first_word = true;
-        for (int i = this.size - 1; i > 0; i--) {
+        for (int i = this.size - 1; i >= 0; i--) {
             if (this.cofArray[i] != 0) {
                 if (!first_word) {
                     if (this.cofArray[i] < 0) {
@@ -134,23 +145,14 @@ public class Polynomial {
                     }
                     first_word = false;
                 }
-                if (i != 1) {
+                if (i > 1) {
                     result.append(abs(this.cofArray[i])).append("x^").append(i);
-                } else {
+                } else if (i == 1){
                     result.append(abs(this.cofArray[i])).append("x");
+                } else {
+                    result.append(abs(this.cofArray[i]));
                 }
             }
-        }
-        if (this.cofArray[0] != 0) {
-            if (!first_word) {
-                if (this.cofArray[0] < 0){
-                    result.append(" - ");
-                }
-                else {
-                    result.append(" + ");
-                }
-            }
-            result.append(this.cofArray[0]);
         }
         return result.toString();
     }
