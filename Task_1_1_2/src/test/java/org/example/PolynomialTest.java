@@ -10,6 +10,13 @@ import org.junit.jupiter.params.provider.MethodSource;
  * тестирование полинома
  */
 public class PolynomialTest {
+
+    /**
+     * текст
+     * @param expected - ожидание
+     * @param p1 - первый полином
+     * @param p2 - второй полином
+     */
     @ParameterizedTest
     @MethodSource("generateDataForMinus")
     public void minusTest(Polynomial expected, Polynomial p1, Polynomial p2) {
@@ -33,6 +40,12 @@ public class PolynomialTest {
         );
     }
 
+    /**
+     * текст
+     * @param expected - ожидание
+     * @param p1 - первый полином
+     * @param p2 - второй полином
+     */
     @ParameterizedTest
     @MethodSource("generateDataForPlus")
     public void plusTest(Polynomial expected, Polynomial p1, Polynomial p2) {
@@ -53,6 +66,12 @@ public class PolynomialTest {
         );
     }
 
+    /**
+     * текст
+     * @param expected - ожидание
+     * @param p1 - первый полином
+     * @param p2 - второй полином
+     */
     @ParameterizedTest
     @MethodSource("generateDataForTimes")
     public void timesTest(Polynomial expected, Polynomial p1, Polynomial p2) {
@@ -73,6 +92,12 @@ public class PolynomialTest {
         );
     }
 
+    /**
+     * текст
+     * @param expected - ожидание
+     * @param p - полином
+     * @param value - число
+     */
     @ParameterizedTest
     @MethodSource("generateDataForEvaluate")
     public void evaluateTest(int expected, Polynomial p, int value) {
@@ -87,6 +112,11 @@ public class PolynomialTest {
         );
     }
 
+    /**
+     * текст
+     * @param expected - ожидание
+     * @param p1 - полином
+     */
     @ParameterizedTest
     @MethodSource("generateDataForDiff1")
     public void differentiateTest1(Polynomial expected, Polynomial p1) {
@@ -106,6 +136,11 @@ public class PolynomialTest {
         );
     }
 
+    /**
+     * текст
+     * @param expected - ожидание
+     * @param p1 - полином
+     */
     @ParameterizedTest
     @MethodSource("generateDataForDiff2")
     public void differentiateTest2(Polynomial expected, Polynomial p1) {
@@ -123,6 +158,11 @@ public class PolynomialTest {
         );
     }
 
+    /**
+     * текс
+     * @param expected - ожидание
+     * @param p - полином
+     */
     @ParameterizedTest
     @MethodSource("generateDataForStrings")
     public void toStringTest(String expected, Polynomial p) {
@@ -137,6 +177,12 @@ public class PolynomialTest {
         );
     }
 
+    /**
+     * текст
+     * @param expected - ожидание
+     * @param p1 - первый полином
+     * @param p2 - второй полином
+     */
     @ParameterizedTest
     @MethodSource("generateDataForEquals")
     public void equalsTest(boolean expected, Polynomial p1, Polynomial p2) {
