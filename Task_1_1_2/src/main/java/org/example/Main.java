@@ -1,13 +1,9 @@
 package org.example;
 
-/**
- * стратовый класс
- */
+/** стратовый класс */
 public class Main {
 
-    /**
-     * главный метод
-     */
+    /** главный метод */
     public static void main (String[] args) {
         Polynomial p1 = new Polynomial(new int[] {});
         Polynomial p2 = new Polynomial(new int[] {1});
