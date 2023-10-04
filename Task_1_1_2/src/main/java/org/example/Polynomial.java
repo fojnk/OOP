@@ -13,6 +13,9 @@ public class Polynomial {
     }
     private final int[] cofArray;
     private final int size;
+
+    //конструктор, который
+    //создает полином и удаляет лишние нули
     public Polynomial(int[] cofArray) {
         var new_arr = fix_input_arr(cofArray.length, cofArray.clone());
         var n = new_arr.length;
@@ -26,14 +29,17 @@ public class Polynomial {
         }
     }
 
+    //гетер передает копию массива
     public int[] getCofArray() {
         return this.cofArray.clone();
     }
 
+    //гетер достает размер массива с коэффициентами
     public int getSize() {
         return this.size;
     }
 
+    //функция, удаляющая лишние нули из массива с коэффициентами
     private int[] fix_input_arr(int len, int[] cofArray){
         int k = 0;
         while (k < len && cofArray[len - 1 - k] == 0) {
@@ -48,6 +54,8 @@ public class Polynomial {
         }
     }
 
+    //функция которая выполняет сложение или вычитание полиномов
+    // в зависимовсти от передаваемой операции
     private Polynomial exec_operation(Polynomial p, Operation op) {
         int[] p2_cofArray = p.getCofArray();
         int n = p.getSize();
@@ -78,14 +86,17 @@ public class Polynomial {
         return new Polynomial(resultArray);
     }
 
+    //сложение полиномов
     public Polynomial plus(Polynomial p) {
         return exec_operation(p, Operation.plus);
     }
 
+    //вычитание полиномов
     public Polynomial minus(Polynomial p) {
         return exec_operation(p, Operation.minus);
     }
 
+    //умножение полиномов
     public Polynomial times(Polynomial p2) {
         int len_1 = this.size;
         int len_2 = p2.getSize();
@@ -101,6 +112,7 @@ public class Polynomial {
         return new Polynomial(resultArray);
     }
 
+    //вычисление значения полинома при заданном х
     public int evaluate(int x) {
         int result = 0;
         for (int i = 0; i < this.size; i++) {
@@ -109,6 +121,7 @@ public class Polynomial {
         return result;
     }
 
+    //вычисляет производную
     public Polynomial differentiate(int n) {
         if (this.size <= n) return new Polynomial(new int[] {});
         int[] resultArray = new int[this.size - n];
@@ -124,6 +137,8 @@ public class Polynomial {
         return new Polynomial(resultArray);
     }
 
+    //переписанный метод toString
+    //создает строку из полинома
     @Override
     public String toString() {
         var result = new StringBuilder();
@@ -157,6 +172,7 @@ public class Polynomial {
         return result.toString();
     }
 
+    //метод сравнения полиномов
     public boolean equals(Polynomial p) {
         boolean result = true;
         int len_1 = p.getSize();
