@@ -3,8 +3,9 @@ package org.example;
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 
-/** Polynomial example: if you put array (new int[] {1, 2, 3, 4, 5}) ->
-    * -> you get polynom 5x^4 + 4x^3 + 3x^2 + 2x^1 + 1
+/**
+ * Polynomial example: if you put array (new int[] {1, 2, 3, 4, 5}) ->
+ * -> you get polynom 5x^4 + 4x^3 + 3x^2 + 2x^1 + 1
  */
 public class Polynomial {
 
