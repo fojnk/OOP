@@ -16,21 +16,22 @@ public class Polynomial {
         plus,
         minus
     }
+
     private final int[] cofArray;
     private final int size;
 
     /**
      * конструктор, создающий полином
+     *
      * @param cofArray - массив коэффициентов
      */
     public Polynomial(int[] cofArray) {
         var newArr = fix_input_arr(cofArray.length, cofArray.clone());
         var n = newArr.length;
         if (n == 0) {
-            this.cofArray = new int[] {0};
+            this.cofArray = new int[]{0};
             this.size = 1;
-        }
-        else {
+        } else {
             this.size = n;
             this.cofArray = newArr;
         }
@@ -38,6 +39,7 @@ public class Polynomial {
 
     /**
      * метод для получения приватного массива
+     *
      * @return - клонированный массив коэффициентов
      */
     public int[] getCofArray() {
@@ -46,6 +48,7 @@ public class Polynomial {
 
     /**
      * метод для получения размера
+     *
      * @return - размер массива коэффициентов
      */
     public int getSize() {
@@ -54,11 +57,12 @@ public class Polynomial {
 
     /**
      * метод для исправления входных данных
-     * @param len - длина массива
+     *
+     * @param len      - длина массива
      * @param cofArray - сам массив коэффициентов
      * @return - правильный массив (без лишних нулей)
      */
-    private int[] fix_input_arr(int len, int[] cofArray){
+    private int[] fix_input_arr(int len, int[] cofArray) {
         int k = 0;
         while (k < len && cofArray[len - 1 - k] == 0) {
             k++;
@@ -74,7 +78,8 @@ public class Polynomial {
 
     /**
      * функция для выполнения операций (+/-)
-     * @param p - входящий полином
+     *
+     * @param p  - входящий полином
      * @param op - операция ( + или - )
      * @return - новый полином
      */
@@ -90,10 +95,9 @@ public class Polynomial {
             if (i >= n) {
                 resultArray[i] = this.cofArray[i];
             } else if (i >= mainLen) {
-                if (op == Operation.minus){
+                if (op == Operation.minus) {
                     resultArray[i] -= p2CofArray[i];
-                }
-                else {
+                } else {
                     resultArray[i] = p2CofArray[i];
                 }
             } else {
@@ -110,6 +114,7 @@ public class Polynomial {
 
     /**
      * сложение полиномов
+     *
      * @param p - входной полином
      * @return - новый полином(результат вычисления)
      */
@@ -119,6 +124,7 @@ public class Polynomial {
 
     /**
      * вычитание полиномов
+     *
      * @param p - входной полином
      * @return - новый полином(результат вычислени)
      */
@@ -128,6 +134,7 @@ public class Polynomial {
 
     /**
      * умножение полиномов
+     *
      * @param p2 - входной полином
      * @return - результат вычислений(новый полином)
      */
@@ -148,6 +155,7 @@ public class Polynomial {
 
     /**
      * вычисление значения полинома с заданным Х
+     *
      * @param x - входное значение
      * @return - число
      */
@@ -161,16 +169,17 @@ public class Polynomial {
 
     /**
      * метод для получения производной
+     *
      * @param n - порядок производной
      * @return - новый полином
      */
     public Polynomial differentiate(int n) {
-        if (this.size <= n) return new Polynomial(new int[] {});
+        if (this.size <= n) return new Polynomial(new int[]{});
         int[] resultArray = new int[this.size - n];
 
         for (int i = 0; i < this.size - n; i++) {
             int newCof = this.cofArray[i + n];
-            for (int j = 0; j < n; j ++){
+            for (int j = 0; j < n; j++) {
                 newCof *= i + n - j;
             }
             resultArray[i] = newCof;
@@ -181,6 +190,7 @@ public class Polynomial {
 
     /**
      * метод для создания строки из полинома
+     *
      * @return - строка
      */
     @Override
@@ -206,7 +216,7 @@ public class Polynomial {
                 }
                 if (i > 1) {
                     result.append(abs(this.cofArray[i])).append("x^").append(i);
-                } else if (i == 1){
+                } else if (i == 1) {
                     result.append(abs(this.cofArray[i])).append("x");
                 } else {
                     result.append(abs(this.cofArray[i]));
@@ -218,6 +228,7 @@ public class Polynomial {
 
     /**
      * метод для проверки на равенство полиномов
+     *
      * @param p - входной полином
      * @return - бул тип
      */

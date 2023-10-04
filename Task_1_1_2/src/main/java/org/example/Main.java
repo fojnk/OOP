@@ -7,11 +7,12 @@ public class Main {
 
     /**
      * точка входа
+     *
      * @param args - аргументы командной строки
      */
-    public static void main (String[] args) {
-        Polynomial p1 = new Polynomial(new int[] {});
-        Polynomial p2 = new Polynomial(new int[] {1});
+    public static void main(String[] args) {
+        Polynomial p1 = new Polynomial(new int[]{});
+        Polynomial p2 = new Polynomial(new int[]{1});
         System.out.println("Polynom p1: " + p1.equals(p2));
         System.out.println("Polynom p2: " + p2.toString());
         System.out.println("------------------------------");
