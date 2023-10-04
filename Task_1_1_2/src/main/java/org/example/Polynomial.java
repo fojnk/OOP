@@ -4,11 +4,14 @@ import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 
 /**
- * Polynomial example: if you put array (new int[] {1, 2, 3, 4, 5}) ->
- * -> you get polynom 5x^4 + 4x^3 + 3x^2 + 2x^1 + 1
+ * Polynomial example: if you put array (new int[] {1, 2, 3, 4, 5})
+ * you get polynom 5x^4 + 4x^3 + 3x^2 + 2x^1 + 1
  */
 public class Polynomial {
 
+    /**
+     * перечисление операций
+     */
     enum Operation {
         plus,
         minus
@@ -16,7 +19,10 @@ public class Polynomial {
     private final int[] cofArray;
     private final int size;
 
-    /** конструктор, который создает полином и удаляет лишние нули */
+    /**
+     * конструктор, создающий полином
+     * @param cofArray - массив коэффициентов
+     */
     public Polynomial(int[] cofArray) {
         var newArr = fix_input_arr(cofArray.length, cofArray.clone());
         var n = newArr.length;
@@ -31,22 +37,27 @@ public class Polynomial {
     }
 
     /**
-     *метод, предназначенный для доступа к содержимому приватных переменных
-     *гетер передает копию массива
+     * метод для получения приватного массива
+     * @return - клонированный массив коэффициентов
      */
     public int[] getCofArray() {
         return this.cofArray.clone();
     }
 
     /**
-     * метод, предназначенный для доступа к содержимому приватных переменных
-     * гетер достает размер массива с коэффициентами
+     * метод для получения размера
+     * @return - размер массива коэффициентов
      */
     public int getSize() {
         return this.size;
     }
 
-    /** функция, удаляющая лишние нули из массива с коэффициентами */
+    /**
+     * метод для исправления входных данных
+     * @param len - длина массива
+     * @param cofArray - сам массив коэффициентов
+     * @return - правильный массив (без лишних нулей)
+     */
     private int[] fix_input_arr(int len, int[] cofArray){
         int k = 0;
         while (k < len && cofArray[len - 1 - k] == 0) {
@@ -62,8 +73,10 @@ public class Polynomial {
     }
 
     /**
-     * функция которая выполняет сложение или вычитание полиномов
-     * в зависимовсти от передаваемой операции
+     * функция для выполнения операций (+/-)
+     * @param p - входящий полином
+     * @param op - операция ( + или - )
+     * @return - новый полином
      */
     private Polynomial exec_operation(Polynomial p, Operation op) {
         int[] p2CofArray = p.getCofArray();
@@ -95,17 +108,29 @@ public class Polynomial {
         return new Polynomial(resultArray);
     }
 
-    /** сложение полиномов */
+    /**
+     * сложение полиномов
+     * @param p - входной полином
+     * @return - новый полином(результат вычисления)
+     */
     public Polynomial plus(Polynomial p) {
         return exec_operation(p, Operation.plus);
     }
 
-    /** вычитание полиномов */
+    /**
+     * вычитание полиномов
+     * @param p - входной полином
+     * @return - новый полином(результат вычислени)
+     */
     public Polynomial minus(Polynomial p) {
         return exec_operation(p, Operation.minus);
     }
 
-    /** умножение полиномов */
+    /**
+     * умножение полиномов
+     * @param p2 - входной полином
+     * @return - результат вычислений(новый полином)
+     */
     public Polynomial times(Polynomial p2) {
         int len1 = this.size;
         int len2 = p2.getSize();
@@ -121,7 +146,11 @@ public class Polynomial {
         return new Polynomial(resultArray);
     }
 
-    /** вычисление значения полинома при заданном x */
+    /**
+     * вычисление значения полинома с заданным Х
+     * @param x - входное значение
+     * @return - число
+     */
     public int evaluate(int x) {
         int result = 0;
         for (int i = 0; i < this.size; i++) {
@@ -130,7 +159,11 @@ public class Polynomial {
         return result;
     }
 
-    /** получение производной */
+    /**
+     * метод для получения производной
+     * @param n - порядок производной
+     * @return - новый полином
+     */
     public Polynomial differentiate(int n) {
         if (this.size <= n) return new Polynomial(new int[] {});
         int[] resultArray = new int[this.size - n];
@@ -147,8 +180,8 @@ public class Polynomial {
     }
 
     /**
-     * переписанный метод toString
-     * создает строку из полинома
+     * метод для создания строки из полинома
+     * @return - строка
      */
     @Override
     public String toString() {
@@ -183,7 +216,11 @@ public class Polynomial {
         return result.toString();
     }
 
-    /** метод сравнения полиномов */
+    /**
+     * метод для проверки на равенство полиномов
+     * @param p - входной полином
+     * @return - бул тип
+     */
     public boolean equals(Polynomial p) {
         boolean result = true;
         int len1 = p.getSize();

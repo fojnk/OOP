@@ -1,9 +1,14 @@
 package org.example;
 
-/** стратовый класс */
+/**
+ * главный класс
+ */
 public class Main {
 
-    /** главный метод */
+    /**
+     * точка входа
+     * @param args - аргументы командной строки
+     */
     public static void main (String[] args) {
         Polynomial p1 = new Polynomial(new int[] {});
         Polynomial p2 = new Polynomial(new int[] {1});
