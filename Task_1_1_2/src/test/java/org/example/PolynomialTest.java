@@ -8,12 +8,12 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 /**
- * тестирование полинома
+ * тестирование полинома.
  */
 public class PolynomialTest {
 
     /**
-     * текст
+     * текст.
      *
      * @param expected - ожидание
      * @param p1       - первый полином
@@ -43,7 +43,7 @@ public class PolynomialTest {
     }
 
     /**
-     * текст
+     * текст.
      *
      * @param expected - ожидание
      * @param p1       - первый полином
@@ -70,7 +70,7 @@ public class PolynomialTest {
     }
 
     /**
-     * текст
+     * текст.
      *
      * @param expected - ожидание
      * @param p1       - первый полином
@@ -97,7 +97,7 @@ public class PolynomialTest {
     }
 
     /**
-     * текст
+     * текст.
      *
      * @param expected - ожидание
      * @param p        - полином
@@ -118,7 +118,7 @@ public class PolynomialTest {
     }
 
     /**
-     * текст
+     * текст.
      *
      * @param expected - ожидание
      * @param p1       - полином
@@ -143,7 +143,7 @@ public class PolynomialTest {
     }
 
     /**
-     * текст
+     * текст.
      *
      * @param expected - ожидание
      * @param p1       - полином
@@ -166,7 +166,7 @@ public class PolynomialTest {
     }
 
     /**
-     * текс
+     * текс.
      *
      * @param expected - ожидание
      * @param p        - полином
@@ -186,7 +186,7 @@ public class PolynomialTest {
     }
 
     /**
-     * текст
+     * текст.
      *
      * @param expected - ожидание
      * @param p1       - первый полином
