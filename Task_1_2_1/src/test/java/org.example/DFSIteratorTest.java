@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
+
 /**
  * класс для тестрирования итератора DFS.
  */
@@ -56,7 +57,7 @@ public class DFSIteratorTest {
     static Stream<Arguments> GenerateDataForNextAndHasNext() {
         Tree<Integer> tree = new Tree<>(1);
         var a = tree.addChild(2);
-        var b = tree.addChild(3);
+        tree.addChild(3);
         a.addChild(4);
 
         return Stream.of(

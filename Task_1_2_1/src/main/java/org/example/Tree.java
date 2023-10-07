@@ -1,6 +1,7 @@
 package org.example;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Класс деревва.
