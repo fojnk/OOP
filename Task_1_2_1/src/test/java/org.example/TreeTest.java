@@ -1,11 +1,10 @@
 package org.example;
 
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-
-import java.util.stream.Stream;
 
 /**
  * класс для тестрирования дерева.
@@ -18,7 +17,7 @@ public class TreeTest {
      * @param input    - входное значение
      */
     @ParameterizedTest
-    @MethodSource("GenerateDataForAddChild")
+    @MethodSource("generateDataForAddChild")
     public void addChildTest(Integer expected, Integer input) {
         Assertions.assertEquals(expected, input);
     }
@@ -28,7 +27,7 @@ public class TreeTest {
      *
      * @return - аргументы вида (ожидаемое значение, значение из элемента)
      */
-    static Stream<Arguments> GenerateDataForAddChild() {
+    static Stream<Arguments> generateDataForAddChild() {
         Tree<Integer> tree = new Tree<>(1);
         var a = tree.addChild(2);
         tree.addChild(3);
@@ -49,7 +48,7 @@ public class TreeTest {
      * @param elem   - ребенок
      */
     @ParameterizedTest
-    @MethodSource("GenerateDataForRemove")
+    @MethodSource("generateDataForRemove")
     public void removeTest(Tree<Integer> parent, Tree<Integer> elem) {
         Assertions.assertTrue(parent.getChilds().contains(elem));
         elem.remove();
@@ -61,7 +60,7 @@ public class TreeTest {
      *
      * @return - аргументы вида (родитель, ребенок)
      */
-    static Stream<Arguments> GenerateDataForRemove() {
+    static Stream<Arguments> generateDataForRemove() {
         Tree<Integer> tree = new Tree<>(1);
         var a = tree.addChild(2);
         tree.addChild(3);

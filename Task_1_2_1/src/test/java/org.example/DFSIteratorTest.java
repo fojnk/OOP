@@ -1,12 +1,10 @@
 package org.example;
 
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-
-import java.util.stream.Stream;
-
 
 /**
  * класс для тестрирования итератора DFS.
@@ -20,7 +18,7 @@ public class DFSIteratorTest {
      * @param amountOfNextOp - количество операций next, выполненных до получения ответа
      */
     @ParameterizedTest
-    @MethodSource("GenerateDataForNextAndHasNext")
+    @MethodSource("generateDataForNextAndHasNext")
     public void nextTest(Integer expected, Tree<Integer> tree, Integer amountOfNextOp) {
         Integer result = null;
         DFSIterator<Integer> dfs = new DFSIterator<>(tree);
@@ -38,7 +36,7 @@ public class DFSIteratorTest {
      * @param amountOfHasNextOp - количество операций next, выполненных до получения ответа
      */
     @ParameterizedTest
-    @MethodSource("GenerateDataForNextAndHasNext")
+    @MethodSource("generateDataForNextAndHasNext")
     public void hasNextTest(Integer expected, Tree<Integer> tree, Integer amountOfHasNextOp) {
         boolean result = false;
         DFSIterator<Integer> dfs = new DFSIterator<>(tree);
@@ -54,7 +52,7 @@ public class DFSIteratorTest {
      *
      * @return - аргументы вида (ожидаемое значение элемента, дерево, количество операций next)
      */
-    static Stream<Arguments> GenerateDataForNextAndHasNext() {
+    static Stream<Arguments> generateDataForNextAndHasNext() {
         Tree<Integer> tree = new Tree<>(1);
         var a = tree.addChild(2);
         tree.addChild(3);
