@@ -1,10 +1,11 @@
 package org.example;
 
-import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 /**
  * класс для тестрирования дерева.
@@ -69,6 +70,41 @@ public class TreeTest {
         return Stream.of(
                 Arguments.arguments(a, b),
                 Arguments.arguments(tree, a)
+        );
+    }
+
+    /**
+     * метод для тестирования сравнения деревьев.
+     *
+     * @param tree1    - первое дерево
+     * @param tree2    - второе дерево
+     * @param expected - ожидаемое значение
+     */
+    @ParameterizedTest
+    @MethodSource("generateDataForEquals")
+    public void equalsTest(Tree<Integer> tree1, Tree<Integer> tree2, boolean expected) {
+        Assertions.assertEquals(tree1.equals(tree2), expected);
+    }
+
+    /**
+     * генерация данных.
+     *
+     * @return - аргументы вида(первое дерево, второе дерево, ожидаемое занчение)
+     */
+    static Stream<Arguments> generateDataForEquals() {
+        Tree<Integer> tree1 = new Tree<>(1);
+        var a = tree1.addChild(2);
+        tree1.addChild(3);
+        var b = a.addChild(4);
+
+        Tree<Integer> tree2 = new Tree<>(4);
+        tree2.addChild(1);
+        tree2.addChild(2);
+
+        return Stream.of(
+                Arguments.arguments(tree2, tree2, true),
+                Arguments.arguments(tree1, tree2, false),
+                Arguments.arguments(tree1, tree1, true)
         );
     }
 }
