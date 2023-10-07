@@ -54,7 +54,6 @@ public class Tree<T> implements Iterable<T> {
         return this.value;
     }
 
-
     /**
      * метод для добавления нового элемента дерева.
      *
