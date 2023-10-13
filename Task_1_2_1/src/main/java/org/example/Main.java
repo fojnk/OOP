@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.ConcurrentModificationException;
+
 /**
  * Главный класс.
  */
@@ -24,8 +26,13 @@ public class Main {
         }
         System.out.println("------------------");
         DFSIterator<String> dfs = new DFSIterator<String>(tree);
-        while (dfs.hasNext()) {
-            System.out.println(dfs.next());
+        try {
+            while (dfs.hasNext()) {
+                tree.addChild("k");
+                System.out.println(dfs.next());
+            }
+        } catch (Exception ConcurrentModificationException) {
+            System.out.println("помер :(");
         }
     }
 }

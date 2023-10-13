@@ -9,6 +9,7 @@ import java.util.Iterator;
  * @param <T> - любой тип
  */
 public class Tree<T> implements Iterable<T> {
+    private int amountOfElem;
     private final T value;
     private final Tree<T> parent;
     private final ArrayList<Tree<T>> childs;
@@ -22,6 +23,7 @@ public class Tree<T> implements Iterable<T> {
         this.value = value;
         this.parent = null;
         this.childs = new ArrayList<>();
+        this.amountOfElem = 1;
     }
 
     /**
@@ -55,6 +57,15 @@ public class Tree<T> implements Iterable<T> {
     }
 
     /**
+     * гетер для получения размера дерева.
+     *
+     * @return - количество элементов
+     */
+    public int getAmountOfElem() {
+        return this.amountOfElem;
+    }
+
+    /**
      * метод для добавления нового элемента дерева.
      *
      * @param value - значение нового элемента
@@ -63,7 +74,32 @@ public class Tree<T> implements Iterable<T> {
     public Tree<T> addChild(T value) {
         Tree<T> newElem = new Tree<>(this, value);
         this.childs.add(newElem);
+        upAmounts(1);
         return newElem;
+    }
+
+    /**
+     * поднимает количество вершин для каждой из стоящих выше вершин на заданное число.
+     *
+     * @param amount - доваляемое число вершин
+     */
+    private void upAmounts(int amount) {
+        this.amountOfElem += amount;
+        if (this.parent != null) {
+            this.parent.upAmounts(amount);
+        }
+    }
+
+    /**
+     * опускает количество вершин для каждой из стоящих выше вершин на заданное число.
+     *
+     * @param amount - кол-во удаленных вершин
+     */
+    private void downAmounts(int amount) {
+        this.amountOfElem -= amount;
+        if (this.parent != null) {
+            this.parent.downAmounts(amount);
+        }
     }
 
     /**
@@ -74,6 +110,7 @@ public class Tree<T> implements Iterable<T> {
      */
     public Tree<T> addChild(Tree<T> subtree) {
         this.childs.add(subtree);
+        upAmounts(this.amountOfElem);
         return subtree;
     }
 
@@ -83,6 +120,7 @@ public class Tree<T> implements Iterable<T> {
     public void removeSubtree() {
         if (this.parent != null) {
             this.parent.childs.remove(this);
+            this.parent.downAmounts(this.amountOfElem);
         }
     }
 
@@ -96,6 +134,7 @@ public class Tree<T> implements Iterable<T> {
                 this.parent.childs.add(this.childs.get(i));
             }
             this.parent.childs.remove(this);
+            this.parent.downAmounts(1);
         }
     }
 

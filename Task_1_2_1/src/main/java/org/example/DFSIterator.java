@@ -1,5 +1,7 @@
 package org.example;
 
+import java.awt.*;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.Stack;
 
@@ -9,7 +11,9 @@ import java.util.Stack;
  * @param <T> - любой тип
  */
 public class DFSIterator<T> implements Iterator<T> {
+    private Tree<T> startedTree;
     private Stack<Tree<T>> stack;
+    private int amountOfElem;
 
     /**
      * конструктор итератора.
@@ -19,6 +23,8 @@ public class DFSIterator<T> implements Iterator<T> {
     public DFSIterator(Tree<T> node) {
         this.stack = new Stack<>();
         this.stack.push(node);
+        this.amountOfElem = node.getAmountOfElem();
+        this.startedTree = node;
     }
 
     /**
@@ -28,6 +34,9 @@ public class DFSIterator<T> implements Iterator<T> {
      */
     @Override
     public boolean hasNext() {
+        if (this.amountOfElem != this.startedTree.getAmountOfElem()) {
+            throw new ConcurrentModificationException();
+        }
         return !this.stack.empty();
     }
 

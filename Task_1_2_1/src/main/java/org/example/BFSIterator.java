@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -10,6 +11,8 @@ import java.util.Queue;
  * @param <T> - любой тип
  */
 public class BFSIterator<T> implements Iterator<T> {
+    private Tree<T> startedTree;
+    private int amountOfElem;
     private Queue<Tree<T>> quene;
 
     /**
@@ -20,6 +23,8 @@ public class BFSIterator<T> implements Iterator<T> {
     public BFSIterator(Tree<T> node) {
         this.quene = new LinkedList<>();
         this.quene.add(node);
+        this.amountOfElem = node.getAmountOfElem();
+        this.startedTree = node;
     }
 
     /**
@@ -29,6 +34,9 @@ public class BFSIterator<T> implements Iterator<T> {
      */
     @Override
     public boolean hasNext() {
+        if (this.amountOfElem != this.startedTree.getAmountOfElem()) {
+            throw new ConcurrentModificationException();
+        }
         return !this.quene.isEmpty();
     }
 
