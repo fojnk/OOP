@@ -17,7 +17,7 @@ public class Main {
         subtree.addChild("C");
         subtree.addChild("D");
         tree.addChild(subtree);
-        b.remove();
+        b.removeSubtree();
         BFSIterator<String> bfs = new BFSIterator<String>(tree);
         while (bfs.hasNext()) {
             System.out.println(bfs.next());

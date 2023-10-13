@@ -78,10 +78,23 @@ public class Tree<T> implements Iterable<T> {
     }
 
     /**
-     * метод для удаления элементов дерева.
+     * метод для удаления поддерева.
      */
-    public void remove() {
+    public void removeSubtree() {
         if (this.parent != null) {
+            this.parent.childs.remove(this);
+        }
+    }
+
+    /**
+     * метод для удаления элемента дерева.
+     */
+    public void removeElem() {
+        if (this.parent != null) {
+            int len = this.childs.size();
+            for (int i = 0; i < len; i++) {
+                this.parent.childs.add(this.childs.get(i));
+            }
             this.parent.childs.remove(this);
         }
     }
