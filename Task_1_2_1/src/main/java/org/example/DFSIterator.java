@@ -1,6 +1,5 @@
 package org.example;
 
-import java.awt.*;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.Stack;
