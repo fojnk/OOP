@@ -199,7 +199,9 @@ public class Tree<T> implements Iterable<T> {
                 return false;
             }
         }
-        if (dfs1.hasNext() != dfs2.hasNext()) { result = false; }
+        if (dfs1.hasNext() != dfs2.hasNext()) {
+            result = false;
+        }
         return result;
     }
 }
