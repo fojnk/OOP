@@ -116,11 +116,11 @@ public class TreeTest {
      */
     @ParameterizedTest
     @MethodSource("generateDataForRemoveElem")
-    public void removeElemTest(Tree<Integer> parent, Tree<Integer> elem, Tree<Integer> elem_child) {
+    public void removeElemTest(Tree<Integer> parent, Tree<Integer> elem, Tree<Integer> elemChild) {
         Assertions.assertTrue(parent.getChilds().contains(elem));
         elem.removeElem();
         Assertions.assertFalse(parent.getChilds().contains(elem));
-        Assertions.assertTrue(parent.getChilds().contains(elem_child));
+        Assertions.assertTrue(parent.getChilds().contains(elemChild));
     }
 
     /**
