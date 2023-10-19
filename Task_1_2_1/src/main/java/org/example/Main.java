@@ -22,14 +22,12 @@ public class Main {
             System.out.println("Error: " + e.getMessage());
         }
         b.removeSubtree();
-        var bfs = new BFSIterator<String>(tree);
         for (var elem : tree) {
             System.out.println(elem);
         }
         System.out.println("------------------");
         tree.treeStream().forEach(System.out::println);
         System.out.println("------------------");
-        var dfs = new DFSIterator<String>(tree);
         try {
             for (var elem : tree) {
                 tree.addChild("k");

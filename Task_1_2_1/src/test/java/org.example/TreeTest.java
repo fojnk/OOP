@@ -183,7 +183,7 @@ public class TreeTest {
     @Test
     public void cloneTest() {
         var tree = new Tree<>(1);
-        var a = tree.addChild(2);
+        tree.addChild(2);
         var b = tree.addChild(1);
         b.addChild(3);
         b.addChild(2);
