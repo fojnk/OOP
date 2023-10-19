@@ -21,7 +21,7 @@ public class DFSIteratorTest {
     @MethodSource("generateDataForNextAndHasNext")
     public void nextTest(Integer expected, Tree<Integer> tree, Integer amountOfNextOp) {
         Integer result = null;
-        DFSIterator<Integer> dfs = new DFSIterator<>(tree);
+        var dfs = new DFSIterator<Integer>(tree);
         for (int i = 0; i < amountOfNextOp; i++) {
             result = dfs.next();
         }
@@ -39,7 +39,7 @@ public class DFSIteratorTest {
     @MethodSource("generateDataForNextAndHasNext")
     public void hasNextTest(Integer expected, Tree<Integer> tree, Integer amountOfHasNextOp) {
         boolean result = false;
-        DFSIterator<Integer> dfs = new DFSIterator<>(tree);
+        var dfs = new DFSIterator<Integer>(tree);
         for (int i = 0; i < amountOfHasNextOp; i++) {
             result = dfs.hasNext();
             dfs.next();
@@ -53,7 +53,7 @@ public class DFSIteratorTest {
      * @return - аргументы вида (ожидаемое значение элемента, дерево, количество операций next)
      */
     static Stream<Arguments> generateDataForNextAndHasNext() {
-        Tree<Integer> tree = new Tree<>(1);
+        var tree = new Tree<>(1);
         var a = tree.addChild(2);
         tree.addChild(3);
         a.addChild(4);
@@ -62,8 +62,7 @@ public class DFSIteratorTest {
                 Arguments.arguments(1, tree, 1),
                 Arguments.arguments(3, tree, 2),
                 Arguments.arguments(2, tree, 3),
-                Arguments.arguments(4, tree, 4),
-                Arguments.arguments(null, tree, 5)
+                Arguments.arguments(4, tree, 4)
         );
     }
 }

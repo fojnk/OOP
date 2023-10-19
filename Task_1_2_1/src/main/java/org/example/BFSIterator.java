@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * класс имплементирующий итератор ( с ипользованием алгоритма BFS ).
@@ -43,7 +40,7 @@ public class BFSIterator<T> implements Iterator<T> {
     /**
      * переписанный метод next для поиска следующего элемента.
      *
-     * @return - возвращает следующий элемент дерева или null
+     * @return - возвращает следующий элемент или бросает исключение
      */
     @Override
     public T next() {
@@ -52,6 +49,6 @@ public class BFSIterator<T> implements Iterator<T> {
             this.quene.addAll(next.getChilds());
             return next.getValue();
         }
-        return null;
+        throw new NoSuchElementException();
     }
 }

@@ -16,18 +16,24 @@ public class Main {
         Tree<String> subtree = new Tree<>("R2");
         subtree.addChild("C");
         subtree.addChild("D");
-        tree.addChild(subtree);
+        try {
+            tree.addChild(subtree);
+        } catch (NullSubTreeException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
         b.removeSubtree();
-        BFSIterator<String> bfs = new BFSIterator<String>(tree);
-        while (bfs.hasNext()) {
-            System.out.println(bfs.next());
+        var bfs = new BFSIterator<String>(tree);
+        for (var elem : tree) {
+            System.out.println(elem);
         }
         System.out.println("------------------");
-        DFSIterator<String> dfs = new DFSIterator<String>(tree);
+        tree.TreeStream().forEach(System.out::println);
+        System.out.println("------------------");
+        var dfs = new DFSIterator<String>(tree);
         try {
-            while (dfs.hasNext()) {
+            for (var elem : tree) {
                 tree.addChild("k");
-                System.out.println(dfs.next());
+                System.out.println(elem);
             }
         } catch (Exception ConcurrentModificationException) {
             System.out.println("помер :(");

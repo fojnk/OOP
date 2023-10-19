@@ -21,7 +21,7 @@ public class BFSIteratorTest {
     @MethodSource("generateDataForNextAndHasNext")
     public void nextTest(Integer expected, Tree<Integer> tree, Integer amountOfNextOp) {
         Integer result = null;
-        BFSIterator<Integer> bfs = new BFSIterator<>(tree);
+        var bfs = new BFSIterator<>(tree);
         for (int i = 0; i < amountOfNextOp; i++) {
             result = bfs.next();
         }
@@ -39,7 +39,7 @@ public class BFSIteratorTest {
     @MethodSource("generateDataForNextAndHasNext")
     public void hasNextTest(Integer expected, Tree<Integer> tree, Integer amountOfHasNextOp) {
         boolean result = false;
-        BFSIterator<Integer> bfs = new BFSIterator<>(tree);
+        var bfs = new BFSIterator<>(tree);
         for (int i = 0; i < amountOfHasNextOp; i++) {
             result = bfs.hasNext();
             bfs.next();
@@ -62,8 +62,7 @@ public class BFSIteratorTest {
                 Arguments.arguments(1, tree, 1),
                 Arguments.arguments(2, tree, 2),
                 Arguments.arguments(3, tree, 3),
-                Arguments.arguments(4, tree, 4),
-                Arguments.arguments(null, tree, 5)
+                Arguments.arguments(4, tree, 4)
         );
     }
 }

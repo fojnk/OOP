@@ -2,6 +2,7 @@ package org.example;
 
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Stack;
 
 /**
@@ -53,6 +54,6 @@ public class DFSIterator<T> implements Iterator<T> {
             }
             return next.getValue();
         }
-        return null;
+        throw new NoSuchElementException();
     }
 }

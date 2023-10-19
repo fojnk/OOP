@@ -2,6 +2,10 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.Spliterators;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 /**
  * Класс деревва.
@@ -11,8 +15,8 @@ import java.util.Iterator;
 public class Tree<T> implements Iterable<T> {
     private int amountOfElem;
     private final T value;
-    private final Tree<T> parent;
-    private final ArrayList<Tree<T>> childs;
+    private Tree<T> parent;
+    private ArrayList<Tree<T>> childs;
 
     /**
      * констуктор класса.
@@ -39,12 +43,28 @@ public class Tree<T> implements Iterable<T> {
     }
 
     /**
-     * метод для получения списка поддеревьев.
+     * конструктор для глубокого клонирования.
      *
-     * @return - клонированный список поддеревьев
+     * @param tree   - элемент, с которого начинаем клонирование
+     * @param parent - родитель элемента, для установления связей в новом дереве
+     */
+    public Tree(Tree<T> tree, Tree<T> parent) {
+        this.parent = parent;
+        this.amountOfElem = tree.amountOfElem;
+        this.value = tree.value;
+        this.childs = new ArrayList<>();
+        for (var elem : tree.getChilds()) {
+            this.childs.add(new Tree<>(elem, this));
+        }
+    }
+
+    /**
+     * метод для поверхностного клонирования, оставил для тестов.
+     *
+     * @return - клонированный список
      */
     public ArrayList<Tree<T>> getChilds() {
-        return (ArrayList<Tree<T>>) childs.clone();
+        return (ArrayList<Tree<T>>) this.childs.clone();
     }
 
     /**
@@ -54,6 +74,13 @@ public class Tree<T> implements Iterable<T> {
      */
     public T getValue() {
         return this.value;
+    }
+
+
+    public Stream<T> TreeStream() {
+        Spliterator<T> mySpliterator = Spliterators.spliterator(this.iterator(), this.amountOfElem, Spliterator.IMMUTABLE);
+        Stream<T> myStream = StreamSupport.stream(mySpliterator, false);
+        return myStream;
     }
 
     /**
@@ -108,7 +135,11 @@ public class Tree<T> implements Iterable<T> {
      * @param subtree - поддрево
      * @return - ссылка на поддерево
      */
-    public Tree<T> addChild(Tree<T> subtree) {
+    public Tree<T> addChild(Tree<T> subtree) throws NullSubTreeException {
+        if (subtree == null) {
+            throw new NullSubTreeException("null subtree");
+        }
+        subtree.parent = this;
         this.childs.add(subtree);
         upAmounts(this.amountOfElem);
         return subtree;
