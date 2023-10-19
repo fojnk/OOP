@@ -111,6 +111,22 @@ public class Tree<T> implements Iterable<T> {
     }
 
     /**
+     * метод для добавления поддерева.
+     *
+     * @param subtree - поддрево
+     * @return - ссылка на поддерево
+     */
+    public Tree<T> addChild(Tree<T> subtree) throws NullSubTreeException {
+        if (subtree == null) {
+            throw new NullSubTreeException("null subtree");
+        }
+        subtree.parent = this;
+        this.childs.add(subtree);
+        upAmounts(this.amountOfElem);
+        return subtree;
+    }
+
+    /**
      * поднимает количество вершин для каждой из стоящих выше вершин на заданное число.
      *
      * @param amount - доваляемое число вершин
@@ -132,22 +148,6 @@ public class Tree<T> implements Iterable<T> {
         if (this.parent != null) {
             this.parent.downAmounts(amount);
         }
-    }
-
-    /**
-     * метод для добавления поддерева.
-     *
-     * @param subtree - поддрево
-     * @return - ссылка на поддерево
-     */
-    public Tree<T> addChild(Tree<T> subtree) throws NullSubTreeException {
-        if (subtree == null) {
-            throw new NullSubTreeException("null subtree");
-        }
-        subtree.parent = this;
-        this.childs.add(subtree);
-        upAmounts(this.amountOfElem);
-        return subtree;
     }
 
     /**
@@ -199,7 +199,7 @@ public class Tree<T> implements Iterable<T> {
                 return false;
             }
         }
-        if (dfs1.hasNext() != dfs2.hasNext()) result = false;
+        if (dfs1.hasNext() != dfs2.hasNext()) { result = false; }
         return result;
     }
 }

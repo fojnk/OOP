@@ -12,7 +12,6 @@ public class Main {
     public static void main(String[] args) {
         Tree<String> tree = new Tree<>("R1");
         var a = tree.addChild("A");
-        var b = a.addChild("B");
         Tree<String> subtree = new Tree<>("R2");
         subtree.addChild("C");
         subtree.addChild("D");
@@ -21,6 +20,7 @@ public class Main {
         } catch (NullSubTreeException e) {
             System.out.println("Error: " + e.getMessage());
         }
+        var b = a.addChild("B");
         b.removeSubtree();
         for (var elem : tree) {
             System.out.println(elem);
