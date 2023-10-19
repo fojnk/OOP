@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -162,6 +162,13 @@ implements java.lang.Iterable&lt;T&gt;</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(org.example.Tree,org.example.Tree)">Tree</a></span>&#8203;(<a href="Tree.html" title="class in org.example">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;tree,
+    <a href="Tree.html" title="class in org.example">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;parent)</code></th>
+<td class="colLast">
+<div class="block">конструктор для глубокого клонирования.</div>
+</td>
+</tr>
+<tr class="rowColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(T)">Tree</a></span>&#8203;(<a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">констуктор класса.</div>
@@ -217,7 +224,7 @@ implements java.lang.Iterable&lt;T&gt;</pre>
 <td class="colFirst"><code>java.util.ArrayList&lt;<a href="Tree.html" title="class in org.example">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getChilds()">getChilds</a></span>()</code></th>
 <td class="colLast">
-<div class="block">метод для получения списка поддеревьев.</div>
+<div class="block">метод для поверхностного клонирования, оставил для тестов.</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
@@ -247,6 +254,11 @@ implements java.lang.Iterable&lt;T&gt;</pre>
 <td class="colLast">
 <div class="block">метод для удаления поддерева.</div>
 </td>
+</tr>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code>java.util.stream.Stream&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#TreeStream()">TreeStream</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -284,7 +296,7 @@ implements java.lang.Iterable&lt;T&gt;</pre>
 </a><a id="&lt;init&gt;(T)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>Tree</h4>
 <pre>public&nbsp;Tree&#8203;(<a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;value)</pre>
@@ -292,6 +304,22 @@ implements java.lang.Iterable&lt;T&gt;</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>value</code> - - задаваемое занчение элемента дерева</dd>
+</dl>
+</li>
+</ul>
+<a id="&lt;init&gt;(org.example.Tree,org.example.Tree)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>Tree</h4>
+<pre>public&nbsp;Tree&#8203;(<a href="Tree.html" title="class in org.example">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;tree,
+            <a href="Tree.html" title="class in org.example">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;parent)</pre>
+<div class="block">конструктор для глубокого клонирования.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>tree</code> - - элемент, с которого начинаем клонирование</dd>
+<dd><code>parent</code> - - родитель элемента, для установления связей в новом дереве</dd>
 </dl>
 </li>
 </ul>
@@ -312,10 +340,10 @@ implements java.lang.Iterable&lt;T&gt;</pre>
 <li class="blockList">
 <h4>getChilds</h4>
 <pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;<a href="Tree.html" title="class in org.example">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&gt;&nbsp;getChilds()</pre>
-<div class="block">метод для получения списка поддеревьев.</div>
+<div class="block">метод для поверхностного клонирования, оставил для тестов.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>- клонированный список поддеревьев</dd>
+<dd>- клонированный список</dd>
 </dl>
 </li>
 </ul>
@@ -331,6 +359,15 @@ implements java.lang.Iterable&lt;T&gt;</pre>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>- значение элемента дерева</dd>
 </dl>
+</li>
+</ul>
+<a id="TreeStream()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>TreeStream</h4>
+<pre class="methodSignature">public&nbsp;java.util.stream.Stream&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;TreeStream()</pre>
 </li>
 </ul>
 <a id="getAmountOfElem()">
@@ -371,13 +408,16 @@ implements java.lang.Iterable&lt;T&gt;</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>addChild</h4>
-<pre class="methodSignature">public&nbsp;<a href="Tree.html" title="class in org.example">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;addChild&#8203;(<a href="Tree.html" title="class in org.example">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;subtree)</pre>
+<pre class="methodSignature">public&nbsp;<a href="Tree.html" title="class in org.example">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;addChild&#8203;(<a href="Tree.html" title="class in org.example">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;subtree)
+                 throws <a href="NullSubTreeException.html" title="class in org.example">NullSubTreeException</a></pre>
 <div class="block">метод для добавления поддерева.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>subtree</code> - - поддрево</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>- ссылка на поддерево</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="NullSubTreeException.html" title="class in org.example">NullSubTreeException</a></code></dd>
 </dl>
 </li>
 </ul>
