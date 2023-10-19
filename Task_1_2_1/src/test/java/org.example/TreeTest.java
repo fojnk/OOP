@@ -145,13 +145,16 @@ public class TreeTest {
      *
      * @param parent  - родитель
      * @param subtree - поддерево
-     * @throws NullSubTreeException - кастомное исключение
      */
     @ParameterizedTest
     @MethodSource("generateDataForAddSubTree")
-    public void addSubTreeTest(Tree<Integer> parent, Tree<Integer> subtree) throws NullSubTreeException {
+    public void addSubTreeTest(Tree<Integer> parent, Tree<Integer> subtree) {
         Assertions.assertFalse(parent.getChilds().contains(subtree));
-        parent.addChild(subtree);
+        try {
+            parent.addChild(subtree);
+        } catch (NullSubTreeException e) {
+            throw new RuntimeException(e);
+        }
         Assertions.assertTrue(parent.getChilds().contains(subtree));
     }
 

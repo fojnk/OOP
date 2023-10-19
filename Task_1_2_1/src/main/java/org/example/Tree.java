@@ -83,7 +83,7 @@ public class Tree<T> implements Iterable<T> {
      * @return - поток
      */
     public Stream<T> treeStream() {
-        Spliterator<T> mySpliterator = Spliterators.spliterator(this.iterator(), this.amountOfElem, Spliterator.IMMUTABLE);
+        var mySpliterator = Spliterators.spliterator(this.iterator(), this.amountOfElem, Spliterator.IMMUTABLE);
         Stream<T> myStream = StreamSupport.stream(mySpliterator, false);
         return myStream;
     }
