@@ -1,6 +1,5 @@
 package org.example;
 
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -141,6 +140,13 @@ public class TreeTest {
         );
     }
 
+    /**
+     * метод для проверки добавления поддерева.
+     *
+     * @param parent  - родитель
+     * @param subtree - поддерево
+     * @throws NullSubTreeException - кастомное исключение
+     */
     @ParameterizedTest
     @MethodSource("generateDataForAddSubTree")
     public void addSubTreeTest(Tree<Integer> parent, Tree<Integer> subtree) throws NullSubTreeException {
@@ -149,6 +155,11 @@ public class TreeTest {
         Assertions.assertTrue(parent.getChilds().contains(subtree));
     }
 
+    /**
+     * генерация поддеревьев.
+     *
+     * @return - пары вида(родитель, поддрево)
+     */
     static Stream<Arguments> generateDataForAddSubTree() {
         var tree = new Tree<>(1);
         var a = tree.addChild(2);
@@ -176,12 +187,15 @@ public class TreeTest {
         var b = tree.addChild(1);
         b.addChild(3);
         b.addChild(2);
-
         var clone = new Tree<Integer>(tree, null);
         Assertions.assertEquals(1, clone.getValue());
-        Assertions.assertEquals(2, clone.getChilds().get(0).getValue());
-        Assertions.assertEquals(1, clone.getChilds().get(1).getValue());
-        Assertions.assertEquals(3, clone.getChilds().get(1).getChilds().get(0).getValue());
-        Assertions.assertEquals(2, clone.getChilds().get(1).getChilds().get(1).getValue());
+        Assertions.assertEquals(2,
+                clone.getChilds().get(0).getValue());
+        Assertions.assertEquals(1,
+                clone.getChilds().get(1).getValue());
+        Assertions.assertEquals(3,
+                clone.getChilds().get(1).getChilds().get(0).getValue());
+        Assertions.assertEquals(2,
+                clone.getChilds().get(1).getChilds().get(1).getValue());
     }
 }

@@ -27,7 +27,7 @@ public class Main {
             System.out.println(elem);
         }
         System.out.println("------------------");
-        tree.TreeStream().forEach(System.out::println);
+        tree.treeStream().forEach(System.out::println);
         System.out.println("------------------");
         var dfs = new DFSIterator<String>(tree);
         try {
