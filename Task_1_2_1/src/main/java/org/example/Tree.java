@@ -60,9 +60,10 @@ public class Tree<T> implements Iterable<T> {
 
     /**
      * метод для глубокого клонирования дерева.
+     *
      * @return - новое дерево.
      */
-    public Tree<T> make_clone(){
+    public Tree<T> make_clone() {
         return (new Tree<>(this, this.parent));
     }
 
