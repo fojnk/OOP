@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -162,13 +162,6 @@ implements java.lang.Iterable&lt;T&gt;</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(org.example.Tree,org.example.Tree)">Tree</a></span>&#8203;(<a href="Tree.html" title="class in org.example">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;tree,
-    <a href="Tree.html" title="class in org.example">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;parent)</code></th>
-<td class="colLast">
-<div class="block">конструктор для глубокого клонирования.</div>
-</td>
-</tr>
-<tr class="rowColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(T)">Tree</a></span>&#8203;(<a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">констуктор класса.</div>
@@ -208,9 +201,9 @@ implements java.lang.Iterable&lt;T&gt;</pre>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#equals(org.example.Tree)">equals</a></span>&#8203;(<a href="Tree.html" title="class in org.example">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;tree)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#equals(java.lang.Object)">equals</a></span>&#8203;(java.lang.Object&nbsp;o)</code></th>
 <td class="colLast">
-<div class="block">сравнение двух деревьев.</div>
+<div class="block">Переписанный метод equals.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
@@ -242,20 +235,27 @@ implements java.lang.Iterable&lt;T&gt;</pre>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
+<td class="colFirst"><code><a href="Tree.html" title="class in org.example">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#make_clone()">make_clone</a></span>()</code></th>
+<td class="colLast">
+<div class="block">метод для глубокого клонирования дерева.</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeElem()">removeElem</a></span>()</code></th>
 <td class="colLast">
 <div class="block">метод для удаления элемента дерева.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeSubtree()">removeSubtree</a></span>()</code></th>
 <td class="colLast">
 <div class="block">метод для удаления поддерева.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>java.util.stream.Stream&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#treeStream()">treeStream</a></span>()</code></th>
 <td class="colLast">
@@ -268,7 +268,7 @@ implements java.lang.Iterable&lt;T&gt;</pre>
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+<code>clone, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.java.lang.Iterable">
@@ -298,7 +298,7 @@ implements java.lang.Iterable&lt;T&gt;</pre>
 </a><a id="&lt;init&gt;(T)">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>Tree</h4>
 <pre>public&nbsp;Tree&#8203;(<a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;value)</pre>
@@ -306,22 +306,6 @@ implements java.lang.Iterable&lt;T&gt;</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>value</code> - - задаваемое занчение элемента дерева</dd>
-</dl>
-</li>
-</ul>
-<a id="&lt;init&gt;(org.example.Tree,org.example.Tree)">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>Tree</h4>
-<pre>public&nbsp;Tree&#8203;(<a href="Tree.html" title="class in org.example">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;tree,
-            <a href="Tree.html" title="class in org.example">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;parent)</pre>
-<div class="block">конструктор для глубокого клонирования.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>tree</code> - - элемент, с которого начинаем клонирование</dd>
-<dd><code>parent</code> - - родитель элемента, для установления связей в новом дереве</dd>
 </dl>
 </li>
 </ul>
@@ -335,6 +319,20 @@ implements java.lang.Iterable&lt;T&gt;</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a id="make_clone()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>make_clone</h4>
+<pre class="methodSignature">public&nbsp;<a href="Tree.html" title="class in org.example">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;make_clone()</pre>
+<div class="block">метод для глубокого клонирования дерева.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- новое дерево.</dd>
+</dl>
+</li>
+</ul>
 <a id="getChilds()">
 <!--   -->
 </a>
@@ -464,17 +462,19 @@ implements java.lang.Iterable&lt;T&gt;</pre>
 </dl>
 </li>
 </ul>
-<a id="equals(org.example.Tree)">
+<a id="equals(java.lang.Object)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>equals</h4>
-<pre class="methodSignature">public&nbsp;boolean&nbsp;equals&#8203;(<a href="Tree.html" title="class in org.example">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;tree)</pre>
-<div class="block">сравнение двух деревьев.</div>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;equals&#8203;(java.lang.Object&nbsp;o)</pre>
+<div class="block">Переписанный метод equals.</div>
 <dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>equals</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>tree</code> - - дерево</dd>
+<dd><code>o</code> - - объект</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>- true or false</dd>
 </dl>
