@@ -15,4 +15,6 @@ public class Edge<T, N> {
     }
 
     public N getWeight() { return this.weight; }
+    public Vertex<T> getSrc() { return this.src; }
+    public Vertex<T> getDest() { return this.dest; }
 }
