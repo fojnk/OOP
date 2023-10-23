@@ -10,10 +10,10 @@ import java.util.Stack;
  *
  * @param <T> - любой тип
  */
-public class DFSIterator<T> implements Iterator<T> {
-    private Tree<T> startedTree;
-    private Stack<Tree<T>> stack;
-    private int amountOfElem;
+public final class DFSIterator<T> implements Iterator<T> {
+    private final Tree<T> startedTree;
+    private final Stack<Tree<T>> stack;
+    private final int amountOfElem;
 
     /**
      * конструктор итератора.

@@ -101,10 +101,16 @@ public class TreeTest {
         tree2.addChild(1);
         tree2.addChild(2);
 
+        var tree3 = new Tree<>(1);
+        var c = tree3.addChild(2);
+        tree3.addChild(3);
+        c.addChild(4);
+
         return Stream.of(
-                Arguments.arguments(tree2, tree2, true),
+                Arguments.arguments(tree2, tree2.make_clone(), true),
                 Arguments.arguments(tree1, tree2, false),
-                Arguments.arguments(tree1, tree1, true)
+                Arguments.arguments(tree1, tree1.make_clone(), true),
+                Arguments.arguments(tree1, tree3, true)
         );
     }
 
@@ -190,7 +196,7 @@ public class TreeTest {
         var b = tree.addChild(1);
         b.addChild(3);
         b.addChild(2);
-        var clone = new Tree<Integer>(tree, null);
+        var clone = tree.make_clone();
         Assertions.assertEquals(1, clone.getValue());
         var costilForReviewDog = clone.getChilds().get(0).getValue();
         Assertions.assertEquals(2, costilForReviewDog);

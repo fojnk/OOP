@@ -8,10 +8,10 @@ import java.util.*;
  *
  * @param <T> - любой тип
  */
-public class BFSIterator<T> implements Iterator<T> {
-    private Tree<T> startedTree;
-    private int amountOfElem;
-    private Queue<Tree<T>> quene;
+public final class BFSIterator<T> implements Iterator<T> {
+    private final Tree<T> startedTree;
+    private final int amountOfElem;
+    private final Queue<Tree<T>> quene;
 
     /**
      * конструктор итератора.

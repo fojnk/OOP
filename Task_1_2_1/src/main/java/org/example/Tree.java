@@ -16,7 +16,7 @@ public class Tree<T> implements Iterable<T> {
     private int amountOfElem;
     private final T value;
     private Tree<T> parent;
-    private ArrayList<Tree<T>> childs;
+    private final ArrayList<Tree<T>> childs;
 
     /**
      * констуктор класса.
@@ -48,7 +48,7 @@ public class Tree<T> implements Iterable<T> {
      * @param tree   - элемент, с которого начинаем клонирование
      * @param parent - родитель элемента, для установления связей в новом дереве
      */
-    public Tree(Tree<T> tree, Tree<T> parent) {
+    private Tree(Tree<T> tree, Tree<T> parent) {
         this.parent = parent;
         this.amountOfElem = tree.amountOfElem;
         this.value = tree.value;
@@ -56,6 +56,14 @@ public class Tree<T> implements Iterable<T> {
         for (var elem : tree.getChilds()) {
             this.childs.add(new Tree<>(elem, this));
         }
+    }
+
+    /**
+     * метод для глубокого клонирования дерева.
+     * @return - новое дерево.
+     */
+    public Tree<T> make_clone(){
+        return (new Tree<>(this, this.parent));
     }
 
     /**
@@ -83,9 +91,10 @@ public class Tree<T> implements Iterable<T> {
      * @return - поток
      */
     public Stream<T> treeStream() {
-        var mySpliterator = Spliterators.spliterator(this.iterator(), this.amountOfElem, Spliterator.IMMUTABLE);
-        Stream<T> myStream = StreamSupport.stream(mySpliterator, false);
-        return myStream;
+        var mySpliterator = Spliterators.spliterator(this.iterator(), this.amountOfElem,
+                Spliterator.IMMUTABLE | Spliterator.SIZED | Spliterator.DISTINCT
+        );
+        return StreamSupport.stream(mySpliterator, false);
     }
 
     /**
@@ -185,12 +194,25 @@ public class Tree<T> implements Iterable<T> {
     }
 
     /**
-     * сравнение двух деревьев.
+     * Переписанный метод equals.
      *
-     * @param tree - дерево
+     * @param o - объект
      * @return - true or false
      */
-    public boolean equals(Tree<T> tree) {
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+
+        if (!(o instanceof Tree<?> tree)) {
+            return false;
+        }
+
+        if (this.amountOfElem != tree.amountOfElem) {
+            return false;
+        }
+
         boolean result = true;
         var dfs1 = tree.iterator();
         var dfs2 = this.iterator();
