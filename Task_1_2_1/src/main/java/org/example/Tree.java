@@ -206,9 +206,11 @@ public class Tree<T> implements Iterable<T> {
             return true;
         }
 
-        if (!(o instanceof Tree<?> tree)) {
+        if (!(o instanceof Tree<?>)) {
             return false;
         }
+
+        var tree = (Tree<?>) o;
 
         if (this.amountOfElem != tree.amountOfElem) {
             return false;
