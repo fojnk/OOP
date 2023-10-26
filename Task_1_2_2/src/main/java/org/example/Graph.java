@@ -16,9 +16,23 @@ import java.util.HashMap;
  * @param <N> - Численный тип веса для ребра
  */
 public abstract class Graph<T, N> {
-    private HashMap<Integer, Vertex<T>> vertexes;
-    private HashMap<Integer, Edge<T, N>> edges;
+    private final HashMap<Integer, Vertex<T>> vertexes;
+    private final HashMap<Integer, Edge<T, N>> edges;
 
+    public Graph(Vertex<T>[] ver_array, Edge<T, N>[] edg_array) {
+        int i = 0;
+        vertexes = new HashMap<>();
+        for (var vert: ver_array) {
+            vertexes.put(i, vert);
+            i++;
+        }
+        i = 0;
+        edges = new HashMap<>();
+        for (var edg: edg_array) {
+            edges.put(i, edg);
+            i++;
+        }
+    }
     /**
      * метод для получения вершины по id.
      * @param Id - номер вершины по порядку поступления в граф
@@ -95,4 +109,6 @@ public abstract class Graph<T, N> {
      * @param edge - ребро
      */
     public abstract void deleteEdge(Edge<T, N> edge);
+
+    public abstract HashMap<Vertex<T>, N> dijkstra(Vertex<T> start);
 }
