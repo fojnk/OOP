@@ -220,7 +220,7 @@ public class Tree<T> implements Iterable<T> {
         var dfs1 = tree.iterator();
         var dfs2 = this.iterator();
         while (dfs1.hasNext() && dfs2.hasNext()) {
-            if (dfs1.next() != dfs2.next()) {
+            if (!dfs1.next().equals(dfs2.next())) {
                 return false;
             }
         }
