@@ -1,20 +1,20 @@
 package org.example;
 
-import org.example.Vertex;
+public class Edge<T> {
 
-public class Edge<T, N> {
+    private final Vertex<T> src;
+    private final Vertex<T> dest;
+    private Double weight;
 
-    private Vertex<T> src;
-    private Vertex<T> dest;
-    private N weight;
-
-    public Edge(Vertex<T> src, Vertex<T> dest, N weight) {
+    public Edge(Vertex<T> src, Vertex<T> dest, Double weight) {
         this.src = src;
         this.dest = dest;
         this.weight = weight;
     }
 
-    public N getWeight() { return this.weight; }
+    public Double getWeight() { return this.weight; }
     public Vertex<T> getSrc() { return this.src; }
     public Vertex<T> getDest() { return this.dest; }
+
+    public void changeWeight(Double weight) { this.weight = weight; }
 }

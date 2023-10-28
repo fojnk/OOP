@@ -13,25 +13,36 @@ import java.util.HashMap;
 /**
  * Создаю абстрактный класс, чтобы далее была возможность унаследоваться от него.
  * @param <T> - Тип вершины
- * @param <N> - Численный тип веса для ребра
  */
-public abstract class Graph<T, N> {
-    private final HashMap<Integer, Vertex<T>> vertexes;
-    private final HashMap<Integer, Edge<T, N>> edges;
+public abstract class Graph<T> {
+    protected final HashMap<Integer, Vertex<T>> vertexes;
+    protected int maxVertId;
+    protected final HashMap<Integer, Edge<T>> edges;
 
-    public Graph(Vertex<T>[] ver_array, Edge<T, N>[] edg_array) {
-        int i = 0;
+    protected int maxEdgeId;
+
+    public Graph() {
+        this.vertexes = new HashMap<>();
+        this.edges = new HashMap<>();
+        this.maxEdgeId = 1;
+        this.maxVertId = 1;
+    }
+
+    public Graph(ArrayList<Vertex<T>> ver_array, ArrayList<Edge<T>> edg_array) {
+        int i = 1;
         vertexes = new HashMap<>();
         for (var vert: ver_array) {
             vertexes.put(i, vert);
             i++;
         }
-        i = 0;
+        this.maxVertId = i;
+        i = 1;
         edges = new HashMap<>();
         for (var edg: edg_array) {
             edges.put(i, edg);
             i++;
         }
+        this.maxEdgeId = i;
     }
     /**
      * метод для получения вершины по id.
@@ -42,6 +53,14 @@ public abstract class Graph<T, N> {
         return vertexes.get(Id);
     }
 
+    public Object getIdByVertex(Vertex<T> vert) {
+        for (var vert_id: this.vertexes.keySet()) {
+            if (this.getVertexById(vert_id) == vert) {
+                return vert_id;
+            }
+        }
+        return null;
+    }
     /**
      * метод для изменения вершины по id.
      * @param key - номер вершины
@@ -56,7 +75,7 @@ public abstract class Graph<T, N> {
      * @param key - номер ребра
      * @param value - новое значение
      */
-    public void changeEdgeById(Integer key, Edge<T, N> value) {
+    public void changeEdgeById(Integer key, Edge<T> value) {
         edges.put(key, value);
     }
 
@@ -65,8 +84,35 @@ public abstract class Graph<T, N> {
      * @param Id - номер ребра
      * @return - ребро
      */
-    public Edge<T, N> getEdgeById(Integer Id) {
+    public Edge<T> getEdgeById(Integer Id) {
         return edges.get(Id);
+    }
+
+    public Object getIdByEdge(Edge<T> e) {
+        for (var edge_id: this.edges.keySet()) {
+            if (this.getEdgeById(edge_id) == e) {
+                return edge_id;
+            }
+        }
+        return null;
+    }
+
+    public Boolean containsVertex(Vertex<T> vertex) {
+        for (var vert: this.vertexes.values()) {
+            if (vert == vertex) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Boolean containsEdge(Edge<T> edge) {
+        for (var e: this.edges.values()) {
+            if (e == edge) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -81,8 +127,17 @@ public abstract class Graph<T, N> {
      * метод для получения списка ребер.
      * @return - список ребер
      */
-    public ArrayList<Edge<T, N>> getListOfEdges() {
+    public ArrayList<Edge<T>> getListOfEdges() {
         return new ArrayList<>(edges.values());
+    }
+
+    public Edge<T> getEdge(Vertex<T> src, Vertex<T> dest) {
+        for (var edge: this.edges.values()) {
+            if (edge.getSrc() == src && edge.getDest() == dest) {
+                return edge;
+            }
+        }
+        return null;
     }
 
 
@@ -102,13 +157,13 @@ public abstract class Graph<T, N> {
      * абстрактный метод добавления ребра.
      * @param edge - ребро
      */
-    public abstract void addEdge(Edge<T, N> edge);
+    public abstract void addEdge(Edge<T> edge);
 
     /**
      * абстрактный метод удаления ребра.
      * @param edge - ребро
      */
-    public abstract void deleteEdge(Edge<T, N> edge);
+    public abstract void deleteEdge(Edge<T> edge);
 
-    public abstract HashMap<Vertex<T>, N> dijkstra(Vertex<T> start);
+    public abstract HashMap<Integer, Double> dijkstra(Integer start);
 }
