@@ -58,11 +58,11 @@ public abstract class Graph<T> {
     /**
      * метод для получения вершины по id.
      *
-     * @param Id - номер вершины по порядку поступления в граф
+     * @param id - номер вершины по порядку поступления в граф
      * @return - вершина
      */
-    public Vertex<T> getVertexById(Integer Id) {
-        return vertexes.get(Id);
+    public Vertex<T> getVertexById(Integer id) {
+        return vertexes.get(id);
     }
 
     /**
@@ -103,11 +103,11 @@ public abstract class Graph<T> {
     /**
      * метод для получения ребра по id.
      *
-     * @param Id - номер ребра
+     * @param id - номер ребра
      * @return - ребро
      */
-    public Edge<T> getEdgeById(Integer Id) {
-        return edges.get(Id);
+    public Edge<T> getEdgeById(Integer id) {
+        return edges.get(id);
     }
 
     /**

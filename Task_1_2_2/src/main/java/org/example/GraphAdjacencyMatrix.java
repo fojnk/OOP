@@ -77,8 +77,8 @@ public class GraphAdjacencyMatrix<T> extends Graph<T> {
 
     @Override
     public void addEdge(Edge<T> edge) {
-        if (!this.adjacencyMatrix.containsKey(edge.getSrc()) ||
-                !this.adjacencyMatrix.containsKey(edge.getDest())) {
+        if (!this.adjacencyMatrix.containsKey(edge.getSrc())
+                || !this.adjacencyMatrix.containsKey(edge.getDest())) {
             throw new IllegalArgumentException();
         }
         this.adjacencyMatrix.get(edge.getSrc()).put(edge.getDest(), true);

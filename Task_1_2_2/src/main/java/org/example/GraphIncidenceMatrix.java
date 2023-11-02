@@ -72,8 +72,8 @@ public class GraphIncidenceMatrix<T> extends Graph<T> {
 
     @Override
     public void addEdge(Edge<T> edge) {
-        if (!this.incidenceMatrix.containsKey(edge.getSrc()) ||
-                !this.incidenceMatrix.containsKey(edge.getDest())) {
+        if (!this.incidenceMatrix.containsKey(edge.getSrc())
+                || !this.incidenceMatrix.containsKey(edge.getDest())) {
             throw new IllegalArgumentException();
         }
         incidenceMatrix.get(edge.getSrc()).put(edge, 1);

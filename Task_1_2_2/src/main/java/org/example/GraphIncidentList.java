@@ -75,8 +75,8 @@ public class GraphIncidentList<T> extends Graph<T> {
 
     @Override
     public void addEdge(Edge<T> edge) {
-        if (!this.incidentList.containsKey(edge.getSrc()) ||
-                !this.incidentList.containsKey(edge.getDest())) {
+        if (!this.incidentList.containsKey(edge.getSrc())
+                || !this.incidentList.containsKey(edge.getDest())) {
             throw new IllegalArgumentException();
         }
         this.incidentList.get(edge.getSrc()).add(edge);

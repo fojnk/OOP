@@ -16,7 +16,7 @@ public class GraphLoader {
      * @param filename  - название файла, из которого загружается граф
      * @return - граф одного из трех типов или ничего
      */
-    public static Graph<Integer> LoadTxt(Integer graphType, String filename) {
+    public static Graph<Integer> loadTxt(Integer graphType, String filename) {
         Scanner scanner;
         try {
             scanner = new Scanner(new File(filename));

@@ -1,6 +1,6 @@
 package org.example;
 
-import static org.example.GraphLoader.LoadTxt;
+import static org.example.GraphLoader.loadTxt;
 
 /**
  * главный класс.
@@ -34,7 +34,7 @@ public class Main {
      * @param startVert - начальная вершина для алгоритма Дейкстры
      */
     public static void printRes(String filename, int graphType, int startVert) {
-        var g = LoadTxt(graphType, "Task_1_2_2/src/main/java/org/example/graph_input.txt");
+        var g = loadTxt(graphType, "Task_1_2_2/src/main/java/org/example/graph_input.txt");
         var answer = g.dijkstra(1);
         if (graphType == 1) {
             System.out.println("\n%%%%% GraphIncidentList %%%%%%");
