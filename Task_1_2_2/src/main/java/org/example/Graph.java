@@ -35,20 +35,20 @@ public abstract class Graph<T> {
     /**
      * конструктор загружаемого графа.
      *
-     * @param ver_array - список вершин
-     * @param edg_array - список ребер
+     * @param varArray  - список вершин
+     * @param edgeArray - список ребер
      */
-    public Graph(ArrayList<Vertex<T>> ver_array, ArrayList<Edge<T>> edg_array) {
+    public Graph(ArrayList<Vertex<T>> varArray, ArrayList<Edge<T>> edgeArray) {
         int i = 1;
         vertexes = new HashMap<>();
-        for (var vert : ver_array) {
+        for (var vert : varArray) {
             vertexes.put(i, vert);
             i++;
         }
         this.maxVertId = i;
         i = 1;
         edges = new HashMap<>();
-        for (var edg : edg_array) {
+        for (var edg : edgeArray) {
             edges.put(i, edg);
             i++;
         }
@@ -72,9 +72,9 @@ public abstract class Graph<T> {
      * @return - id
      */
     public Object getIdByVertex(Vertex<T> vert) {
-        for (var vert_id : this.vertexes.keySet()) {
-            if (this.getVertexById(vert_id) == vert) {
-                return vert_id;
+        for (var vertId : this.vertexes.keySet()) {
+            if (this.getVertexById(vertId) == vert) {
+                return vertId;
             }
         }
         return null;
@@ -117,9 +117,9 @@ public abstract class Graph<T> {
      * @return - id
      */
     public Object getIdByEdge(Edge<T> e) {
-        for (var edge_id : this.edges.keySet()) {
-            if (this.getEdgeById(edge_id) == e) {
-                return edge_id;
+        for (var edgeId : this.edges.keySet()) {
+            if (this.getEdgeById(edgeId) == e) {
+                return edgeId;
             }
         }
         return null;

@@ -12,11 +12,11 @@ public class GraphLoader {
     /**
      * метод для загрузки графа из файла.
      *
-     * @param graph_type - тип графа
-     * @param filename   - название файла, из которого загружается граф
+     * @param graphType - тип графа
+     * @param filename  - название файла, из которого загружается граф
      * @return - граф одного из трех типов или ничего
      */
-    public static Graph<Integer> LoadTxt(Integer graph_type, String filename) {
+    public static Graph<Integer> LoadTxt(Integer graphType, String filename) {
         Scanner scanner;
         try {
             scanner = new Scanner(new File(filename));
@@ -24,28 +24,28 @@ public class GraphLoader {
             throw new RuntimeException(e);
         }
 
-        int vertx_amount = scanner.nextInt();
-        int edges_amount = scanner.nextInt();
+        int vertAmount = scanner.nextInt();
+        int edgesAmount = scanner.nextInt();
 
-        ArrayList<Vertex<Integer>> vertices = new ArrayList<>(vertx_amount + 1);
-        ArrayList<Edge<Integer>> edges = new ArrayList<>(edges_amount + 1);
+        ArrayList<Vertex<Integer>> vertices = new ArrayList<>(vertAmount + 1);
+        ArrayList<Edge<Integer>> edges = new ArrayList<>(edgesAmount + 1);
 
-        for (int i = 1; i < vertx_amount + 1; i++) {
+        for (int i = 1; i < vertAmount + 1; i++) {
             vertices.add(new Vertex<>(scanner.nextInt()));
         }
 
-        for (int i = 1; i < edges_amount + 1; i++) {
-            int src_id = scanner.nextInt();
-            int dest_id = scanner.nextInt();
+        for (int i = 1; i < edgesAmount + 1; i++) {
+            int srcId = scanner.nextInt();
+            int destId = scanner.nextInt();
             double weight = scanner.nextDouble();
-            edges.add(new Edge<>(vertices.get(src_id - 1), vertices.get(dest_id - 1), weight));
+            edges.add(new Edge<>(vertices.get(srcId - 1), vertices.get(destId - 1), weight));
         }
 
-        if (graph_type == 1) {
+        if (graphType == 1) {
             return new GraphIncidentList<>(vertices, edges);
-        } else if (graph_type == 2) {
+        } else if (graphType == 2) {
             return new GraphAdjacencyMatrix<>(vertices, edges);
-        } else if (graph_type == 3) {
+        } else if (graphType == 3) {
             return new GraphIncidenceMatrix<>(vertices, edges);
         }
         return null;

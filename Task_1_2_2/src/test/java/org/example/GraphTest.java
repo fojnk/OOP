@@ -3,11 +3,9 @@ package org.example;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.stream.Stream;
-
 import static org.example.GraphLoader.LoadTxt;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -120,10 +118,7 @@ public class GraphTest {
         var thrown = false;
         var v1 = new Vertex<>(1);
         var v2 = new Vertex<>(2);
-        var v3 = new Vertex<>(3);
         var e1 = new Edge<>(v1, v2, 5.0);
-        var e2 = new Edge<>(v2, v3, 2.0);
-        var e3 = new Edge<>(v3, v2, 1.0);
         g.addVertex(v1);
         g.addVertex(v2);
         try {
@@ -149,7 +144,6 @@ public class GraphTest {
     @ParameterizedTest
     @MethodSource("generateClassesForCraphTest")
     public void basicOpPart2Test(Graph<Integer> g) {
-        var thrown = false;
         var v1 = new Vertex<>(1);
         var v2 = new Vertex<>(2);
         var e1 = new Edge<>(v1, v2, 5.0);
