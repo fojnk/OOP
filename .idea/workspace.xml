@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="72e47c48-9381-4796-b93d-4191cb421ced" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Task_1_2_2/src/main/java/org/example/graphTypes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task_1_2_2/src/main/java/org/example/GraphLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task_1_2_2/src/main/java/org/example/GraphLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task_1_2_2/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task_1_2_2/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task_1_2_2/src/test/java/org/example/GraphTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task_1_2_2/src/test/java/org/example/GraphTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/Task_1_2_2">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package-info" />
+      </list>
+    </option>
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "Task__1__2__2"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+</project>

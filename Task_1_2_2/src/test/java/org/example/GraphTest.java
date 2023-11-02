@@ -71,17 +71,17 @@ public class GraphTest {
     /**
      * метод для тестирования алгоритма Дейкстры.
      *
-     * @param graphType    - тип графа
-     * @param filename     - имя файла, из которого считываем граф
-     * @param expected     - ожидаемый результат
+     * @param type - тип графа
+     * @param filename - имя файла
+     * @param expected - ожидаемые значения
      * @param amountOfVert - количество вершин
      */
     @ParameterizedTest
     @MethodSource("generateClassesForDijkstraTest")
-    public void dijkstraTest(int graphType, String filename, HashMap<Integer, Double> expected,
+    public void dijkstraTest(graphType type, String filename, HashMap<Integer, Double> expected,
                              int amountOfVert) {
         this.workingDir = Path.of("", "src");
-        var asw = loadTxt(graphType, String.valueOf(this.workingDir.resolve(filename))).dijkstra(1);
+        var asw = loadTxt(type, String.valueOf(this.workingDir.resolve(filename))).dijkstra(1);
         for (int i = 1; i < amountOfVert + 1; i++) {
             assertEquals(expected.get(i), asw.get(i));
         }
@@ -102,9 +102,9 @@ public class GraphTest {
         answer.put(6, 11.0);
         String filename = "test/java/org/example/test1.txt";
         return Stream.of(
-                Arguments.arguments(1, filename, answer, 6),
-                Arguments.arguments(2, filename, answer, 6),
-                Arguments.arguments(3, filename, answer, 6)
+                Arguments.arguments(graphType.incidenceList, filename, answer, 6),
+                Arguments.arguments(graphType.adjacencyMatrix, filename, answer, 6),
+                Arguments.arguments(graphType.incidenceMatrix, filename, answer, 6)
         );
     }
 

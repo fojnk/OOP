@@ -9,14 +9,8 @@ import java.util.Scanner;
  * класс для ввода графа из файла.
  */
 public class GraphLoader {
-    /**
-     * метод для загрузки графа из файла.
-     *
-     * @param graphType - тип графа
-     * @param filename  - название файла, из которого загружается граф
-     * @return - граф одного из трех типов или ничего
-     */
-    public static Graph<Integer> loadTxt(Integer graphType, String filename) {
+
+    public static Graph<Integer> loadTxt(graphType type, String filename) {
         Scanner scanner;
         try {
             scanner = new Scanner(new File(filename));
@@ -41,12 +35,16 @@ public class GraphLoader {
             edges.add(new Edge<>(vertices.get(srcId - 1), vertices.get(destId - 1), weight));
         }
 
-        if (graphType == 1) {
-            return new GraphIncidentList<>(vertices, edges);
-        } else if (graphType == 2) {
-            return new GraphAdjacencyMatrix<>(vertices, edges);
-        } else if (graphType == 3) {
-            return new GraphIncidenceMatrix<>(vertices, edges);
+        switch (type) {
+            case incidenceList:
+                return new GraphIncidentList<>(vertices, edges);
+            case adjacencyMatrix:
+                return new GraphAdjacencyMatrix<>(vertices, edges);
+            case incidenceMatrix:
+                return new GraphIncidenceMatrix<>(vertices, edges);
+            default:
+                System.out.println("unknown type");
+                break;
         }
         return null;
     }

@@ -6,6 +6,7 @@ import static org.example.GraphLoader.loadTxt;
  * главный класс.
  */
 public class Main {
+
     /**
      * входная точка программы.
      *
@@ -20,9 +21,9 @@ public class Main {
         for (int i = 1; i < 7; i++) {
             System.out.println("vertex id: " + i + "      dist: " + correctOutput[i - 1]);
         }
-        printRes("Task_1_2_2/src/main/java/org/example/graph_input.txt", 1, 1);
-        printRes("Task_1_2_2/src/main/java/org/example/graph_input.txt", 2, 1);
-        printRes("Task_1_2_2/src/main/java/org/example/graph_input.txt", 3, 1);
+        printRes("Task_1_2_2/src/main/java/org/example/graph_input.txt", graphType.incidenceList, 1);
+        printRes("Task_1_2_2/src/main/java/org/example/graph_input.txt", graphType.adjacencyMatrix, 1);
+        printRes("Task_1_2_2/src/main/java/org/example/graph_input.txt", graphType.incidenceMatrix, 1);
 
     }
 
@@ -30,18 +31,25 @@ public class Main {
      * метод для вывода матриц на экран.
      *
      * @param filename  - название файла загрузки
-     * @param graphType - тип создаваемого графа
+     * @param type - тип создаваемого графа
      * @param startVert - начальная вершина для алгоритма Дейкстры
      */
-    public static void printRes(String filename, int graphType, int startVert) {
-        var g = loadTxt(graphType, "Task_1_2_2/src/main/java/org/example/graph_input.txt");
+    public static void printRes(String filename, graphType type, int startVert) {
+        var g = loadTxt(type, "Task_1_2_2/src/main/java/org/example/graph_input.txt");
         var answer = g.dijkstra(1);
-        if (graphType == 1) {
-            System.out.println("\n%%%%% GraphIncidentList %%%%%%");
-        } else if (graphType == 2) {
-            System.out.println("\n%%%%% GraphAdjacencyMatrix %%%%%%");
-        } else if (graphType == 3) {
-            System.out.println("\n%%%%% GraphIncidenceMatrix %%%%%%");
+        switch (type) {
+            case incidenceList:
+                System.out.println("\n%%%%% GraphIncidentList %%%%%%");
+                break;
+            case adjacencyMatrix:
+                System.out.println("\n%%%%% GraphAdjacencyMatrix %%%%%%");
+                break;
+            case incidenceMatrix:
+                System.out.println("\n%%%%% GraphIncidenceMatrix %%%%%%");
+                break;
+            default:
+                System.out.println("unknown type");
+                break;
         }
         System.out.println("------------------------\n" + "start vertex_id: " + startVert);
         for (var vert : answer.keySet()) {
