@@ -129,9 +129,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
+<dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>T</code> - - тип, который будет являться типов вершины.</dd>
+</dl>
 <hr>
 <pre>public class <span class="typeNameLabel">Edge&lt;T&gt;</span>
 extends java.lang.Object</pre>
+<div class="block">класс для представления ребра.</div>
 </li>
 </ul>
 </div>
@@ -155,7 +160,9 @@ extends java.lang.Object</pre>
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(org.example.Vertex,org.example.Vertex,java.lang.Double)">Edge</a></span>&#8203;(<a href="Vertex.html" title="class in org.example">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;&nbsp;src,
     <a href="Vertex.html" title="class in org.example">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;&nbsp;dest,
     java.lang.Double&nbsp;weight)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">конструктор ребра.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -178,22 +185,30 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#changeWeight(java.lang.Double)">changeWeight</a></span>&#8203;(java.lang.Double&nbsp;weight)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">метод для изменения веса ребра.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="Vertex.html" title="class in org.example">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDest()">getDest</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">метод для получения конечной вершины.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="Vertex.html" title="class in org.example">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSrc()">getSrc</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">метод для получения начальной вершины.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.lang.Double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getWeight()">getWeight</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">метод для получения веса.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -228,6 +243,13 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;Edge&#8203;(<a href="Vertex.html" title="class in org.example">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;&nbsp;src,
             <a href="Vertex.html" title="class in org.example">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;&nbsp;dest,
             java.lang.Double&nbsp;weight)</pre>
+<div class="block">конструктор ребра.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>src</code> - - вершина начала ребра</dd>
+<dd><code>dest</code> - - вершина окончания ребра</dd>
+<dd><code>weight</code> - - вес</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -247,6 +269,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getWeight</h4>
 <pre class="methodSignature">public&nbsp;java.lang.Double&nbsp;getWeight()</pre>
+<div class="block">метод для получения веса.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- вес</dd>
+</dl>
 </li>
 </ul>
 <a id="getSrc()">
@@ -256,6 +283,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getSrc</h4>
 <pre class="methodSignature">public&nbsp;<a href="Vertex.html" title="class in org.example">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;&nbsp;getSrc()</pre>
+<div class="block">метод для получения начальной вершины.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- вершина</dd>
+</dl>
 </li>
 </ul>
 <a id="getDest()">
@@ -265,6 +297,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getDest</h4>
 <pre class="methodSignature">public&nbsp;<a href="Vertex.html" title="class in org.example">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;&nbsp;getDest()</pre>
+<div class="block">метод для получения конечной вершины.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- конечная вершина</dd>
+</dl>
 </li>
 </ul>
 <a id="changeWeight(java.lang.Double)">
@@ -274,6 +311,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>changeWeight</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;changeWeight&#8203;(java.lang.Double&nbsp;weight)</pre>
+<div class="block">метод для изменения веса ребра.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>weight</code> - - вес</dd>
+</dl>
 </li>
 </ul>
 </li>

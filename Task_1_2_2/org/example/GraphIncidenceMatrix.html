@@ -175,12 +175,16 @@ extends <a href="Graph.html" title="class in org.example">Graph</a>&lt;T&gt;</pr
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">GraphIncidenceMatrix</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">конструктор пустого графа, для тестов.</div>
+</td>
 </tr>
 <tr class="rowColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.util.ArrayList,java.util.ArrayList)">GraphIncidenceMatrix</a></span>&#8203;(java.util.ArrayList&lt;<a href="Vertex.html" title="class in org.example">Vertex</a>&lt;<a href="GraphIncidenceMatrix.html" title="type parameter in GraphIncidenceMatrix">T</a>&gt;&gt;&nbsp;ver_array,
                     java.util.ArrayList&lt;<a href="Edge.html" title="class in org.example">Edge</a>&lt;<a href="GraphIncidenceMatrix.html" title="type parameter in GraphIncidenceMatrix">T</a>&gt;&gt;&nbsp;edg_array)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">конструктор загружаемого из файла графа.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -231,7 +235,9 @@ extends <a href="Graph.html" title="class in org.example">Graph</a>&lt;T&gt;</pr
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>java.util.HashMap&lt;java.lang.Integer,&#8203;java.lang.Double&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#dijkstra(java.lang.Integer)">dijkstra</a></span>&#8203;(java.lang.Integer&nbsp;start)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Алгоритм Дейкстры.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -271,6 +277,7 @@ extends <a href="Graph.html" title="class in org.example">Graph</a>&lt;T&gt;</pr
 <li class="blockList">
 <h4>GraphIncidenceMatrix</h4>
 <pre>public&nbsp;GraphIncidenceMatrix()</pre>
+<div class="block">конструктор пустого графа, для тестов.</div>
 </li>
 </ul>
 <a id="&lt;init&gt;(java.util.ArrayList,java.util.ArrayList)">
@@ -281,6 +288,12 @@ extends <a href="Graph.html" title="class in org.example">Graph</a>&lt;T&gt;</pr
 <h4>GraphIncidenceMatrix</h4>
 <pre>public&nbsp;GraphIncidenceMatrix&#8203;(java.util.ArrayList&lt;<a href="Vertex.html" title="class in org.example">Vertex</a>&lt;<a href="GraphIncidenceMatrix.html" title="type parameter in GraphIncidenceMatrix">T</a>&gt;&gt;&nbsp;ver_array,
                             java.util.ArrayList&lt;<a href="Edge.html" title="class in org.example">Edge</a>&lt;<a href="GraphIncidenceMatrix.html" title="type parameter in GraphIncidenceMatrix">T</a>&gt;&gt;&nbsp;edg_array)</pre>
+<div class="block">конструктор загружаемого из файла графа.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>ver_array</code> - - список вершин</dd>
+<dd><code>edg_array</code> - - список ребер</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -368,9 +381,15 @@ extends <a href="Graph.html" title="class in org.example">Graph</a>&lt;T&gt;</pr
 <li class="blockList">
 <h4>dijkstra</h4>
 <pre class="methodSignature">public&nbsp;java.util.HashMap&lt;java.lang.Integer,&#8203;java.lang.Double&gt;&nbsp;dijkstra&#8203;(java.lang.Integer&nbsp;start)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="Graph.html#dijkstra(java.lang.Integer)">Graph</a></code></span></div>
+<div class="block">Алгоритм Дейкстры.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Graph.html#dijkstra(java.lang.Integer)">dijkstra</a></code>&nbsp;in class&nbsp;<code><a href="Graph.html" title="class in org.example">Graph</a>&lt;<a href="GraphIncidenceMatrix.html" title="type parameter in GraphIncidenceMatrix">T</a>&gt;</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>start</code> - - начальная вершина</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- наименьшие расстояния до всех вершин от заданной</dd>
 </dl>
 </li>
 </ul>
