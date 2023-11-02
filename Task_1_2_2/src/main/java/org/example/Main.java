@@ -21,9 +21,12 @@ public class Main {
         for (int i = 1; i < 7; i++) {
             System.out.println("vertex id: " + i + "      dist: " + correctOutput[i - 1]);
         }
-        printRes("Task_1_2_2/src/main/java/org/example/graph_input.txt", graphType.incidenceList, 1);
-        printRes("Task_1_2_2/src/main/java/org/example/graph_input.txt", graphType.adjacencyMatrix, 1);
-        printRes("Task_1_2_2/src/main/java/org/example/graph_input.txt", graphType.incidenceMatrix, 1);
+        printRes("Task_1_2_2/src/main/java/org/example/graph_input.txt",
+                GraphType.incidenceList, 1);
+        printRes("Task_1_2_2/src/main/java/org/example/graph_input.txt",
+                GraphType.adjacencyMatrix, 1);
+        printRes("Task_1_2_2/src/main/java/org/example/graph_input.txt",
+                GraphType.incidenceMatrix, 1);
 
     }
 
@@ -34,7 +37,7 @@ public class Main {
      * @param type - тип создаваемого графа
      * @param startVert - начальная вершина для алгоритма Дейкстры
      */
-    public static void printRes(String filename, graphType type, int startVert) {
+    public static void printRes(String filename, GraphType type, int startVert) {
         var g = loadTxt(type, "Task_1_2_2/src/main/java/org/example/graph_input.txt");
         var answer = g.dijkstra(1);
         switch (type) {

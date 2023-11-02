@@ -78,7 +78,7 @@ public class GraphTest {
      */
     @ParameterizedTest
     @MethodSource("generateClassesForDijkstraTest")
-    public void dijkstraTest(graphType type, String filename, HashMap<Integer, Double> expected,
+    public void dijkstraTest(GraphType type, String filename, HashMap<Integer, Double> expected,
                              int amountOfVert) {
         this.workingDir = Path.of("", "src");
         var asw = loadTxt(type, String.valueOf(this.workingDir.resolve(filename))).dijkstra(1);
@@ -102,9 +102,9 @@ public class GraphTest {
         answer.put(6, 11.0);
         String filename = "test/java/org/example/test1.txt";
         return Stream.of(
-                Arguments.arguments(graphType.incidenceList, filename, answer, 6),
-                Arguments.arguments(graphType.adjacencyMatrix, filename, answer, 6),
-                Arguments.arguments(graphType.incidenceMatrix, filename, answer, 6)
+                Arguments.arguments(GraphType.incidenceList, filename, answer, 6),
+                Arguments.arguments(GraphType.adjacencyMatrix, filename, answer, 6),
+                Arguments.arguments(GraphType.incidenceMatrix, filename, answer, 6)
         );
     }
 

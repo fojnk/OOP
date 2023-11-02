@@ -1,6 +1,6 @@
 package org.example;
 
-enum graphType {
+enum GraphType {
     adjacencyMatrix,
     incidenceMatrix,
     incidenceList

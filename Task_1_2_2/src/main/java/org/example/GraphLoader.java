@@ -10,7 +10,14 @@ import java.util.Scanner;
  */
 public class GraphLoader {
 
-    public static Graph<Integer> loadTxt(graphType type, String filename) {
+    /**
+     * метод для загрузки графа из файла.
+     *
+     * @param type - тип графа
+     * @param filename - название файла
+     * @return - граф
+     */
+    public static Graph<Integer> loadTxt(GraphType type, String filename) {
         Scanner scanner;
         try {
             scanner = new Scanner(new File(filename));
