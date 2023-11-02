@@ -3,30 +3,43 @@ package org.example;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * класс, который представляет граф в виде списка инциндентности.
+ *
+ * @param <T> - параметр вершин
+ */
 public class GraphIncidentList<T> extends Graph<T> {
-
     private final HashMap<Vertex<T>, ArrayList<Edge<T>>> incidentList;
 
+    /**
+     * конструктор пустого графа, для тестов.
+     */
     public GraphIncidentList() {
         super();
         this.incidentList = new HashMap<>();
     }
 
+    /**
+     * конструктор загружаемого графа.
+     *
+     * @param ver_array - список вершин
+     * @param edg_array - список ребер
+     */
     public GraphIncidentList(ArrayList<Vertex<T>> ver_array, ArrayList<Edge<T>> edg_array) {
         super(ver_array, edg_array);
         incidentList = new HashMap<>();
-        for (var vert: ver_array) {
+        for (var vert : ver_array) {
             incidentList.put(vert, new ArrayList<>());
         }
 
-        for (var edge: edg_array) {
+        for (var edge : edg_array) {
             incidentList.get(edge.getSrc()).add(edge);
         }
     }
 
     @Override
     public void addVertex(Vertex<T> vertex) {
-        if (!this.containsVertex(vertex)){
+        if (!this.containsVertex(vertex)) {
             this.incidentList.put(vertex, new ArrayList<>());
             this.vertexes.put(this.maxVertId++, vertex);
         }
@@ -34,24 +47,26 @@ public class GraphIncidentList<T> extends Graph<T> {
 
     @Override
     public void deleteVertex(Vertex<T> vertex) {
-        if (!this.incidentList.containsKey(vertex)) { return; }
+        if (!this.incidentList.containsKey(vertex)) {
+            return;
+        }
         Integer id = null;
         ArrayList<Edge<T>> buf = new ArrayList<>();
-        for (var vert_id: this.vertexes.keySet()) {
+        for (var vert_id : this.vertexes.keySet()) {
             var vert = this.getVertexById(vert_id);
             if (vert == vertex) {
                 id = vert_id;
             }
-            for (var edge: incidentList.get(vert)) {
+            for (var edge : incidentList.get(vert)) {
                 if (edge.getDest() == vertex || edge.getSrc() == vertex) {
                     buf.add(edge);
-                    if (this.containsEdge(edge)){
+                    if (this.containsEdge(edge)) {
                         this.edges.remove((Integer) this.getIdByEdge(edge));
                     }
                 }
             }
         }
-        for (var edge: buf) {
+        for (var edge : buf) {
             this.incidentList.get(edge.getSrc()).remove(edge);
         }
         this.vertexes.remove(id);
@@ -61,7 +76,7 @@ public class GraphIncidentList<T> extends Graph<T> {
     @Override
     public void addEdge(Edge<T> edge) {
         if (!this.incidentList.containsKey(edge.getSrc()) ||
-        !this.incidentList.containsKey(edge.getDest())) {
+                !this.incidentList.containsKey(edge.getDest())) {
             throw new IllegalArgumentException();
         }
         this.incidentList.get(edge.getSrc()).add(edge);
@@ -78,7 +93,7 @@ public class GraphIncidentList<T> extends Graph<T> {
     public HashMap<Integer, Double> dijkstra(Integer start) {
         HashMap<Integer, Boolean> marked = new HashMap<>();
         HashMap<Integer, Double> distance = new HashMap<>();
-        for (var vert_id: this.vertexes.keySet()) {
+        for (var vert_id : this.vertexes.keySet()) {
             marked.put(vert_id, false);
             distance.put(vert_id, Double.POSITIVE_INFINITY);
         }
@@ -88,17 +103,19 @@ public class GraphIncidentList<T> extends Graph<T> {
         while (!list_of_vert.isEmpty()) {
             Double min_dist = Double.POSITIVE_INFINITY;
             Integer v = null;
-            for (var vert: list_of_vert){
+            for (var vert : list_of_vert) {
                 if (min_dist > distance.get(vert)) {
                     v = vert;
                     min_dist = distance.get(vert);
                 }
             }
             list_of_vert.remove(v);
-            if (marked.get(v)) { continue; }
+            if (marked.get(v)) {
+                continue;
+            }
             marked.replace(v, true);
-            for (var edge: incidentList.get(this.getVertexById(v))) {
-                var vert_id = (Integer)this.getIdByVertex(edge.getDest());
+            for (var edge : incidentList.get(this.getVertexById(v))) {
+                var vert_id = (Integer) this.getIdByVertex(edge.getDest());
                 if (distance.get(vert_id) > distance.get(v) + edge.getWeight()) {
                     distance.replace(vert_id, distance.get(v) + edge.getWeight());
                     list_of_vert.add(vert_id);

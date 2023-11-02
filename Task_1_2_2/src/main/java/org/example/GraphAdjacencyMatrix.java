@@ -3,22 +3,37 @@ package org.example;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * класс представляющий граф в виде матрицы смежности.
+ *
+ * @param <T> - тип вершины
+ */
 public class GraphAdjacencyMatrix<T> extends Graph<T> {
 
     HashMap<Vertex<T>, HashMap<Vertex<T>, Boolean>> adjacencyMatrix;
 
+    /**
+     * конструктор для пустого класса.
+     */
     public GraphAdjacencyMatrix() {
         super();
         this.adjacencyMatrix = new HashMap<>();
     }
+
+    /**
+     * конструктор загружаемого графа.
+     *
+     * @param ver_array - список вершин
+     * @param edg_array - список ребер
+     */
     public GraphAdjacencyMatrix(ArrayList<Vertex<T>> ver_array, ArrayList<Edge<T>> edg_array) {
         super(ver_array, edg_array);
         adjacencyMatrix = new HashMap<>();
-        for (var vert: ver_array) {
+        for (var vert : ver_array) {
             adjacencyMatrix.put(vert, new HashMap<>());
         }
 
-        for (var edge: edg_array) {
+        for (var edge : edg_array) {
             adjacencyMatrix.get(edge.getSrc()).put(edge.getDest(), true);
         }
     }
@@ -26,20 +41,22 @@ public class GraphAdjacencyMatrix<T> extends Graph<T> {
     @Override
     public void addVertex(Vertex<T> vertex) {
         if (!this.adjacencyMatrix.containsKey(vertex)) {
-        adjacencyMatrix.put(vertex, new HashMap<>());
-        this.vertexes.put(this.maxEdgeId++, vertex);
+            adjacencyMatrix.put(vertex, new HashMap<>());
+            this.vertexes.put(this.maxEdgeId++, vertex);
         }
     }
 
     @Override
     public void deleteVertex(Vertex<T> vertex) {
-        if (!this.adjacencyMatrix.containsKey(vertex)) { return; }
+        if (!this.adjacencyMatrix.containsKey(vertex)) {
+            return;
+        }
         Integer id = null;
-        for (var vert_id: this.vertexes.keySet()) {
+        for (var vert_id : this.vertexes.keySet()) {
             var vert = this.getVertexById(vert_id);
             if (vert == vertex) {
                 id = vert_id;
-                for (var dest_vert: this.adjacencyMatrix.get(vert).keySet()) {
+                for (var dest_vert : this.adjacencyMatrix.get(vert).keySet()) {
                     var e = this.getEdge(vertex, dest_vert);
                     if (this.containsEdge(e)) {
                         this.edges.remove((Integer) this.getIdByEdge(e));
@@ -78,7 +95,7 @@ public class GraphAdjacencyMatrix<T> extends Graph<T> {
     public HashMap<Integer, Double> dijkstra(Integer start) {
         HashMap<Integer, Boolean> marked = new HashMap<>();
         HashMap<Integer, Double> distance = new HashMap<>();
-        for (var vert_id: this.vertexes.keySet()) {
+        for (var vert_id : this.vertexes.keySet()) {
             marked.put(vert_id, false);
             distance.put(vert_id, Double.POSITIVE_INFINITY);
         }
@@ -88,19 +105,21 @@ public class GraphAdjacencyMatrix<T> extends Graph<T> {
         while (!list_of_vert.isEmpty()) {
             Double min_dist = Double.POSITIVE_INFINITY;
             Integer v = null;
-            for (var vert: list_of_vert){
+            for (var vert : list_of_vert) {
                 if (min_dist > distance.get(vert)) {
                     v = vert;
                     min_dist = distance.get(vert);
                 }
             }
             list_of_vert.remove(v);
-            if (marked.get(v)) { continue; }
+            if (marked.get(v)) {
+                continue;
+            }
             marked.replace(v, true);
-            for (var vert: adjacencyMatrix.get(this.getVertexById(v)).keySet()) {
+            for (var vert : adjacencyMatrix.get(this.getVertexById(v)).keySet()) {
                 if (adjacencyMatrix.get(this.getVertexById(v)).get(vert)) {
                     var edge = this.getEdge(this.getVertexById(v), vert);
-                    var vert_id = (Integer)this.getIdByVertex(vert);
+                    var vert_id = (Integer) this.getIdByVertex(vert);
                     if (distance.get(vert_id) > distance.get(v) + edge.getWeight()) {
                         distance.replace(vert_id, distance.get(v) + edge.getWeight());
                         list_of_vert.add(vert_id);

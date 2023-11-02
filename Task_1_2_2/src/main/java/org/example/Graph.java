@@ -12,6 +12,7 @@ import java.util.HashMap;
 
 /**
  * Создаю абстрактный класс, чтобы далее была возможность унаследоваться от него.
+ *
  * @param <T> - Тип вершины
  */
 public abstract class Graph<T> {
@@ -21,6 +22,9 @@ public abstract class Graph<T> {
 
     protected int maxEdgeId;
 
+    /**
+     * конструктор пустого графа.
+     */
     public Graph() {
         this.vertexes = new HashMap<>();
         this.edges = new HashMap<>();
@@ -28,24 +32,32 @@ public abstract class Graph<T> {
         this.maxVertId = 1;
     }
 
+    /**
+     * конструктор загружаемого графа.
+     *
+     * @param ver_array - список вершин
+     * @param edg_array - список ребер
+     */
     public Graph(ArrayList<Vertex<T>> ver_array, ArrayList<Edge<T>> edg_array) {
         int i = 1;
         vertexes = new HashMap<>();
-        for (var vert: ver_array) {
+        for (var vert : ver_array) {
             vertexes.put(i, vert);
             i++;
         }
         this.maxVertId = i;
         i = 1;
         edges = new HashMap<>();
-        for (var edg: edg_array) {
+        for (var edg : edg_array) {
             edges.put(i, edg);
             i++;
         }
         this.maxEdgeId = i;
     }
+
     /**
      * метод для получения вершины по id.
+     *
      * @param Id - номер вершины по порядку поступления в граф
      * @return - вершина
      */
@@ -53,17 +65,25 @@ public abstract class Graph<T> {
         return vertexes.get(Id);
     }
 
+    /**
+     * метод для id по вершине.
+     *
+     * @param vert - вершина
+     * @return - id
+     */
     public Object getIdByVertex(Vertex<T> vert) {
-        for (var vert_id: this.vertexes.keySet()) {
+        for (var vert_id : this.vertexes.keySet()) {
             if (this.getVertexById(vert_id) == vert) {
                 return vert_id;
             }
         }
         return null;
     }
+
     /**
      * метод для изменения вершины по id.
-     * @param key - номер вершины
+     *
+     * @param key   - номер вершины
      * @param value - новая вершина
      */
     public void changeVertexById(Integer key, Vertex<T> value) {
@@ -72,7 +92,8 @@ public abstract class Graph<T> {
 
     /**
      * Метод для изменения ребро по id.
-     * @param key - номер ребра
+     *
+     * @param key   - номер ребра
      * @param value - новое значение
      */
     public void changeEdgeById(Integer key, Edge<T> value) {
@@ -81,6 +102,7 @@ public abstract class Graph<T> {
 
     /**
      * метод для получения ребра по id.
+     *
      * @param Id - номер ребра
      * @return - ребро
      */
@@ -88,8 +110,14 @@ public abstract class Graph<T> {
         return edges.get(Id);
     }
 
+    /**
+     * метод для получения id ребра по ребру.
+     *
+     * @param e - ребро
+     * @return - id
+     */
     public Object getIdByEdge(Edge<T> e) {
-        for (var edge_id: this.edges.keySet()) {
+        for (var edge_id : this.edges.keySet()) {
             if (this.getEdgeById(edge_id) == e) {
                 return edge_id;
             }
@@ -97,8 +125,14 @@ public abstract class Graph<T> {
         return null;
     }
 
+    /**
+     * метод для проверки есть ли вершина в графе.
+     *
+     * @param vertex - вершина
+     * @return - true or false
+     */
     public Boolean containsVertex(Vertex<T> vertex) {
-        for (var vert: this.vertexes.values()) {
+        for (var vert : this.vertexes.values()) {
             if (vert == vertex) {
                 return true;
             }
@@ -106,8 +140,14 @@ public abstract class Graph<T> {
         return false;
     }
 
+    /**
+     * метод для проверки есть ли ребро в графе.
+     *
+     * @param edge - ребро
+     * @return - true or false
+     */
     public Boolean containsEdge(Edge<T> edge) {
-        for (var e: this.edges.values()) {
+        for (var e : this.edges.values()) {
             if (e == edge) {
                 return true;
             }
@@ -117,6 +157,7 @@ public abstract class Graph<T> {
 
     /**
      * метод для получения списка вершин.
+     *
      * @return - список вершин
      */
     public ArrayList<Vertex<T>> getListOfVertexes() {
@@ -125,14 +166,23 @@ public abstract class Graph<T> {
 
     /**
      * метод для получения списка ребер.
+     *
      * @return - список ребер
      */
     public ArrayList<Edge<T>> getListOfEdges() {
         return new ArrayList<>(edges.values());
     }
 
+
+    /**
+     * метод для получения ребра.
+     *
+     * @param src  - начальная вершина
+     * @param dest - конечная вершина
+     * @return - ребро
+     */
     public Edge<T> getEdge(Vertex<T> src, Vertex<T> dest) {
-        for (var edge: this.edges.values()) {
+        for (var edge : this.edges.values()) {
             if (edge.getSrc() == src && edge.getDest() == dest) {
                 return edge;
             }
@@ -140,30 +190,39 @@ public abstract class Graph<T> {
         return null;
     }
 
-
     /**
      * абстрактный метод добавления вершины.
+     *
      * @param vertex - добавляемая вершина
      */
     public abstract void addVertex(Vertex<T> vertex);
 
     /**
      * абстрактный метод удаления вершины.
+     *
      * @param vertex - удаляемая вершина
      */
     public abstract void deleteVertex(Vertex<T> vertex);
 
     /**
      * абстрактный метод добавления ребра.
+     *
      * @param edge - ребро
      */
     public abstract void addEdge(Edge<T> edge);
 
     /**
      * абстрактный метод удаления ребра.
+     *
      * @param edge - ребро
      */
     public abstract void deleteEdge(Edge<T> edge);
 
+    /**
+     * Алгоритм Дейкстры.
+     *
+     * @param start - начальная вершина
+     * @return - наименьшие расстояния до всех вершин от заданной
+     */
     public abstract HashMap<Integer, Double> dijkstra(Integer start);
 }

@@ -3,16 +3,26 @@ package org.example;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.stream.Stream;
+
 import static org.example.GraphLoader.LoadTxt;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * класс для тестов.
+ */
 public class GraphTest {
 
     private Path workingDir;
 
+    /**
+     * метод для тестирования основных функций всех типов графов.
+     *
+     * @param g - граф
+     */
     @ParameterizedTest
     @MethodSource("generateClassesForCraphTest")
     public void basicGraphTest(Graph<Integer> g) {
@@ -46,6 +56,11 @@ public class GraphTest {
         assertFalse(g.containsEdge(e3));
     }
 
+    /**
+     * генерация разных типов графов.
+     *
+     * @return - разные графы
+     */
     static Stream<Arguments> generateClassesForCraphTest() {
         return Stream.of(
                 Arguments.arguments(new GraphIncidentList<>()),
@@ -54,17 +69,30 @@ public class GraphTest {
         );
     }
 
+    /**
+     * метод для тестирования алгоритма Дейкстры.
+     *
+     * @param graphType    - тип графа
+     * @param filename     - имя файла, из которого считываем граф
+     * @param expected     - ожидаемый результат
+     * @param amountOfVert - количество вершин
+     */
     @ParameterizedTest
     @MethodSource("generateClassesForDijkstraTest")
     public void dijkstraTest(int graphType, String filename, HashMap<Integer, Double> expected,
                              int amountOfVert) {
         this.workingDir = Path.of("", "src");
         var asw = LoadTxt(graphType, String.valueOf(this.workingDir.resolve(filename))).dijkstra(1);
-        for (int i = 1; i < amountOfVert + 1; i ++) {
+        for (int i = 1; i < amountOfVert + 1; i++) {
             assertEquals(expected.get(i), asw.get(i));
         }
     }
 
+    /**
+     * генерация данных для тестирования Дейкстры.
+     *
+     * @return - четверки вида(тип графа, имя файла, ожидаемое значение, кол-во вершин)
+     */
     static Stream<Arguments> generateClassesForDijkstraTest() {
         HashMap<Integer, Double> answer = new HashMap<>();
         answer.put(1, 0.0);
@@ -81,6 +109,11 @@ public class GraphTest {
         );
     }
 
+    /**
+     * метод для тестирования ошибок.
+     *
+     * @param g - граф
+     */
     @ParameterizedTest
     @MethodSource("generateClassesForCraphTest")
     public void throwErrorsTest(Graph<Integer> g) {
@@ -95,19 +128,24 @@ public class GraphTest {
         g.addVertex(v2);
         try {
             g.addEdge(e1);
-        } catch(IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             thrown = true;
         }
         assertFalse(thrown);
         g.deleteVertex(v1);
         try {
             g.addEdge(e1);
-        } catch(IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             thrown = true;
         }
         assertTrue(thrown);
     }
 
+    /**
+     * метод для тестирования менее важных операций.
+     *
+     * @param g - граф
+     */
     @ParameterizedTest
     @MethodSource("generateClassesForCraphTest")
     public void basicOpPart2Test(Graph<Integer> g) {
@@ -115,6 +153,12 @@ public class GraphTest {
         var v1 = new Vertex<>(1);
         var v2 = new Vertex<>(2);
         var e1 = new Edge<>(v1, v2, 5.0);
+        assertEquals(1, v1.getValue());
+        assertEquals(2, v2.getValue());
+        v2.changeValue(1);
+        assertEquals(1, v2.getValue());
+        v2.changeValue(2);
+        assertEquals(2, v2.getValue());
         g.addVertex(v1);
         g.addVertex(v2);
         g.containsVertex(v1);
