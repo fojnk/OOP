@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"org.example","c":"ApostolicoCrochemoreAlgorithm","l":"ApostolicoCrochemoreAlgorithm()","url":"%3Cinit%3E()"},{"p":"org.example","c":"ApostolicoCrochemoreAlgorithm","l":"find(String, String)","url":"find(java.lang.String,java.lang.String)"}]
