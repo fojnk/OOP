@@ -40,19 +40,19 @@ public class GraphIncidentList<T> extends Graph<T> {
     @Override
     public void addVertex(Vertex<T> vertex) {
         if (!this.containsVertex(vertex)) {
-            this.incidentList.put(vertex, new ArrayList<>());
-            this.vertexes.put(this.maxVertId++, vertex);
+            incidentList.put(vertex, new ArrayList<>());
+            vertexes.put(this.maxVertId++, vertex);
         }
     }
 
     @Override
     public void deleteVertex(Vertex<T> vertex) {
-        if (!this.incidentList.containsKey(vertex)) {
+        if (!incidentList.containsKey(vertex)) {
             return;
         }
         Integer id = null;
         ArrayList<Edge<T>> buf = new ArrayList<>();
-        for (var vertId : this.vertexes.keySet()) {
+        for (var vertId : vertexes.keySet()) {
             var vert = this.getVertexById(vertId);
             if (vert == vertex) {
                 id = vertId;
@@ -61,32 +61,32 @@ public class GraphIncidentList<T> extends Graph<T> {
                 if (edge.getDest() == vertex || edge.getSrc() == vertex) {
                     buf.add(edge);
                     if (this.containsEdge(edge)) {
-                        this.edges.remove((Integer) this.getIdByEdge(edge));
+                        edges.remove((Integer) this.getIdByEdge(edge));
                     }
                 }
             }
         }
         for (var edge : buf) {
-            this.incidentList.get(edge.getSrc()).remove(edge);
+            incidentList.get(edge.getSrc()).remove(edge);
         }
-        this.vertexes.remove(id);
-        this.incidentList.remove(vertex);
+        vertexes.remove(id);
+        incidentList.remove(vertex);
     }
 
     @Override
     public void addEdge(Edge<T> edge) {
-        if (!this.incidentList.containsKey(edge.getSrc())
-                || !this.incidentList.containsKey(edge.getDest())) {
+        if (!incidentList.containsKey(edge.getSrc())
+                || !incidentList.containsKey(edge.getDest())) {
             throw new IllegalArgumentException();
         }
-        this.incidentList.get(edge.getSrc()).add(edge);
-        this.edges.put(this.maxEdgeId++, edge);
+        incidentList.get(edge.getSrc()).add(edge);
+        edges.put(this.maxEdgeId++, edge);
     }
 
     @Override
     public void deleteEdge(Edge<T> edge) {
-        this.incidentList.get(edge.getSrc()).remove(edge);
-        this.edges.remove((Integer) this.getIdByEdge(edge));
+        incidentList.get(edge.getSrc()).remove(edge);
+        edges.remove((Integer) this.getIdByEdge(edge));
     }
 
     @Override

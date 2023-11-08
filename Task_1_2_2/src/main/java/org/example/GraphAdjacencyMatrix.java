@@ -1,7 +1,6 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * класс представляющий граф в виде матрицы смежности.
@@ -30,49 +29,53 @@ public class GraphAdjacencyMatrix<T> extends Graph<T> {
         super(vertArray, edgArray);
         adjacencyMatrix = new HashMap<>();
         for (var vert : vertArray) {
-            adjacencyMatrix.put(vert, new HashMap<>());
+            HashMap<Vertex<T>, Boolean> hashmap = new HashMap<>();
+            adjacencyMatrix.put(vert, hashmap);
+            for (var destVert : vertArray) {
+                hashmap.put(destVert, false);
+            }
         }
 
         for (var edge : edgArray) {
-            adjacencyMatrix.get(edge.getSrc()).put(edge.getDest(), true);
+            adjacencyMatrix.get(edge.getSrc()).replace(edge.getDest(), true);
         }
     }
 
     @Override
     public void addVertex(Vertex<T> vertex) {
-        if (!this.adjacencyMatrix.containsKey(vertex)) {
+        if (!adjacencyMatrix.containsKey(vertex)) {
             adjacencyMatrix.put(vertex, new HashMap<>());
-            this.vertexes.put(this.maxEdgeId++, vertex);
+            vertexes.put(this.maxEdgeId++, vertex);
         }
     }
 
     @Override
     public void deleteVertex(Vertex<T> vertex) {
-        if (!this.adjacencyMatrix.containsKey(vertex)) {
+        if (!adjacencyMatrix.containsKey(vertex)) {
             return;
         }
         Integer id = null;
-        for (var vertId : this.vertexes.keySet()) {
-            var vert = this.getVertexById(vertId);
-            if (vert == vertex) {
-                id = vertId;
-                for (var destVert : this.adjacencyMatrix.get(vert).keySet()) {
+        for (var entry : vertexes.entrySet()) {
+            var vert = entry.getValue();
+            if (entry.getValue() == vertex) {
+                id = entry.getKey();
+                for (var destVert : adjacencyMatrix.get(vert).keySet()) {
                     var e = this.getEdge(vertex, destVert);
                     if (this.containsEdge(e)) {
                         this.edges.remove((Integer) this.getIdByEdge(e));
                     }
                 }
             }
-            if (this.adjacencyMatrix.get(vert).containsKey(vertex)) {
+            if (adjacencyMatrix.get(vert).containsKey(vertex)) {
                 var e = this.getEdge(vert, vertex);
                 if (this.containsEdge(e)) {
-                    this.edges.remove((Integer) this.getIdByEdge(e));
+                    edges.remove((Integer) this.getIdByEdge(e));
                 }
             }
-            this.adjacencyMatrix.get(vert).remove(vertex);
+            adjacencyMatrix.get(vert).remove(vertex);
         }
-        this.adjacencyMatrix.remove(vertex);
-        this.vertexes.remove(id);
+        adjacencyMatrix.remove(vertex);
+        vertexes.remove(id);
     }
 
     @Override

@@ -6,7 +6,6 @@ import static org.example.GraphLoader.loadTxt;
  * главный класс.
  */
 public class Main {
-
     /**
      * входная точка программы.
      *
@@ -40,6 +39,7 @@ public class Main {
     public static void printRes(String filename, GraphType type, int startVert) {
         var g = loadTxt(type, "Task_1_2_2/src/main/java/org/example/graph_input.txt");
         var answer = g.dijkstra(1);
+        System.out.println(g.sortOutput(answer));
         switch (type) {
             case incidenceList:
                 System.out.println("\n%%%%% GraphIncidentList %%%%%%");

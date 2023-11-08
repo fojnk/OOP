@@ -1,7 +1,6 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 /*Идея заключается в том, чтобы создать абстрактный класс, от которого
 в последствии смогу унаследоваться разные типы графов (матрица смежности и т.д),
@@ -72,9 +71,9 @@ public abstract class Graph<T> {
      * @return - id
      */
     public Object getIdByVertex(Vertex<T> vert) {
-        for (var vertId : this.vertexes.keySet()) {
-            if (this.getVertexById(vertId) == vert) {
-                return vertId;
+        for (var entry : vertexes.entrySet()) {
+            if (entry.getValue() == vert) {
+                return entry.getKey();
             }
         }
         return null;
@@ -86,8 +85,12 @@ public abstract class Graph<T> {
      * @param key   - номер вершины
      * @param value - новая вершина
      */
-    public void changeVertexById(Integer key, Vertex<T> value) {
-        vertexes.put(key, value);
+    public Boolean changeVertexById(Integer key, Vertex<T> value) {
+        if (vertexes.containsKey(key)){
+            vertexes.replace(key, value);
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -96,8 +99,12 @@ public abstract class Graph<T> {
      * @param key   - номер ребра
      * @param value - новое значение
      */
-    public void changeEdgeById(Integer key, Edge<T> value) {
-        edges.put(key, value);
+    public Boolean changeEdgeById(Integer key, Edge<T> value) {
+        if (edges.containsKey(key)){
+            edges.replace(key, value);
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -117,9 +124,9 @@ public abstract class Graph<T> {
      * @return - id
      */
     public Object getIdByEdge(Edge<T> e) {
-        for (var edgeId : this.edges.keySet()) {
-            if (this.getEdgeById(edgeId) == e) {
-                return edgeId;
+        for (var entry : edges.entrySet()) {
+            if (entry.getValue() == e) {
+                return entry.getKey();
             }
         }
         return null;
@@ -132,12 +139,7 @@ public abstract class Graph<T> {
      * @return - true or false
      */
     public Boolean containsVertex(Vertex<T> vertex) {
-        for (var vert : this.vertexes.values()) {
-            if (vert == vertex) {
-                return true;
-            }
-        }
-        return false;
+        return vertexes.containsValue(vertex);
     }
 
     /**
@@ -147,12 +149,7 @@ public abstract class Graph<T> {
      * @return - true or false
      */
     public Boolean containsEdge(Edge<T> edge) {
-        for (var e : this.edges.values()) {
-            if (e == edge) {
-                return true;
-            }
-        }
-        return false;
+        return edges.containsValue(edge);
     }
 
     /**
@@ -182,7 +179,7 @@ public abstract class Graph<T> {
      * @return - ребро
      */
     public Edge<T> getEdge(Vertex<T> src, Vertex<T> dest) {
-        for (var edge : this.edges.values()) {
+        for (var edge : edges.values()) {
             if (edge.getSrc() == src && edge.getDest() == dest) {
                 return edge;
             }
@@ -225,4 +222,28 @@ public abstract class Graph<T> {
      * @return - наименьшие расстояния до всех вершин от заданной
      */
     public abstract HashMap<Integer, Double> dijkstra(Integer start);
+
+    /**
+     * метод для сортировки ответа.
+     *
+     * @param answer - ответ
+     * @return - список строк
+     */
+    public List<String> sortOutput(HashMap<Integer, Double> answer) {
+        LinkedList<Map.Entry<Integer, Double>> list = new LinkedList<>(answer.entrySet());
+
+        // Sort the list
+        Collections.sort(list, new Comparator<>() {
+            @Override
+            public int compare(Map.Entry<Integer, Double> o1, Map.Entry<Integer, Double> o2) {
+                return (o1.getValue()).compareTo(o2.getValue());
+            }
+        });
+
+        LinkedList<String> outList = new LinkedList<>();
+        for (var elem : list) {
+            outList.add(vertexes.get(elem.getKey()).getValue().toString() + "(" + elem.getValue().toString() + ")");
+        }
+        return outList;
+    }
 }

@@ -35,20 +35,20 @@ public class GraphIncidenceMatrix<T> extends Graph<T> {
 
     @Override
     public void addVertex(Vertex<T> vertex) {
-        if (!this.incidenceMatrix.containsKey(vertex)) {
+        if (!incidenceMatrix.containsKey(vertex)) {
             incidenceMatrix.put(vertex, new HashMap<>());
-            this.vertexes.put(this.maxVertId++, vertex);
+            vertexes.put(this.maxVertId++, vertex);
         }
     }
 
     @Override
     public void deleteVertex(Vertex<T> vertex) {
-        if (!this.incidenceMatrix.containsKey(vertex)) {
+        if (!incidenceMatrix.containsKey(vertex)) {
             return;
         }
         Integer id = null;
         ArrayList<Edge<T>> buf = new ArrayList<>();
-        for (var vertId : this.vertexes.keySet()) {
+        for (var vertId : vertexes.keySet()) {
             var vert = this.getVertexById(vertId);
             if (vert == vertex) {
                 id = vertId;
@@ -63,36 +63,36 @@ public class GraphIncidenceMatrix<T> extends Graph<T> {
         }
         for (var edge : buf) {
             if (this.containsEdge(edge)) {
-                this.edges.remove((Integer) this.getIdByEdge(edge));
+                edges.remove((Integer) this.getIdByEdge(edge));
             }
         }
         incidenceMatrix.remove(vertex);
-        this.vertexes.remove(id);
+        vertexes.remove(id);
     }
 
     @Override
     public void addEdge(Edge<T> edge) {
-        if (!this.incidenceMatrix.containsKey(edge.getSrc())
-                || !this.incidenceMatrix.containsKey(edge.getDest())) {
+        if (!incidenceMatrix.containsKey(edge.getSrc())
+                || !incidenceMatrix.containsKey(edge.getDest())) {
             throw new IllegalArgumentException();
         }
         incidenceMatrix.get(edge.getSrc()).put(edge, 1);
         incidenceMatrix.get(edge.getDest()).put(edge, -1);
-        this.edges.put(this.maxEdgeId++, edge);
+        edges.put(this.maxEdgeId++, edge);
     }
 
     @Override
     public void deleteEdge(Edge<T> edge) {
         incidenceMatrix.get(edge.getSrc()).remove(edge);
         incidenceMatrix.get(edge.getDest()).remove((edge));
-        this.edges.remove((Integer) this.getIdByEdge(edge));
+        edges.remove((Integer) this.getIdByEdge(edge));
     }
 
     @Override
     public HashMap<Integer, Double> dijkstra(Integer start) {
         HashMap<Integer, Boolean> marked = new HashMap<>();
         HashMap<Integer, Double> distance = new HashMap<>();
-        for (var vertId : this.vertexes.keySet()) {
+        for (var vertId : vertexes.keySet()) {
             marked.put(vertId, false);
             distance.put(vertId, Double.POSITIVE_INFINITY);
         }
