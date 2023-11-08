@@ -80,34 +80,6 @@ public abstract class Graph<T> {
     }
 
     /**
-     * метод для изменения вершины по id.
-     *
-     * @param key   - номер вершины
-     * @param value - новая вершина
-     */
-    public Boolean changeVertexById(Integer key, Vertex<T> value) {
-        if (vertexes.containsKey(key)){
-            vertexes.replace(key, value);
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Метод для изменения ребро по id.
-     *
-     * @param key   - номер ребра
-     * @param value - новое значение
-     */
-    public Boolean changeEdgeById(Integer key, Edge<T> value) {
-        if (edges.containsKey(key)){
-            edges.replace(key, value);
-            return true;
-        }
-        return false;
-    }
-
-    /**
      * метод для получения ребра по id.
      *
      * @param id - номер ребра
@@ -230,19 +202,22 @@ public abstract class Graph<T> {
      * @return - список строк
      */
     public List<String> sortOutput(HashMap<Integer, Double> answer) {
-        LinkedList<Map.Entry<Integer, Double>> list = new LinkedList<>(answer.entrySet());
+        LinkedList<Map.Entry<Integer, Double>> list =
+                new LinkedList<>(answer.entrySet());
 
         // Sort the list
         Collections.sort(list, new Comparator<>() {
             @Override
-            public int compare(Map.Entry<Integer, Double> o1, Map.Entry<Integer, Double> o2) {
+            public int compare(Map.Entry<Integer, Double> o1,
+                               Map.Entry<Integer, Double> o2) {
                 return (o1.getValue()).compareTo(o2.getValue());
             }
         });
 
         LinkedList<String> outList = new LinkedList<>();
         for (var elem : list) {
-            outList.add(vertexes.get(elem.getKey()).getValue().toString() + "(" + elem.getValue().toString() + ")");
+            outList.add(vertexes.get(elem.getKey()).getValue().toString()
+                    + "(" + elem.getValue().toString() + ")");
         }
         return outList;
     }
