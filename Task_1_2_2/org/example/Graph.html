@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":6,"i2":10,"i3":10,"i4":10,"i5":10,"i6":6,"i7":6,"i8":6,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10};
+var data = {"i0":6,"i1":6,"i2":10,"i3":10,"i4":10,"i5":10,"i6":6,"i7":6,"i8":6,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -244,7 +244,7 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>void</code></td>
+<td class="colFirst"><code>java.lang.Boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#changeEdgeById(java.lang.Integer,org.example.Edge)">changeEdgeById</a></span>&#8203;(java.lang.Integer&nbsp;key,
               <a href="Edge.html" title="class in org.example">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;value)</code></th>
 <td class="colLast">
@@ -252,7 +252,7 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>void</code></td>
+<td class="colFirst"><code>java.lang.Boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#changeVertexById(java.lang.Integer,org.example.Vertex)">changeVertexById</a></span>&#8203;(java.lang.Integer&nbsp;key,
                 <a href="Vertex.html" title="class in org.example">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;value)</code></th>
 <td class="colLast">
@@ -342,6 +342,13 @@ extends java.lang.Object</pre>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertexById(java.lang.Integer)">getVertexById</a></span>&#8203;(java.lang.Integer&nbsp;id)</code></th>
 <td class="colLast">
 <div class="block">метод для получения вершины по id.</div>
+</td>
+</tr>
+<tr id="i16" class="altColor">
+<td class="colFirst"><code>java.util.List&lt;java.lang.String&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sortOutput(java.util.HashMap)">sortOutput</a></span>&#8203;(java.util.HashMap&lt;java.lang.Integer,&#8203;java.lang.Double&gt;&nbsp;answer)</code></th>
+<td class="colLast">
+<div class="block">метод для сортировки ответа.</div>
 </td>
 </tr>
 </table>
@@ -488,8 +495,8 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>changeVertexById</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;changeVertexById&#8203;(java.lang.Integer&nbsp;key,
-                             <a href="Vertex.html" title="class in org.example">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;value)</pre>
+<pre class="methodSignature">public&nbsp;java.lang.Boolean&nbsp;changeVertexById&#8203;(java.lang.Integer&nbsp;key,
+                                          <a href="Vertex.html" title="class in org.example">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;value)</pre>
 <div class="block">метод для изменения вершины по id.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -504,8 +511,8 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>changeEdgeById</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;changeEdgeById&#8203;(java.lang.Integer&nbsp;key,
-                           <a href="Edge.html" title="class in org.example">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;value)</pre>
+<pre class="methodSignature">public&nbsp;java.lang.Boolean&nbsp;changeEdgeById&#8203;(java.lang.Integer&nbsp;key,
+                                        <a href="Edge.html" title="class in org.example">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;value)</pre>
 <div class="block">Метод для изменения ребро по id.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -683,7 +690,7 @@ extends java.lang.Object</pre>
 <a id="dijkstra(java.lang.Integer)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>dijkstra</h4>
 <pre class="methodSignature">public abstract&nbsp;java.util.HashMap&lt;java.lang.Integer,&#8203;java.lang.Double&gt;&nbsp;dijkstra&#8203;(java.lang.Integer&nbsp;start)</pre>
@@ -693,6 +700,22 @@ extends java.lang.Object</pre>
 <dd><code>start</code> - - начальная вершина</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>- наименьшие расстояния до всех вершин от заданной</dd>
+</dl>
+</li>
+</ul>
+<a id="sortOutput(java.util.HashMap)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>sortOutput</h4>
+<pre class="methodSignature">public&nbsp;java.util.List&lt;java.lang.String&gt;&nbsp;sortOutput&#8203;(java.util.HashMap&lt;java.lang.Integer,&#8203;java.lang.Double&gt;&nbsp;answer)</pre>
+<div class="block">метод для сортировки ответа.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>answer</code> - - ответ</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- список строк</dd>
 </dl>
 </li>
 </ul>
