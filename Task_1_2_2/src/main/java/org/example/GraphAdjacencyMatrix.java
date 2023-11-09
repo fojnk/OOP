@@ -117,8 +117,10 @@ public class GraphAdjacencyMatrix<T> extends Graph<T> {
             marked.replace(v, true);
             for (var vert : adjacencyMatrix.get(this.getVertexById(v)).keySet()) {
                 var vertId = (Integer) this.getIdByVertex(vert);
-                if (distance.get(vertId) > distance.get(v) + adjacencyMatrix.get(getVertexById(v)).get(vert)) {
-                    distance.replace(vertId, distance.get(v) + adjacencyMatrix.get(getVertexById(v)).get(vert));
+                if (distance.get(vertId) > distance.get(v) +
+                        adjacencyMatrix.get(getVertexById(v)).get(vert)) {
+                    distance.replace(vertId, distance.get(v) +
+                            adjacencyMatrix.get(getVertexById(v)).get(vert));
                     listOfVert.add(vertId);
                 }
             }
@@ -128,7 +130,7 @@ public class GraphAdjacencyMatrix<T> extends Graph<T> {
 
     @Override
     public Boolean changeEdgeValue(Edge<T> edge, Double value) {
-        if (!edges.containsValue(edge)) return false;
+        if (!edges.containsValue(edge)) { return false; }
 
         adjacencyMatrix.get(edge.getSrc()).replace(edge.getDest(), value);
         var edgId = this.getIdByEdge(edge);

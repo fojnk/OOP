@@ -198,7 +198,7 @@ public abstract class Graph<T> {
     /**
      * Метод для изменения значения ребра.
      *
-     * @param edge- ребро
+     * @param edge - ребро
      * @param value - новое значение
      * @return - проведена ли операция
      */

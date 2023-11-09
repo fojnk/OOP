@@ -1,8 +1,12 @@
 package org.example;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.stream.Stream;
+
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -165,5 +169,44 @@ public class GraphTest {
         assertFalse(g.edges.containsValue(e1));
         var e4 = new Edge<>(v1, v2, 5.0);
         assertFalse(g.changeEdgeValue(e4, 1.0));
+    }
+
+    /**
+     * метод для тестирования сортирующей функции.
+     *
+     * @param type - тип графа
+     * @param filename - имя файла
+     * @param expected - ожидаемый результат
+     */
+    @ParameterizedTest
+    @MethodSource("generateClassesForSortOutputTest")
+    public void testSortOutput(GraphType type, String filename, List<String> expected) {
+        this.workingDir = Path.of("", "src");
+        var g = loadTxt(type, String.valueOf(this.workingDir.resolve(filename)));
+        var out = g.dijkstra(1);
+        assertEquals(g.sortOutput(out), expected);
+    }
+
+    /**
+     * генерация данных для тестирования Дейкстры.
+     *
+     * @return - четверки вида(тип графа, имя файла, ожидаемое значение, кол-во вершин)
+     */
+    static Stream<Arguments> generateClassesForSortOutputTest() {
+        List<String> answer = new ArrayList<>();
+        answer.add("1(0.0)");
+        answer.add("2(7.0)");
+        answer.add("3(9.0)");
+        answer.add("6(11.0)");
+        answer.add("4(20.0)");
+        answer.add("5(20.0)");
+
+        String filename = "test/java/org/example/test1.txt";
+
+        return Stream.of(
+                Arguments.arguments(GraphType.incidenceList, filename, answer),
+                Arguments.arguments(GraphType.adjacencyMatrix, filename, answer),
+                Arguments.arguments(GraphType.incidenceMatrix, filename, answer)
+        );
     }
 }
