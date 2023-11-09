@@ -128,7 +128,9 @@ public class GraphIncidenceMatrix<T> extends Graph<T> {
 
     @Override
     public Boolean changeEdgeValue(Edge<T> edge, Double value) {
-        if (!edges.containsValue(edge)) { return false; }
+        if (!edges.containsValue(edge)) {
+            return false;
+        }
         incidenceMatrix.get(edge.getSrc()).replace(edge, value);
         incidenceMatrix.get(edge.getSrc()).replace(edge, -value);
         var edgId = this.getIdByEdge(edge);
