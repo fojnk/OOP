@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -219,20 +219,28 @@ extends <a href="Graph.html" title="class in org.example">Graph</a>&lt;T&gt;</pr
 </td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code>java.lang.Boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#changeEdgeValue(org.example.Edge,java.lang.Double)">changeEdgeValue</a></span>&#8203;(<a href="Edge.html" title="class in org.example">Edge</a>&lt;<a href="GraphIncidenceMatrix.html" title="type parameter in GraphIncidenceMatrix">T</a>&gt;&nbsp;edge,
+               java.lang.Double&nbsp;value)</code></th>
+<td class="colLast">
+<div class="block">Метод для изменения значения ребра.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#deleteEdge(org.example.Edge)">deleteEdge</a></span>&#8203;(<a href="Edge.html" title="class in org.example">Edge</a>&lt;<a href="GraphIncidenceMatrix.html" title="type parameter in GraphIncidenceMatrix">T</a>&gt;&nbsp;edge)</code></th>
 <td class="colLast">
 <div class="block">абстрактный метод удаления ребра.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#deleteVertex(org.example.Vertex)">deleteVertex</a></span>&#8203;(<a href="Vertex.html" title="class in org.example">Vertex</a>&lt;<a href="GraphIncidenceMatrix.html" title="type parameter in GraphIncidenceMatrix">T</a>&gt;&nbsp;vertex)</code></th>
 <td class="colLast">
 <div class="block">абстрактный метод удаления вершины.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>java.util.HashMap&lt;java.lang.Integer,&#8203;java.lang.Double&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#dijkstra(java.lang.Integer)">dijkstra</a></span>&#8203;(java.lang.Integer&nbsp;start)</code></th>
 <td class="colLast">
@@ -377,7 +385,7 @@ extends <a href="Graph.html" title="class in org.example">Graph</a>&lt;T&gt;</pr
 <a id="dijkstra(java.lang.Integer)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>dijkstra</h4>
 <pre class="methodSignature">public&nbsp;java.util.HashMap&lt;java.lang.Integer,&#8203;java.lang.Double&gt;&nbsp;dijkstra&#8203;(java.lang.Integer&nbsp;start)</pre>
@@ -390,6 +398,27 @@ extends <a href="Graph.html" title="class in org.example">Graph</a>&lt;T&gt;</pr
 <dd><code>start</code> - - начальная вершина</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>- наименьшие расстояния до всех вершин от заданной</dd>
+</dl>
+</li>
+</ul>
+<a id="changeEdgeValue(org.example.Edge,java.lang.Double)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>changeEdgeValue</h4>
+<pre class="methodSignature">public&nbsp;java.lang.Boolean&nbsp;changeEdgeValue&#8203;(<a href="Edge.html" title="class in org.example">Edge</a>&lt;<a href="GraphIncidenceMatrix.html" title="type parameter in GraphIncidenceMatrix">T</a>&gt;&nbsp;edge,
+                                         java.lang.Double&nbsp;value)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="Graph.html#changeEdgeValue(org.example.Edge,java.lang.Double)">Graph</a></code></span></div>
+<div class="block">Метод для изменения значения ребра.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="Graph.html#changeEdgeValue(org.example.Edge,java.lang.Double)">changeEdgeValue</a></code>&nbsp;in class&nbsp;<code><a href="Graph.html" title="class in org.example">Graph</a>&lt;<a href="GraphIncidenceMatrix.html" title="type parameter in GraphIncidenceMatrix">T</a>&gt;</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>edge</code> - - ребро</dd>
+<dd><code>value</code> - - новое значение</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- проведена ли операция</dd>
 </dl>
 </li>
 </ul>

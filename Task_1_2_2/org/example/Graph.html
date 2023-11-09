@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":6,"i2":10,"i3":10,"i4":6,"i5":6,"i6":6,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10};
+var data = {"i0":6,"i1":6,"i2":6,"i3":10,"i4":10,"i5":6,"i6":6,"i7":6,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -244,41 +244,49 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code>abstract java.lang.Boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#changeEdgeValue(org.example.Edge,java.lang.Double)">changeEdgeValue</a></span>&#8203;(<a href="Edge.html" title="class in org.example">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;edge,
+               java.lang.Double&nbsp;value)</code></th>
+<td class="colLast">
+<div class="block">Метод для изменения значения ребра.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.lang.Boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#containsEdge(org.example.Edge)">containsEdge</a></span>&#8203;(<a href="Edge.html" title="class in org.example">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;edge)</code></th>
 <td class="colLast">
 <div class="block">метод для проверки есть ли ребро в графе.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>java.lang.Boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#containsVertex(org.example.Vertex)">containsVertex</a></span>&#8203;(<a href="Vertex.html" title="class in org.example">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</code></th>
 <td class="colLast">
 <div class="block">метод для проверки есть ли вершина в графе.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>abstract void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#deleteEdge(org.example.Edge)">deleteEdge</a></span>&#8203;(<a href="Edge.html" title="class in org.example">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;edge)</code></th>
 <td class="colLast">
 <div class="block">абстрактный метод удаления ребра.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>abstract void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#deleteVertex(org.example.Vertex)">deleteVertex</a></span>&#8203;(<a href="Vertex.html" title="class in org.example">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</code></th>
 <td class="colLast">
 <div class="block">абстрактный метод удаления вершины.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>abstract java.util.HashMap&lt;java.lang.Integer,&#8203;java.lang.Double&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#dijkstra(java.lang.Integer)">dijkstra</a></span>&#8203;(java.lang.Integer&nbsp;start)</code></th>
 <td class="colLast">
 <div class="block">Алгоритм Дейкстры.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="Edge.html" title="class in org.example">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getEdge(org.example.Vertex,org.example.Vertex)">getEdge</a></span>&#8203;(<a href="Vertex.html" title="class in org.example">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;src,
        <a href="Vertex.html" title="class in org.example">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;dest)</code></th>
@@ -286,49 +294,49 @@ extends java.lang.Object</pre>
 <div class="block">метод для получения ребра.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code><a href="Edge.html" title="class in org.example">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getEdgeById(java.lang.Integer)">getEdgeById</a></span>&#8203;(java.lang.Integer&nbsp;id)</code></th>
 <td class="colLast">
 <div class="block">метод для получения ребра по id.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>java.lang.Object</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getIdByEdge(org.example.Edge)">getIdByEdge</a></span>&#8203;(<a href="Edge.html" title="class in org.example">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;e)</code></th>
 <td class="colLast">
 <div class="block">метод для получения id ребра по ребру.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>java.lang.Object</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getIdByVertex(org.example.Vertex)">getIdByVertex</a></span>&#8203;(<a href="Vertex.html" title="class in org.example">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vert)</code></th>
 <td class="colLast">
 <div class="block">метод для id по вершине.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;<a href="Edge.html" title="class in org.example">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getListOfEdges()">getListOfEdges</a></span>()</code></th>
 <td class="colLast">
 <div class="block">метод для получения списка ребер.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;<a href="Vertex.html" title="class in org.example">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getListOfVertexes()">getListOfVertexes</a></span>()</code></th>
 <td class="colLast">
 <div class="block">метод для получения списка вершин.</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code><a href="Vertex.html" title="class in org.example">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertexById(java.lang.Integer)">getVertexById</a></span>&#8203;(java.lang.Integer&nbsp;id)</code></th>
 <td class="colLast">
 <div class="block">метод для получения вершины по id.</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;java.lang.String&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sortOutput(java.util.HashMap)">sortOutput</a></span>&#8203;(java.util.HashMap&lt;java.lang.Integer,&#8203;java.lang.Double&gt;&nbsp;answer)</code></th>
 <td class="colLast">
@@ -652,6 +660,24 @@ extends java.lang.Object</pre>
 <dd><code>start</code> - - начальная вершина</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>- наименьшие расстояния до всех вершин от заданной</dd>
+</dl>
+</li>
+</ul>
+<a id="changeEdgeValue(org.example.Edge,java.lang.Double)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>changeEdgeValue</h4>
+<pre class="methodSignature">public abstract&nbsp;java.lang.Boolean&nbsp;changeEdgeValue&#8203;(<a href="Edge.html" title="class in org.example">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;edge,
+                                                  java.lang.Double&nbsp;value)</pre>
+<div class="block">Метод для изменения значения ребра.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>edge</code> - - ребро</dd>
+<dd><code>value</code> - - новое значение</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- проведена ли операция</dd>
 </dl>
 </li>
 </ul>
