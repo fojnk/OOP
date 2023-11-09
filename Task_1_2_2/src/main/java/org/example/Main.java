@@ -39,7 +39,6 @@ public class Main {
     public static void printRes(String filename, GraphType type, int startVert) {
         var g = loadTxt(type, "Task_1_2_2/src/main/java/org/example/graph_input.txt");
         var answer = g.dijkstra(1);
-        System.out.println(g.sortOutput(answer));
         switch (type) {
             case incidenceList:
                 System.out.println("\n%%%%% GraphIncidentList %%%%%%");
@@ -58,6 +57,7 @@ public class Main {
         for (var vert : answer.keySet()) {
             System.out.println("vertex id: " + vert + "      dist: " + answer.get(vert));
         }
+        System.out.println(g.sortOutput(answer));
         System.out.println("------------------------");
     }
 }

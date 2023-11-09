@@ -50,13 +50,4 @@ public class Edge<T> {
     public Vertex<T> getDest() {
         return this.dest;
     }
-
-    /**
-     * метод для изменения веса ребра.
-     *
-     * @param weight - вес
-     */
-    public void changeWeight(Double weight) {
-        this.weight = weight;
-    }
 }

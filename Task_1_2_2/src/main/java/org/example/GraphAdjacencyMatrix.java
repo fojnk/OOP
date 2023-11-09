@@ -9,7 +9,7 @@ import java.util.*;
  */
 public class GraphAdjacencyMatrix<T> extends Graph<T> {
 
-    HashMap<Vertex<T>, HashMap<Vertex<T>, Boolean>> adjacencyMatrix;
+    HashMap<Vertex<T>, HashMap<Vertex<T>, Double>> adjacencyMatrix;
 
     /**
      * конструктор для пустого класса.
@@ -29,15 +29,11 @@ public class GraphAdjacencyMatrix<T> extends Graph<T> {
         super(vertArray, edgArray);
         adjacencyMatrix = new HashMap<>();
         for (var vert : vertArray) {
-            HashMap<Vertex<T>, Boolean> hashmap = new HashMap<>();
-            adjacencyMatrix.put(vert, hashmap);
-            for (var destVert : vertArray) {
-                hashmap.put(destVert, false);
-            }
+            adjacencyMatrix.put(vert, new HashMap<>());
         }
 
         for (var edge : edgArray) {
-            adjacencyMatrix.get(edge.getSrc()).replace(edge.getDest(), true);
+            adjacencyMatrix.get(edge.getSrc()).put(edge.getDest(), edge.getWeight());
         }
     }
 
@@ -45,7 +41,7 @@ public class GraphAdjacencyMatrix<T> extends Graph<T> {
     public void addVertex(Vertex<T> vertex) {
         if (!adjacencyMatrix.containsKey(vertex)) {
             adjacencyMatrix.put(vertex, new HashMap<>());
-            vertexes.put(this.maxEdgeId++, vertex);
+            vertexes.put(this.maxVertId++, vertex);
         }
     }
 
@@ -80,11 +76,11 @@ public class GraphAdjacencyMatrix<T> extends Graph<T> {
 
     @Override
     public void addEdge(Edge<T> edge) {
-        if (!this.adjacencyMatrix.containsKey(edge.getSrc())
-                || !this.adjacencyMatrix.containsKey(edge.getDest())) {
+        if (!adjacencyMatrix.containsKey(edge.getSrc())
+                || !adjacencyMatrix.containsKey(edge.getDest())) {
             throw new IllegalArgumentException();
         }
-        this.adjacencyMatrix.get(edge.getSrc()).put(edge.getDest(), true);
+        this.adjacencyMatrix.get(edge.getSrc()).put(edge.getDest(), edge.getWeight());
         this.edges.put(this.maxEdgeId++, edge);
     }
 
@@ -98,12 +94,12 @@ public class GraphAdjacencyMatrix<T> extends Graph<T> {
     public HashMap<Integer, Double> dijkstra(Integer start) {
         HashMap<Integer, Boolean> marked = new HashMap<>();
         HashMap<Integer, Double> distance = new HashMap<>();
-        for (var vertId : this.vertexes.keySet()) {
+        for (var vertId : vertexes.keySet()) {
             marked.put(vertId, false);
             distance.put(vertId, Double.POSITIVE_INFINITY);
         }
         ArrayList<Integer> listOfVert = new ArrayList<>();
-        distance.replace(start, Double.POSITIVE_INFINITY, (double) 0);
+        distance.replace(start, (double) 0);
         listOfVert.add(start);
         while (!listOfVert.isEmpty()) {
             Double minDist = Double.POSITIVE_INFINITY;
@@ -120,16 +116,24 @@ public class GraphAdjacencyMatrix<T> extends Graph<T> {
             }
             marked.replace(v, true);
             for (var vert : adjacencyMatrix.get(this.getVertexById(v)).keySet()) {
-                if (adjacencyMatrix.get(this.getVertexById(v)).get(vert)) {
-                    var edge = this.getEdge(this.getVertexById(v), vert);
-                    var vertId = (Integer) this.getIdByVertex(vert);
-                    if (distance.get(vertId) > distance.get(v) + edge.getWeight()) {
-                        distance.replace(vertId, distance.get(v) + edge.getWeight());
-                        listOfVert.add(vertId);
-                    }
+                var vertId = (Integer) this.getIdByVertex(vert);
+                if (distance.get(vertId) > distance.get(v) + adjacencyMatrix.get(getVertexById(v)).get(vert)) {
+                    distance.replace(vertId, distance.get(v) + adjacencyMatrix.get(getVertexById(v)).get(vert));
+                    listOfVert.add(vertId);
                 }
             }
         }
         return distance;
+    }
+
+    @Override
+    public Boolean changeEdgeValue(Edge<T> edge, Double value) {
+        if (!edges.containsValue(edge)) return false;
+
+        adjacencyMatrix.get(edge.getSrc()).replace(edge.getDest(), value);
+        var edgId = this.getIdByEdge(edge);
+        var newEdge = new Edge<T>(edge.getSrc(), edge.getDest(), value);
+        edges.replace((Integer) edgId, newEdge);
+        return true;
     }
 }

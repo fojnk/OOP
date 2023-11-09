@@ -196,6 +196,15 @@ public abstract class Graph<T> {
     public abstract HashMap<Integer, Double> dijkstra(Integer start);
 
     /**
+     * Метод для изменения значения ребра.
+     *
+     * @param edge- ребро
+     * @param value - новое значение
+     * @return - проведена ли операция
+     */
+    public abstract Boolean changeEdgeValue(Edge<T> edge, Double value);
+
+    /**
      * метод для сортировки ответа.
      *
      * @param answer - ответ

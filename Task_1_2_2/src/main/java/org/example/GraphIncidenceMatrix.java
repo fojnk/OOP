@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GraphIncidenceMatrix<T> extends Graph<T> {
-    HashMap<Vertex<T>, HashMap<Edge<T>, Integer>> incidenceMatrix;
+    HashMap<Vertex<T>, HashMap<Edge<T>, Double>> incidenceMatrix;
 
     /**
      * конструктор пустого графа, для тестов.
@@ -28,8 +28,8 @@ public class GraphIncidenceMatrix<T> extends Graph<T> {
         }
 
         for (var edge : edgArray) {
-            incidenceMatrix.get(edge.getSrc()).put(edge, 1);
-            incidenceMatrix.get(edge.getDest()).put(edge, -1);
+            incidenceMatrix.get(edge.getSrc()).put(edge, edge.getWeight());
+            incidenceMatrix.get(edge.getDest()).put(edge, -edge.getWeight());
         }
     }
 
@@ -76,8 +76,8 @@ public class GraphIncidenceMatrix<T> extends Graph<T> {
                 || !incidenceMatrix.containsKey(edge.getDest())) {
             throw new IllegalArgumentException();
         }
-        incidenceMatrix.get(edge.getSrc()).put(edge, 1);
-        incidenceMatrix.get(edge.getDest()).put(edge, -1);
+        incidenceMatrix.get(edge.getSrc()).put(edge, edge.getWeight());
+        incidenceMatrix.get(edge.getDest()).put(edge, -edge.getWeight());
         edges.put(this.maxEdgeId++, edge);
     }
 
@@ -114,7 +114,7 @@ public class GraphIncidenceMatrix<T> extends Graph<T> {
             }
             marked.replace(v, true);
             for (var edge : incidenceMatrix.get(this.getVertexById(v)).keySet()) {
-                if (incidenceMatrix.get(this.getVertexById(v)).get(edge) == 1) {
+                if (incidenceMatrix.get(this.getVertexById(v)).get(edge) > 0) {
                     var vert = (Integer) this.getIdByVertex(edge.getDest());
                     if (distance.get(vert) > distance.get(v) + edge.getWeight()) {
                         distance.replace(vert, distance.get(v) + edge.getWeight());
@@ -124,5 +124,16 @@ public class GraphIncidenceMatrix<T> extends Graph<T> {
             }
         }
         return distance;
+    }
+
+    @Override
+    public Boolean changeEdgeValue(Edge<T> edge, Double value) {
+        if (!edges.containsValue(edge)) return false;
+        incidenceMatrix.get(edge.getSrc()).replace(edge, value);
+        incidenceMatrix.get(edge.getSrc()).replace(edge, -value);
+        var edgId = this.getIdByEdge(edge);
+        var newEdge = new Edge<T>(edge.getSrc(), edge.getDest(), value);
+        edges.replace((Integer) edgId, newEdge);
+        return true;
     }
 }

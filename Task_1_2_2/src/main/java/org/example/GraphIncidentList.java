@@ -124,4 +124,15 @@ public class GraphIncidentList<T> extends Graph<T> {
         }
         return distance;
     }
+
+    @Override
+    public Boolean changeEdgeValue(Edge<T> edge, Double value) {
+        if (!edges.containsValue(edge)) return false;
+        var edgId = this.getIdByEdge(edge);
+        var newEdge = new Edge<T>(edge.getSrc(), edge.getDest(), value);
+        incidentList.get(edge.getSrc()).remove(edge);
+        incidentList.get(newEdge.getSrc()).add(newEdge);
+        edges.replace((Integer) edgId, newEdge);
+        return true;
+    }
 }

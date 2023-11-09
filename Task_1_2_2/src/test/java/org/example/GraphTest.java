@@ -161,7 +161,9 @@ public class GraphTest {
         assertEquals(2, v1.getValue());
         var e1 = new Edge<>(v1, v2, 5.0);
         g.addEdge(e1);
-        e1.changeWeight(3.0);
-        assertEquals(3.0, e1.getWeight());
+        assertTrue(g.changeEdgeValue(e1, 2.0));
+        assertFalse(g.edges.containsValue(e1));
+        var e4 = new Edge<>(v1, v2, 5.0);
+        assertFalse(g.changeEdgeValue(e4, 1.0));
     }
 }
