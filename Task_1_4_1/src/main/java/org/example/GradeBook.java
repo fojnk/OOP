@@ -88,7 +88,8 @@ public class GradeBook {
         AtomicInteger finalQualificationWork = new AtomicInteger(0);
         AtomicInteger finalAmountFif = new AtomicInteger(0);
         allSems.forEach(sem -> {
-            finalAmountFif.addAndGet((int) sem.getMarks().stream().filter(x -> x.getSubjectMark() == 5).count());
+            finalAmountFif.addAndGet((int) sem.getMarks().stream().filter(x ->
+                    x.getSubjectMark() == 5).count());
             finalQualificationWork.addAndGet((int) sem.getMarks().stream().filter(x ->
                     x.getSubjectName().equals("qualification work") && x.getSubjectMark() == 5).count());
             finalAmountOfBodGrades.addAndGet((int) sem.getMarks().stream().filter(x ->
@@ -96,7 +97,9 @@ public class GradeBook {
         });
 
         double percent = (double) finalAmountFif.doubleValue() / subAmount;
-        return finalAmountOfBodGrades.doubleValue() == 0 && finalQualificationWork.doubleValue() > 0
-                && (percent > 0.75) && (allSems.getLast().getMarks().getLast().getSubjectMark() == 5);
+        return finalAmountOfBodGrades.doubleValue() == 0
+                && finalQualificationWork.doubleValue() > 0
+                && (percent > 0.75)
+                && (allSems.getLast().getMarks().getLast().getSubjectMark() == 5);
     }
 }

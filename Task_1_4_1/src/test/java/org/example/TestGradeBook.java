@@ -24,7 +24,8 @@ public class TestGradeBook {
         someGradeBook.addGrade("OS", 3, 2);
         assertFalse(someGradeBook.studentGrandInCurrentSem());
         assertFalse(someGradeBook.redDiploma());
-        assertTrue((someGradeBook.getAverageGrade() > 4.4) && (someGradeBook.getAverageGrade() < 4.6));
+        assertTrue((someGradeBook.getAverageGrade() > 4.4)
+                && (someGradeBook.getAverageGrade() < 4.6));
         assertEquals("Boba Bebrov", someGradeBook.getOwnerInfo());
     }
 

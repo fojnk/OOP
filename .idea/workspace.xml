@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc685ff7-dcaa-4fba-86b0-f2b8ead58c30" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Task_1_4_1/src/main/java/org/example/GradeBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task_1_4_1/src/main/java/org/example/GradeBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task_1_4_1/src/main/java/org/example/Semester.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task_1_4_1/src/main/java/org/example/Semester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task_1_4_1/src/main/java/org/example/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task_1_4_1/src/main/java/org/example/Subject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Task_1_4_1/src/test/java/org/example/TestGradeBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task_1_4_1/src/test/java/org/example/TestGradeBook.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
