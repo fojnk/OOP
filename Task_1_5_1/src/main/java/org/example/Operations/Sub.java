@@ -6,6 +6,7 @@ public class Sub extends Operation {
         arg1 = a;
         arg2 = b;
     }
+
     @Override
     public Double evaluate() {
         return arg1 - arg2;

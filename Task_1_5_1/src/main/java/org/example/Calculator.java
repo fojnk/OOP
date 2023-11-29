@@ -1,20 +1,37 @@
 package org.example;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.EmptyStackException;
+import java.util.Scanner;
+import java.util.Stack;
 
+/**
+ * класс калькулятора.
+ */
 public class Calculator {
     private String inputExp;
-    private Stack<Double> numbers;
+    private final Stack<Double> numbers;
 
+    /**
+     * конструктор калькулятора для пользователя.
+     */
     public Calculator() {
         this.numbers = new Stack<>();
     }
 
+    /**
+     * конструктор калькулятора для тестов.
+     *
+     * @param inputExp - выражение в префиксной форме
+     */
     public Calculator(String inputExp) {
         this.numbers = new Stack<>();
         this.inputExp = inputExp;
     }
 
+    /**
+     * пользовательский интерфейс калькулятора.
+     */
     public void userInterface() {
         var scanner = new Scanner(System.in);
         System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
@@ -29,11 +46,18 @@ public class Calculator {
         while (true) {
             System.out.println("Please enter expression in prefix form:");
             this.inputExp = scanner.nextLine();
-            if (inputExp.equals("q")) { break; }
+            if (inputExp.equals("q")) {
+                break;
+            }
             System.out.println("Answer: " + evaluateExp());
         }
     }
 
+    /**
+     * метод для подсчета значения выражений.
+     *
+     * @return - ответ
+     */
     public Double evaluateExp() {
         try {
             String[] args = this.inputExp.split(" ");
