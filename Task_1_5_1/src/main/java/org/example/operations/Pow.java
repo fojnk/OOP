@@ -1,4 +1,4 @@
-package org.example.Operations;
+package org.example.operations;
 
 /**
  * text.

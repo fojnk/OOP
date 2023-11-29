@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.Operations.*;
+import org.example.operations.*;
 
 /**
  * класс для манипуляций с операциями.

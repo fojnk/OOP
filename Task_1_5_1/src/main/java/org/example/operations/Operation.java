@@ -1,4 +1,4 @@
-package org.example.Operations;
+package org.example.operations;
 
 /**
  * абстрактный метод для описания структуры операции.

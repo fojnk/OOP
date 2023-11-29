@@ -1,22 +1,24 @@
-package org.example.Operations;
+package org.example.operations;
 
 /**
  * text.
  */
-public class Div extends Operation {
+public class Add extends Operation {
+
     /**
-     * деление.
+     * сложение.
      *
      * @param a - 1
      * @param b - 2
      */
-    public Div(Double a, Double b) {
+    public Add(Double a, Double b) {
         arg1 = a;
         arg2 = b;
     }
 
     @Override
     public Double evaluate() {
-        return arg1 / arg2;
+        return arg1 + arg2;
     }
 }
+

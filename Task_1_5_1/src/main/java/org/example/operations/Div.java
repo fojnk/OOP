@@ -1,22 +1,22 @@
-package org.example.Operations;
+package org.example.operations;
 
 /**
  * text.
  */
-public class Mul extends Operation {
+public class Div extends Operation {
     /**
-     * умножение.
+     * деление.
      *
      * @param a - 1
      * @param b - 2
      */
-    public Mul(Double a, Double b) {
+    public Div(Double a, Double b) {
         arg1 = a;
         arg2 = b;
     }
 
     @Override
     public Double evaluate() {
-        return arg1 * arg2;
+        return arg1 / arg2;
     }
 }

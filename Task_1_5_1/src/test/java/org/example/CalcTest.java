@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.Operations.*;
+import org.example.operations.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,22 +17,22 @@ public class CalcTest {
         Double a = 1.0;
         Double b = 2.0;
         var add = new Add(a, b);
-        var sub = new Sub(a, b);
-        var mul = new Mul(a, b);
-        var div = new Div(a, b);
-        var pow = new Pow(a, b);
-        var cos = new Cos(a);
-        var sin = new Sin(a);
-        var log = new Log(a);
-        var sqrt = new Sqrt(a);
         assertEquals(a + b, add.evaluate());
+        var sub = new Sub(a, b);
         assertEquals(a - b, sub.evaluate());
+        var mul = new Mul(a, b);
         assertEquals(a * b, mul.evaluate());
+        var div = new Div(a, b);
         assertEquals(a / b, div.evaluate());
+        var pow = new Pow(a, b);
         assertEquals(Math.pow(a, b), pow.evaluate());
+        var cos = new Cos(a);
         assertEquals(Math.cos(a), cos.evaluate());
+        var sin = new Sin(a);
         assertEquals(Math.sin(a), sin.evaluate());
+        var log = new Log(a);
         assertEquals(Math.log(a), log.evaluate());
+        var sqrt = new Sqrt(a);
         assertEquals(Math.sqrt(a), sqrt.evaluate());
     }
 
@@ -44,6 +44,12 @@ public class CalcTest {
         var calc = new Calculator();
         calc = new Calculator("sin + - 1 2 1");
         assertEquals(0.0, calc.evaluateExp());
+        calc = new Calculator("sin");
+        assertNull(calc.evaluateExp());
+        calc = new Calculator("+ 1");
+        assertNull(calc.evaluateExp());
+        calc = new Calculator("dsjaklfjdskjfl");
+        assertNull(calc.evaluateExp());
     }
 
     /**

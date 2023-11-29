@@ -63,9 +63,11 @@ public class Calculator {
             String[] args = this.inputExp.split(" ");
             for (int i = args.length - 1; i >= 0; i--) {
                 if (OperationsHandler.argIsUnaryOp(args[i])) {
-                    numbers.push(OperationsHandler.getUnaryOperation(args[i], numbers.pop()).evaluate());
+                    numbers.push(OperationsHandler.getUnaryOperation(args[i],
+                            numbers.pop()).evaluate());
                 } else if (OperationsHandler.argIsBinaryOp(args[i])) {
-                    numbers.push(OperationsHandler.getBinaryOperation(args[i], numbers.pop(), numbers.pop()).evaluate());
+                    numbers.push(OperationsHandler.getBinaryOperation(args[i],
+                            numbers.pop(), numbers.pop()).evaluate());
                 } else {
                     numbers.push(Double.valueOf(args[i]));
                 }
