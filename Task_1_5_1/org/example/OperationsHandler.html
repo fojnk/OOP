@@ -133,6 +133,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">OperationsHandler</span>
 extends java.lang.Object</pre>
+<div class="block">класс для манипуляций с операциями.</div>
 </li>
 </ul>
 </div>
@@ -177,35 +178,47 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>static boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#argIsBinaryOp(java.lang.String)">argIsBinaryOp</a></span>&#8203;(java.lang.String&nbsp;arg)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">метод для проверки операции на бинарность.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>static boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#argIsUnaryOp(java.lang.String)">argIsUnaryOp</a></span>&#8203;(java.lang.String&nbsp;arg)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">метод для проверки операции на унарность.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>static java.lang.String[]</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAllBinaryOperations()">getAllBinaryOperations</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">метод для получения бинарных операций.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>static java.lang.String[]</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAllUnaryOperations()">getAllUnaryOperations</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">метод для получения всех унарных операций.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>static <a href="Operations/Operation.html" title="class in org.example.Operations">Operation</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getBinaryOperation(java.lang.String,java.lang.Double,java.lang.Double)">getBinaryOperation</a></span>&#8203;(java.lang.String&nbsp;op,
                   java.lang.Double&nbsp;a,
                   java.lang.Double&nbsp;b)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">метод для создания бинарных операций.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>static <a href="Operations/Operation.html" title="class in org.example.Operations">Operation</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getUnaryOperation(java.lang.String,java.lang.Double)">getUnaryOperation</a></span>&#8203;(java.lang.String&nbsp;op,
                  java.lang.Double&nbsp;a)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">метод для создания унарных операций.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -257,6 +270,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>argIsUnaryOp</h4>
 <pre class="methodSignature">public static&nbsp;boolean&nbsp;argIsUnaryOp&#8203;(java.lang.String&nbsp;arg)</pre>
+<div class="block">метод для проверки операции на унарность.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>arg</code> - - один из токенов</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- true or false</dd>
+</dl>
 </li>
 </ul>
 <a id="argIsBinaryOp(java.lang.String)">
@@ -266,6 +286,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>argIsBinaryOp</h4>
 <pre class="methodSignature">public static&nbsp;boolean&nbsp;argIsBinaryOp&#8203;(java.lang.String&nbsp;arg)</pre>
+<div class="block">метод для проверки операции на бинарность.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>arg</code> - - один из токенов</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- true or false</dd>
+</dl>
 </li>
 </ul>
 <a id="getAllUnaryOperations()">
@@ -275,6 +302,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getAllUnaryOperations</h4>
 <pre class="methodSignature">public static&nbsp;java.lang.String[]&nbsp;getAllUnaryOperations()</pre>
+<div class="block">метод для получения всех унарных операций.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- массив унарных операций</dd>
+</dl>
 </li>
 </ul>
 <a id="getAllBinaryOperations()">
@@ -284,6 +316,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getAllBinaryOperations</h4>
 <pre class="methodSignature">public static&nbsp;java.lang.String[]&nbsp;getAllBinaryOperations()</pre>
+<div class="block">метод для получения бинарных операций.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- массив бинарных операций</dd>
+</dl>
 </li>
 </ul>
 <a id="getUnaryOperation(java.lang.String,java.lang.Double)">
@@ -294,6 +331,14 @@ extends java.lang.Object</pre>
 <h4>getUnaryOperation</h4>
 <pre class="methodSignature">public static&nbsp;<a href="Operations/Operation.html" title="class in org.example.Operations">Operation</a>&nbsp;getUnaryOperation&#8203;(java.lang.String&nbsp;op,
                                           java.lang.Double&nbsp;a)</pre>
+<div class="block">метод для создания унарных операций.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>op</code> - - операция</dd>
+<dd><code>a</code> - - аргумент</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- функция</dd>
+</dl>
 </li>
 </ul>
 <a id="getBinaryOperation(java.lang.String,java.lang.Double,java.lang.Double)">
@@ -305,6 +350,15 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public static&nbsp;<a href="Operations/Operation.html" title="class in org.example.Operations">Operation</a>&nbsp;getBinaryOperation&#8203;(java.lang.String&nbsp;op,
                                            java.lang.Double&nbsp;a,
                                            java.lang.Double&nbsp;b)</pre>
+<div class="block">метод для создания бинарных операций.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>op</code> - - операция</dd>
+<dd><code>a</code> - - первый аргумент</dd>
+<dd><code>b</code> - - второй аргумент</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- функция</dd>
+</dl>
 </li>
 </ul>
 </li>
