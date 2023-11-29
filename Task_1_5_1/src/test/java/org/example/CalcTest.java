@@ -41,7 +41,8 @@ public class CalcTest {
      */
     @Test
     public void calcTest() {
-        var calc = new Calculator("sin + - 1 2 1");
+        var calc = new Calculator();
+        calc = new Calculator("sin + - 1 2 1");
         assertEquals(0.0, calc.evaluateExp());
     }
 

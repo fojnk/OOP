@@ -1,7 +1,15 @@
 package org.example.Operations;
 
+/**
+ * text.
+ */
 public class Sin extends Operation {
 
+    /**
+     * синус.
+     *
+     * @param a - 1
+     */
     public Sin(Double a) {
         arg1 = a;
     }

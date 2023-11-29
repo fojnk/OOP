@@ -1,7 +1,15 @@
 package org.example.Operations;
 
+/**
+ * text.
+ */
 public class Log extends Operation {
 
+    /**
+     * логарифм.
+     *
+     * @param a - 1
+     */
     public Log(Double a) {
         arg1 = a;
     }

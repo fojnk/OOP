@@ -1,6 +1,15 @@
 package org.example.Operations;
 
+/**
+ * text.
+ */
 public class Cos extends Operation {
+
+    /**
+     * косинус.
+     *
+     * @param a - 1
+     */
     public Cos(Double a) {
         arg1 = a;
     }
