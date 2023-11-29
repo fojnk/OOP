@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -132,6 +132,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Semester</span>
 extends java.lang.Object</pre>
+<div class="block">класс для описание семестров.</div>
 </li>
 </ul>
 </div>
@@ -153,7 +154,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int)">Semester</a></span>&#8203;(int&nbsp;number)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">конструктор семестра.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -177,28 +180,45 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addSubject(java.lang.String,int)">addSubject</a></span>&#8203;(java.lang.String&nbsp;name,
           int&nbsp;mark)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">метод добавления нового предмета.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#changeMarkInSubject(java.lang.String,int)">changeMarkInSubject</a></span>&#8203;(java.lang.String&nbsp;name,
                    int&nbsp;mark)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">метод для изменения оценки за предмет.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="Subject.html" title="class in org.example">Subject</a></code></td>
+<td class="colFirst"><code>java.util.Optional&lt;<a href="Subject.html" title="class in org.example">Subject</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findSubjectByName(java.lang.String)">findSubjectByName</a></span>&#8203;(java.lang.String&nbsp;name)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">метод для нахождения предмета по его названию.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.util.LinkedList&lt;<a href="Subject.html" title="class in org.example">Subject</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getMarks()">getMarks</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">получение всех оценок в семестре.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>org.example.SemesterGrand</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#grand()">grand</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">получение информации о стипендии.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>java.lang.Integer</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#semesterGetNumber()">semesterGetNumber</a></span>()</code></th>
+<td class="colLast">
+<div class="block">получение номера семестра.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -231,6 +251,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>Semester</h4>
 <pre>public&nbsp;Semester&#8203;(int&nbsp;number)</pre>
+<div class="block">конструктор семестра.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>number</code> - - номер семестра</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -251,6 +276,12 @@ extends java.lang.Object</pre>
 <h4>addSubject</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;addSubject&#8203;(java.lang.String&nbsp;name,
                        int&nbsp;mark)</pre>
+<div class="block">метод добавления нового предмета.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>name</code> - - имя предмета</dd>
+<dd><code>mark</code> - - оценка</dd>
+</dl>
 </li>
 </ul>
 <a id="findSubjectByName(java.lang.String)">
@@ -259,7 +290,14 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>findSubjectByName</h4>
-<pre class="methodSignature">public&nbsp;<a href="Subject.html" title="class in org.example">Subject</a>&nbsp;findSubjectByName&#8203;(java.lang.String&nbsp;name)</pre>
+<pre class="methodSignature">public&nbsp;java.util.Optional&lt;<a href="Subject.html" title="class in org.example">Subject</a>&gt;&nbsp;findSubjectByName&#8203;(java.lang.String&nbsp;name)</pre>
+<div class="block">метод для нахождения предмета по его названию.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>name</code> - - название предмета</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- предмет</dd>
+</dl>
 </li>
 </ul>
 <a id="changeMarkInSubject(java.lang.String,int)">
@@ -270,6 +308,12 @@ extends java.lang.Object</pre>
 <h4>changeMarkInSubject</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;changeMarkInSubject&#8203;(java.lang.String&nbsp;name,
                                 int&nbsp;mark)</pre>
+<div class="block">метод для изменения оценки за предмет.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>name</code> - - имя предмета</dd>
+<dd><code>mark</code> - - оценка за него</dd>
+</dl>
 </li>
 </ul>
 <a id="grand()">
@@ -279,6 +323,25 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>grand</h4>
 <pre class="methodSignature">public&nbsp;org.example.SemesterGrand&nbsp;grand()</pre>
+<div class="block">получение информации о стипендии.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- стипендию</dd>
+</dl>
+</li>
+</ul>
+<a id="semesterGetNumber()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>semesterGetNumber</h4>
+<pre class="methodSignature">public&nbsp;java.lang.Integer&nbsp;semesterGetNumber()</pre>
+<div class="block">получение номера семестра.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- номер семестра</dd>
+</dl>
 </li>
 </ul>
 <a id="getMarks()">
@@ -288,6 +351,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getMarks</h4>
 <pre class="methodSignature">public&nbsp;java.util.LinkedList&lt;<a href="Subject.html" title="class in org.example">Subject</a>&gt;&nbsp;getMarks()</pre>
+<div class="block">получение всех оценок в семестре.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- список предметов</dd>
+</dl>
 </li>
 </ul>
 </li>
