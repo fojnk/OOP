@@ -159,12 +159,6 @@ extends java.lang.Object</pre>
 <div class="block">конструктор калькулятора для пользователя.</div>
 </td>
 </tr>
-<tr class="rowColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String)">Calculator</a></span>&#8203;(java.lang.String&nbsp;inputExp)</code></th>
-<td class="colLast">
-<div class="block">конструктор калькулятора для тестов.</div>
-</td>
-</tr>
 </table>
 </li>
 </ul>
@@ -184,17 +178,17 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addNewExpression(java.lang.String)">addNewExpression</a></span>&#8203;(java.lang.String&nbsp;exp)</code></th>
+<td class="colLast">
+<div class="block">метод для добавления нового выражения.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>java.lang.Double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#evaluateExp()">evaluateExp</a></span>()</code></th>
 <td class="colLast">
 <div class="block">метод для подсчета значения выражений.</div>
-</td>
-</tr>
-<tr id="i1" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#userInterface()">userInterface</a></span>()</code></th>
-<td class="colLast">
-<div class="block">пользовательский интерфейс калькулятора.</div>
 </td>
 </tr>
 </table>
@@ -224,25 +218,11 @@ extends java.lang.Object</pre>
 <a id="&lt;init&gt;()">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>Calculator</h4>
 <pre>public&nbsp;Calculator()</pre>
 <div class="block">конструктор калькулятора для пользователя.</div>
-</li>
-</ul>
-<a id="&lt;init&gt;(java.lang.String)">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>Calculator</h4>
-<pre>public&nbsp;Calculator&#8203;(java.lang.String&nbsp;inputExp)</pre>
-<div class="block">конструктор калькулятора для тестов.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>inputExp</code> - - выражение в префиксной форме</dd>
-</dl>
 </li>
 </ul>
 </li>
@@ -255,14 +235,18 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="userInterface()">
+<a id="addNewExpression(java.lang.String)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>userInterface</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;userInterface()</pre>
-<div class="block">пользовательский интерфейс калькулятора.</div>
+<h4>addNewExpression</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;addNewExpression&#8203;(java.lang.String&nbsp;exp)</pre>
+<div class="block">метод для добавления нового выражения.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>exp</code> - - новое выражение.</dd>
+</dl>
 </li>
 </ul>
 <a id="evaluateExp()">
