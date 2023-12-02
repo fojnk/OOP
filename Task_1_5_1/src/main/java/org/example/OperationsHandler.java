@@ -68,7 +68,8 @@ public class OperationsHandler {
      * @return - функция
      */
     public static Operation getUnaryOperation(String op, Double a) {
-        String operationName = Package + op.substring(0, 1).toUpperCase() + op.substring(1);
+        String operationName = Package + op.substring(0, 1).toUpperCase()
+                + op.substring(1);
         try {
             Class<?> operatorClass = Class.forName(operationName);
             Constructor<?> constructor = operatorClass.getDeclaredConstructor(Double.class);
@@ -98,7 +99,8 @@ public class OperationsHandler {
                 return new Div(a, b);
             case "pow":
                 return new Pow(a, b);
+            default:
+                return null;
         }
-        return null;
     }
 }

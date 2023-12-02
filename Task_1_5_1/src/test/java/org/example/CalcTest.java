@@ -1,8 +1,8 @@
 package org.example;
 
+import java.util.EmptyStackException;
 import org.example.operations.*;
 import org.junit.jupiter.api.Test;
-import java.util.EmptyStackException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -90,7 +90,9 @@ public class CalcTest {
         assertEquals(OperationsHandler.getUnaryOperation("sqrt", 0.0).evaluate(), 0.0);
         assertEquals(OperationsHandler.getBinaryOperation("+", 1.0, 2.0).evaluate(), 3.0);
         assertEquals(OperationsHandler.getBinaryOperation("-", 1.0, 2.0).evaluate(), -1.0);
-        assertArrayEquals(OperationsHandler.getAllUnaryOperations(), new String[]{"sin", "cos", "sqrt", "log"});
-        assertArrayEquals(OperationsHandler.getAllBinaryOperations(), new String[]{"+", "-", "*", "/", "pow"});
+        assertArrayEquals(OperationsHandler.getAllUnaryOperations(),
+                new String[]{"sin", "cos", "sqrt", "log"});
+        assertArrayEquals(OperationsHandler.getAllBinaryOperations(),
+                new String[]{"+", "-", "*", "/", "pow"});
     }
 }

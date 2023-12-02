@@ -3,7 +3,7 @@ package org.example.operations;
 /**
  * абстрактный метод для описания структуры операции.
  */
-abstract public class Operation {
+public abstract class Operation {
     protected Double arg1;
     protected Double arg2;
 
