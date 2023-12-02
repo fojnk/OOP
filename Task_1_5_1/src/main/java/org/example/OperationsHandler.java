@@ -2,10 +2,13 @@ package org.example;
 
 import org.example.operations.*;
 
+import java.lang.reflect.Constructor;
+
 /**
  * класс для манипуляций с операциями.
  */
 public class OperationsHandler {
+    private static final String Package = "org.example.operations.";
     private static final String[] unaryOps = new String[]{"sin", "cos", "sqrt", "log"};
     private static final String[] binaryOps = new String[]{"+", "-", "*", "/", "pow"};
 
@@ -65,17 +68,14 @@ public class OperationsHandler {
      * @return - функция
      */
     public static Operation getUnaryOperation(String op, Double a) {
-        switch (op) {
-            case "cos":
-                return new Cos(a);
-            case "sin":
-                return new Sin(a);
-            case "log":
-                return new Log(a);
-            case "sqrt":
-                return new Sqrt(a);
+        String operationName = Package + op.substring(0, 1).toUpperCase() + op.substring(1);
+        try {
+            Class<?> operatorClass = Class.forName(operationName);
+            Constructor<?> constructor = operatorClass.getDeclaredConstructor(Double.class);
+            return (Operation) constructor.newInstance(a);
+        } catch (Exception e) {
+            return null;
         }
-        return null;
     }
 
     /**

@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.operations.*;
 import org.junit.jupiter.api.Test;
+import java.util.EmptyStackException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -42,14 +43,32 @@ public class CalcTest {
     @Test
     public void calcTest() {
         var calc = new Calculator();
-        calc = new Calculator("sin + - 1 2 1");
+        calc.addNewExpression("sin + - 1 2 1");
         assertEquals(0.0, calc.evaluateExp());
-        calc = new Calculator("sin");
-        assertNull(calc.evaluateExp());
-        calc = new Calculator("+ 1");
-        assertNull(calc.evaluateExp());
-        calc = new Calculator("dsjaklfjdskjfl");
-        assertNull(calc.evaluateExp());
+        boolean flag = false;
+        calc.addNewExpression("sin");
+        try {
+            calc.evaluateExp();
+        } catch (EmptyStackException e) {
+            flag = true;
+        }
+        assertTrue(flag);
+        flag = false;
+        calc.addNewExpression("+ 1");
+        try {
+            calc.evaluateExp();
+        } catch (EmptyStackException e) {
+            flag = true;
+        }
+        assertTrue(flag);
+        calc.addNewExpression("dsjaklfjdskjfl");
+        flag = false;
+        try {
+            calc.evaluateExp();
+        } catch (NumberFormatException e) {
+            flag = true;
+        }
+        assertTrue(flag);
     }
 
     /**
