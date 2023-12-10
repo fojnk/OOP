@@ -9,6 +9,6 @@ public class Main {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
         System.out.println(LocalDateTime.now().format(formatter));
         UserInterface userin = new UserInterface("notebook.json");
-        userin.ParseCommand(new String[] {"-add", "my title", "hshahfdlasj"});
+        userin.ParseCommand(new String[] {"-show", "my title", "hshahfdlasj"});
     }
 }

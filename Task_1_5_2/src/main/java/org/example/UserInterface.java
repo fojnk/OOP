@@ -1,30 +1,17 @@
 package org.example;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.kohsuke.args4j.Argument;
-import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
-import org.w3c.dom.Node;
-
-import java.time.LocalDateTime;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.example.Json.fromJson;
-
 public class UserInterface {
     private File jsonFile;
     private Notebook notebook;
-    private Json JsonModule;
-
-    private  ObjectMapper mapper;
 
     @Option(name="-add", usage="add a new note with the specified title and description")
     private boolean add = false;
@@ -53,12 +40,8 @@ public class UserInterface {
                 throw new RuntimeException(e);
             }
         }
-        this.mapper = new ObjectMapper();
-        mapper.registerModule(new JavaTimeModule());
-        var ref = new TypeReference<List<Note>>() {};
         try {
-            List<Note> nodes = mapper.readValue(jsonFile, ref);
-            this.notebook = new Notebook(nodes);
+            this.notebook = new Notebook(Json.readNotes(jsonFile));
         } catch (IOException e) {
             System.out.println("Read json failed");
         }
@@ -69,12 +52,13 @@ public class UserInterface {
 
         try {
             parser.parseArgument(args);
-            if( arguments.isEmpty() )
+            if( arguments.isEmpty() ) {
                 System.out.println("No argument is given");
-
-
+                return;
+            }
         } catch( Exception e ) {
             NotebookUsage();
+            return;
         }
 
         if (add) {
@@ -88,20 +72,13 @@ public class UserInterface {
         } else {
             System.out.println("Unknown operation");
             NotebookUsage();
+            return;
         }
-        this.mapper.writeValue(jsonFile, notebook.getAllNotes());
-    }
-
-    private void NotebookUsage() {
-        System.out.println("notebook [command] args");
-        Help();
-    }
-
-    private void Help() {
-        System.out.println("All commands:\n-add: a new note with the specified title and description");
-        System.out.println("-show: show all notes sorted by date");
-        System.out.println("-rm: remove notes by title");
-        System.out.println("--help: show all commands");
+        try {
+            Json.writeNotes(jsonFile, notebook.getAllNotes());
+        } catch (IOException e) {
+            System.out.println("Write notes failed");
+        }
     }
 
     private void addOp() {
@@ -131,5 +108,17 @@ public class UserInterface {
         for (var note: notebook.getAllNotes()) {
             System.out.println(note.getNoteDate() + note.getTitle() + note.getDescription());
         }
+    }
+
+    private void NotebookUsage() {
+        System.out.println("notebook [command] args");
+        Help();
+    }
+
+    private void Help() {
+        System.out.println("All commands:\n-add: a new note with the specified title and description");
+        System.out.println("-show: show all notes sorted by date");
+        System.out.println("-rm: remove notes by title");
+        System.out.println("--help: show all commands");
     }
 }
