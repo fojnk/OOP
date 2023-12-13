@@ -132,6 +132,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Json</span>
 extends java.lang.Object</pre>
+<div class="block">Класс для работы с Json.</div>
 </li>
 </ul>
 </div>
@@ -176,13 +177,17 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>static java.util.List&lt;<a href="Note.html" title="class in org.example">Note</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#readNotes(java.io.File)">readNotes</a></span>&#8203;(java.io.File&nbsp;filename)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Получение всех заметок.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#writeNotes(java.io.File,java.util.List)">writeNotes</a></span>&#8203;(java.io.File&nbsp;filename,
           java.util.List&lt;<a href="Note.html" title="class in org.example">Note</a>&gt;&nbsp;notes)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Запись заметок.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -235,9 +240,14 @@ extends java.lang.Object</pre>
 <h4>readNotes</h4>
 <pre class="methodSignature">public static&nbsp;java.util.List&lt;<a href="Note.html" title="class in org.example">Note</a>&gt;&nbsp;readNotes&#8203;(java.io.File&nbsp;filename)
                                       throws java.io.IOException</pre>
+<div class="block">Получение всех заметок.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>filename</code> - - файла</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- список заметок</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.io.IOException</code></dd>
+<dd><code>java.io.IOException</code> - - исключение ввода-вывода</dd>
 </dl>
 </li>
 </ul>
@@ -250,9 +260,13 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public static&nbsp;void&nbsp;writeNotes&#8203;(java.io.File&nbsp;filename,
                               java.util.List&lt;<a href="Note.html" title="class in org.example">Note</a>&gt;&nbsp;notes)
                        throws java.io.IOException</pre>
+<div class="block">Запись заметок.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>filename</code> - - файл</dd>
+<dd><code>notes</code> - - заметки</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.io.IOException</code></dd>
+<dd><code>java.io.IOException</code> - - исключение ввода-вывода</dd>
 </dl>
 </li>
 </ul>

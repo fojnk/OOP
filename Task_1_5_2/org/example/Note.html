@@ -132,6 +132,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Note</span>
 extends java.lang.Object</pre>
+<div class="block">Класс для описания заметок.</div>
 </li>
 </ul>
 </div>
@@ -153,18 +154,24 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">Note</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Пустой конструктор заметки.</div>
+</td>
 </tr>
 <tr class="rowColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String,java.lang.String)">Note</a></span>&#8203;(java.lang.String&nbsp;title,
     java.lang.String&nbsp;description)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Конструктор с автодатой.</div>
+</td>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String,java.lang.String,java.lang.String)">Note</a></span>&#8203;(java.lang.String&nbsp;date,
     java.lang.String&nbsp;title,
     java.lang.String&nbsp;description)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">конструктор с заданной датой.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -187,32 +194,44 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDescription()">getDescription</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">получение описания.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNoteDate()">getNoteDate</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">получение даты.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTitle()">getTitle</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">получение заголовка.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setDescription(java.lang.String)">setDescription</a></span>&#8203;(java.lang.String&nbsp;description)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">установка описания.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setNoteDate(java.lang.String)">setNoteDate</a></span>&#8203;(java.lang.String&nbsp;noteDate)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">установка даты.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setTitle(java.lang.String)">setTitle</a></span>&#8203;(java.lang.String&nbsp;title)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">установка загловка.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -245,6 +264,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>Note</h4>
 <pre>public&nbsp;Note()</pre>
+<div class="block">Пустой конструктор заметки.</div>
 </li>
 </ul>
 <a id="&lt;init&gt;(java.lang.String,java.lang.String)">
@@ -255,6 +275,12 @@ extends java.lang.Object</pre>
 <h4>Note</h4>
 <pre>public&nbsp;Note&#8203;(java.lang.String&nbsp;title,
             java.lang.String&nbsp;description)</pre>
+<div class="block">Конструктор с автодатой.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>title</code> - - название</dd>
+<dd><code>description</code> - - описание</dd>
+</dl>
 </li>
 </ul>
 <a id="&lt;init&gt;(java.lang.String,java.lang.String,java.lang.String)">
@@ -266,6 +292,13 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;Note&#8203;(java.lang.String&nbsp;date,
             java.lang.String&nbsp;title,
             java.lang.String&nbsp;description)</pre>
+<div class="block">конструктор с заданной датой.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>date</code> - - дата</dd>
+<dd><code>title</code> - - заголовок</dd>
+<dd><code>description</code> - - описание</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -285,6 +318,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getNoteDate</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getNoteDate()</pre>
+<div class="block">получение даты.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- дата в виде строки</dd>
+</dl>
 </li>
 </ul>
 <a id="setNoteDate(java.lang.String)">
@@ -294,6 +332,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setNoteDate</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setNoteDate&#8203;(java.lang.String&nbsp;noteDate)</pre>
+<div class="block">установка даты.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>noteDate</code> - - новая дата</dd>
+</dl>
 </li>
 </ul>
 <a id="getTitle()">
@@ -303,6 +346,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getTitle</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getTitle()</pre>
+<div class="block">получение заголовка.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- заголовок</dd>
+</dl>
 </li>
 </ul>
 <a id="setTitle(java.lang.String)">
@@ -312,6 +360,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setTitle</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setTitle&#8203;(java.lang.String&nbsp;title)</pre>
+<div class="block">установка загловка.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>title</code> - - новый заголовок</dd>
+</dl>
 </li>
 </ul>
 <a id="getDescription()">
@@ -321,6 +374,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getDescription</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getDescription()</pre>
+<div class="block">получение описания.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- строка</dd>
+</dl>
 </li>
 </ul>
 <a id="setDescription(java.lang.String)">
@@ -330,6 +388,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setDescription</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setDescription&#8203;(java.lang.String&nbsp;description)</pre>
+<div class="block">установка описания.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>description</code> - - новое описание</dd>
+</dl>
 </li>
 </ul>
 </li>

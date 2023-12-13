@@ -132,6 +132,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Notebook</span>
 extends java.lang.Object</pre>
+<div class="block">Класс для описания записной книжки.</div>
 </li>
 </ul>
 </div>
@@ -153,7 +154,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.util.List)">Notebook</a></span>&#8203;(java.util.List&lt;<a href="Note.html" title="class in org.example">Note</a>&gt;&nbsp;notes)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">конструктор, создающий книжку по списку заметок.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -177,27 +180,37 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addNote(java.lang.String,java.lang.String)">addNote</a></span>&#8203;(java.lang.String&nbsp;title,
        java.lang.String&nbsp;description)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">добавление заметки.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addNote(org.example.Note)">addNote</a></span>&#8203;(<a href="Note.html" title="class in org.example">Note</a>&nbsp;note)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">добавление уже существующей заметки.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#containsNote(org.example.Note)">containsNote</a></span>&#8203;(<a href="Note.html" title="class in org.example">Note</a>&nbsp;note)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">проверка на наличие заметки.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;<a href="Note.html" title="class in org.example">Note</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAllNotes()">getAllNotes</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">получение всех заметок.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeNotes(java.lang.String)">removeNotes</a></span>&#8203;(java.lang.String&nbsp;title)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">удаление заметок.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -230,6 +243,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>Notebook</h4>
 <pre>public&nbsp;Notebook&#8203;(java.util.List&lt;<a href="Note.html" title="class in org.example">Note</a>&gt;&nbsp;notes)</pre>
+<div class="block">конструктор, создающий книжку по списку заметок.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>notes</code> - - заметки</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -250,6 +268,12 @@ extends java.lang.Object</pre>
 <h4>addNote</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;addNote&#8203;(java.lang.String&nbsp;title,
                     java.lang.String&nbsp;description)</pre>
+<div class="block">добавление заметки.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>title</code> - - заголовок</dd>
+<dd><code>description</code> - - описание</dd>
+</dl>
 </li>
 </ul>
 <a id="addNote(org.example.Note)">
@@ -259,6 +283,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>addNote</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;addNote&#8203;(<a href="Note.html" title="class in org.example">Note</a>&nbsp;note)</pre>
+<div class="block">добавление уже существующей заметки.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>note</code> - - заметка</dd>
+</dl>
 </li>
 </ul>
 <a id="containsNote(org.example.Note)">
@@ -268,6 +297,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>containsNote</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;containsNote&#8203;(<a href="Note.html" title="class in org.example">Note</a>&nbsp;note)</pre>
+<div class="block">проверка на наличие заметки.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>note</code> - - заметка</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- true or false</dd>
+</dl>
 </li>
 </ul>
 <a id="removeNotes(java.lang.String)">
@@ -277,6 +313,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>removeNotes</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;removeNotes&#8203;(java.lang.String&nbsp;title)</pre>
+<div class="block">удаление заметок.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>title</code> - - заголовок</dd>
+</dl>
 </li>
 </ul>
 <a id="getAllNotes()">
@@ -286,6 +327,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getAllNotes</h4>
 <pre class="methodSignature">public&nbsp;java.util.List&lt;<a href="Note.html" title="class in org.example">Note</a>&gt;&nbsp;getAllNotes()</pre>
+<div class="block">получение всех заметок.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- новый список заметок</dd>
+</dl>
 </li>
 </ul>
 </li>
