@@ -1,14 +1,19 @@
 package org.example;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
+/**
+ * Главный класс.
+ */
 public class Main {
+    /**
+     * точка входа.
+     *
+     * @param args - аргументы командной строки
+     * @throws IOException - исключение ввода-вывода
+     */
     public static void main(String[] args) throws IOException {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
-        System.out.println(LocalDateTime.now().format(formatter));
         UserInterface userin = new UserInterface("notebook.json");
-        userin.ExecCommand(new String[] {"-rm", "my title"});
+        userin.ExecCommand(new String[]{"-show"});
     }
 }

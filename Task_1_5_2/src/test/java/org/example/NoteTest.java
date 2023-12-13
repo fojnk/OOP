@@ -3,7 +3,13 @@ package org.example;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Класс для проверки заметок.
+ */
 public class NoteTest {
+    /**
+     * проверка всех основных операций.
+     */
     @Test
     public void basicTests() {
         var note1 = new Note("hello", "somenote");

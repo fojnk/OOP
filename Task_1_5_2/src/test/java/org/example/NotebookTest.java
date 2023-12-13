@@ -2,14 +2,18 @@ package org.example;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.provider.Arguments;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Stream;
 
+/**
+ * Класс для тестирования книжки с заметками.
+ */
 public class NotebookTest {
 
+    /**
+     * проверка добалвения заметок.
+     */
     @Test
     public void addTest() {
         List<Note> list = new LinkedList<>();
@@ -23,7 +27,7 @@ public class NotebookTest {
         Assertions.assertTrue(notebook.containsNote(note2));
         notebook.addNote("newNote", "some text");
         boolean flag = false;
-        for (var note: notebook.getAllNotes()) {
+        for (var note : notebook.getAllNotes()) {
             if (note.getTitle().equals("newNote")) {
                 flag = true;
                 break;
@@ -32,6 +36,9 @@ public class NotebookTest {
         Assertions.assertTrue(flag);
     }
 
+    /**
+     * проверка удаления заметок.
+     */
     @Test
     public void removeTest() {
         List<Note> list = new LinkedList<>();
