@@ -1,10 +1,9 @@
 package org.example;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
 import java.io.File;
 import java.io.IOException;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * класс для проверки пользовательского интерфейса.
@@ -18,8 +17,8 @@ public class UserInterfaceTest {
     @Test
     public void addTest() throws IOException {
         var ui = new UserInterface("notebook.json");
-        ui.ExecCommand(new String[]{"-add", "my title", "hshahfdlasj"});
-        ui.ExecCommand(new String[]{"--help"});
+        ui.execCommand(new String[]{"-add", "my title", "hshahfdlasj"});
+        ui.execCommand(new String[]{"--help"});
         File file = new File("notebook.json");
         var notes = Json.readNotes(file);
         Assertions.assertEquals("my title", notes.get(notes.size() - 1).getTitle());
@@ -34,8 +33,8 @@ public class UserInterfaceTest {
     @Test
     public void removeTest() throws IOException {
         var ui = new UserInterface("notebook.json");
-        ui.ExecCommand(new String[]{"-rm", "my title"});
-        ui.ExecCommand(new String[]{"-show"});
+        ui.execCommand(new String[]{"-rm", "my title"});
+        ui.execCommand(new String[]{"-show"});
         File file = new File("notebook.json");
         var notes = Json.readNotes(file);
 

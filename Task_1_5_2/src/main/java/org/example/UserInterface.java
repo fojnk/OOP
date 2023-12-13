@@ -1,9 +1,5 @@
 package org.example;
 
-import org.kohsuke.args4j.Argument;
-import org.kohsuke.args4j.CmdLineParser;
-import org.kohsuke.args4j.Option;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,6 +7,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import org.kohsuke.args4j.Argument;
+import org.kohsuke.args4j.CmdLineParser;
+import org.kohsuke.args4j.Option;
 
 /**
  * Класс, в которым реализовано взаиможействие с пользователем.
@@ -67,7 +66,7 @@ public class UserInterface {
      *
      * @param args - аргументы командной строки
      */
-    private void ParseCommand(String[] args) {
+    private void parseCommand(String[] args) {
         CmdLineParser parser = new CmdLineParser(this);
 
         try {
@@ -77,7 +76,7 @@ public class UserInterface {
                 return;
             }
         } catch (Exception e) {
-            NotebookUsage();
+            notebookUsage();
             return;
         }
     }
@@ -87,8 +86,8 @@ public class UserInterface {
      *
      * @param args - аргументы командной строки
      */
-    public void ExecCommand(String[] args) {
-        this.ParseCommand(args);
+    public void execCommand(String[] args) {
+        this.parseCommand(args);
 
         if (add) {
             addOp();
@@ -97,10 +96,10 @@ public class UserInterface {
         } else if (show) {
             showOp();
         } else if (help) {
-            Help();
+            help();
         } else {
             System.out.println("Unknown operation");
-            NotebookUsage();
+            notebookUsage();
             return;
         }
 
@@ -116,7 +115,7 @@ public class UserInterface {
      */
     private void addOp() {
         if (arguments.isEmpty() || arguments.size() > 2) {
-            NotebookUsage();
+            notebookUsage();
             return;
         }
 
@@ -133,7 +132,7 @@ public class UserInterface {
      */
     private void rmOp() {
         if (arguments.size() != 1) {
-            NotebookUsage();
+            notebookUsage();
             return;
         }
         notebook.removeNotes(arguments.get(0));
@@ -170,15 +169,15 @@ public class UserInterface {
     /**
      * небольшая инструкция.
      */
-    private void NotebookUsage() {
+    private void notebookUsage() {
         System.out.println("notebook [command] args");
-        Help();
+        help();
     }
 
     /**
      * тоже небольшая инструкция.
      */
-    private void Help() {
+    private void help() {
         System.out.println("All commands:\n-add: a new note with the specified title and description");
         System.out.println("-show: show all notes sorted by date");
         System.out.println("-rm: remove notes by title");

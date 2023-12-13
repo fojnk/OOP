@@ -14,6 +14,6 @@ public class Main {
      */
     public static void main(String[] args) throws IOException {
         UserInterface userin = new UserInterface("notebook.json");
-        userin.ExecCommand(new String[]{"-show"});
+        userin.execCommand(new String[]{"-show"});
     }
 }
