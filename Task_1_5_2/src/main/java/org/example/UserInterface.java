@@ -47,7 +47,8 @@ public class UserInterface {
         }
     }
 
-    public void ParseCommand(String[] args) throws IOException {
+
+    private void ParseCommand(String[] args) {
         CmdLineParser parser = new CmdLineParser(this);
 
         try {
@@ -60,6 +61,10 @@ public class UserInterface {
             NotebookUsage();
             return;
         }
+    }
+
+    public void ExecCommand(String[] args)  {
+        this.ParseCommand(args);
 
         if (add) {
             addOp();
@@ -74,6 +79,7 @@ public class UserInterface {
             NotebookUsage();
             return;
         }
+
         try {
             Json.writeNotes(jsonFile, notebook.getAllNotes());
         } catch (IOException e) {

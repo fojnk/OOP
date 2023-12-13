@@ -15,6 +15,14 @@ public class Notebook {
         notes.add(newNote);
     }
 
+    public void addNote(Note note) {
+        notes.add(note);
+    }
+
+    public boolean containsNote(Note note) {
+        return  notes.contains(note);
+    }
+
     public void removeNotes(String title) {
         for (int i = 0; i < notes.size(); i ++) {
             if (notes.get(i).getTitle().equals(title)){
