@@ -1,5 +1,8 @@
 package org.example;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
@@ -53,5 +56,20 @@ public class NotebookTest {
         Assertions.assertFalse(notebook.containsNote(note1));
         notebook.removeNotes("some text");
         Assertions.assertFalse(notebook.containsNote(note2));
+    }
+
+    @Test
+    public void showTest() {
+        List<Note> list = new LinkedList<>();
+        var notebook = new Notebook(list);
+        var startTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm"));
+        var note1 = new Note("hello", "jdfasljlfk");
+        var note2 = new Note("some text", "fdjsaklj");
+        var endTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm"));
+        notebook.addNote(note1);
+        notebook.addNote(note2);
+        var output = notebook.showNotes(new ArrayList<>());
+        Assertions.assertTrue(output.contains(note1));
+        Assertions.assertTrue(output.contains(note2));
     }
 }

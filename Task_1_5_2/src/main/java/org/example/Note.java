@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
  * Класс для описания заметок.
  */
 public class Note {
+    private DateTimeFormatter formatter;
     private String noteDate;
     private String title;
     private String description;
@@ -15,7 +16,7 @@ public class Note {
      * Пустой конструктор заметки.
      */
     public Note() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+        this.formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
         this.noteDate = LocalDateTime.now().format(formatter);
         this.title = "";
         this.description = "";
@@ -28,7 +29,14 @@ public class Note {
      * @param description - описание
      */
     public Note(String title, String description) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+        this.formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+        this.noteDate = LocalDateTime.now().format(formatter);
+        this.title = title;
+        this.description = description;
+    }
+
+    public Note(String title, String description, DateTimeFormatter formatter) {
+        this.formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
         this.noteDate = LocalDateTime.now().format(formatter);
         this.title = title;
         this.description = description;

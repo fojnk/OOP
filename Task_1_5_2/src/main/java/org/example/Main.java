@@ -1,6 +1,10 @@
 package org.example;
 
 import java.io.IOException;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 /**
  * Главный класс.
@@ -13,7 +17,8 @@ public class Main {
      * @throws IOException - исключение ввода-вывода
      */
     public static void main(String[] args) throws IOException {
-        UserInterface userin = new UserInterface("notebook.json");
-        userin.execCommand(new String[]{"-show"});
+        NotebookApp userin = new NotebookApp("notebook.json",
+                DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm z").withZone(ZoneId.systemDefault()));
+        userin.execCommand(new String[] {"-show"});
     }
 }

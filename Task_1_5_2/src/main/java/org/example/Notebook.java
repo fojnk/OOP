@@ -1,6 +1,12 @@
 package org.example;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -8,14 +14,21 @@ import java.util.List;
  */
 public class Notebook {
     private final List<Note> notes;
+    private DateTimeFormatter formatter;
+
+    public Notebook(List<Note> notes) {
+        this.notes = notes;
+        this.formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm").withZone(ZoneId.systemDefault());
+    }
 
     /**
      * конструктор, создающий книжку по списку заметок.
      *
      * @param notes - заметки
      */
-    public Notebook(List<Note> notes) {
+    public Notebook(List<Note> notes, DateTimeFormatter formatter) {
         this.notes = notes;
+        this.formatter = formatter;
     }
 
     /**
@@ -25,7 +38,8 @@ public class Notebook {
      * @param description - описание
      */
     public void addNote(String title, String description) {
-        Note newNote = new Note(title, description);
+        Note newNote = new Note(title, description, formatter);
+        checkTimeZone(newNote);
         notes.add(newNote);
     }
 
@@ -35,7 +49,21 @@ public class Notebook {
      * @param note - заметка
      */
     public void addNote(Note note) {
+        checkTimeZone(note);
         notes.add(note);
+    }
+
+    public void checkTimeZone(Note note) {
+        if (notes.isEmpty()) return;
+        var time1 = ZonedDateTime.parse(note.getNoteDate(), formatter);
+        var time2 = ZonedDateTime.parse(notes.get(notes.size() - 1).getNoteDate(), formatter);
+        if (time2.getZone().equals(time1.getZone())){
+            for (var n: notes) {
+                var newTime = ZonedDateTime.parse(n.getNoteDate(), formatter);
+                var neT = newTime.withZoneSameInstant(ZoneId.systemDefault()).toLocalDateTime().format(formatter);
+                n.setNoteDate(neT);
+            }
+        }
     }
 
     /**
@@ -59,6 +87,29 @@ public class Notebook {
                 notes.remove(notes.get(i--));
             }
         }
+    }
+
+    public List<Note> showNotes(List<String> arguments) {
+        List<Note> output = new LinkedList<>();
+        if (arguments.size() >= 3) {
+            var start = LocalDateTime.parse(arguments.get(0), formatter);
+            var end = LocalDateTime.parse(arguments.get(1), formatter);
+            ;
+            for (var note : notes) {
+                var time = LocalDateTime.parse(note.getNoteDate(), formatter);
+                if (time.isAfter(start) && time.isBefore(end)) {
+                    for (int i = 2; i < arguments.size(); i++) {
+                        if (note.getTitle().contains(arguments.get(i))) {
+                            output.add(note);
+                            break;
+                        }
+                    }
+                }
+            }
+        } else if (arguments.isEmpty()) {
+            output.addAll(notes);
+        }
+        return output;
     }
 
     /**
