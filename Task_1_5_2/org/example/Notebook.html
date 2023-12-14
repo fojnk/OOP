@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -155,6 +155,13 @@ extends java.lang.Object</pre>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.util.List)">Notebook</a></span>&#8203;(java.util.List&lt;<a href="Note.html" title="class in org.example">Note</a>&gt;&nbsp;notes)</code></th>
 <td class="colLast">
+<div class="block">Конструктор для создания книжки со стандартным форматирвоанием.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.util.List,java.time.format.DateTimeFormatter)">Notebook</a></span>&#8203;(java.util.List&lt;<a href="Note.html" title="class in org.example">Note</a>&gt;&nbsp;notes,
+        java.time.format.DateTimeFormatter&nbsp;formatter)</code></th>
+<td class="colLast">
 <div class="block">конструктор, создающий книжку по списку заметок.</div>
 </td>
 </tr>
@@ -212,6 +219,13 @@ extends java.lang.Object</pre>
 <div class="block">удаление заметок.</div>
 </td>
 </tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>java.util.List&lt;<a href="Note.html" title="class in org.example">Note</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#showNotes(java.util.List)">showNotes</a></span>&#8203;(java.util.List&lt;java.lang.String&gt;&nbsp;arguments)</code></th>
+<td class="colLast">
+<div class="block">метод для получения заметок во временном интервале.</div>
+</td>
+</tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
@@ -239,10 +253,25 @@ extends java.lang.Object</pre>
 <a id="&lt;init&gt;(java.util.List)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>Notebook</h4>
 <pre>public&nbsp;Notebook&#8203;(java.util.List&lt;<a href="Note.html" title="class in org.example">Note</a>&gt;&nbsp;notes)</pre>
+<div class="block">Конструктор для создания книжки со стандартным форматирвоанием.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>notes</code> - - заметки</dd>
+</dl>
+</li>
+</ul>
+<a id="&lt;init&gt;(java.util.List,java.time.format.DateTimeFormatter)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>Notebook</h4>
+<pre>public&nbsp;Notebook&#8203;(java.util.List&lt;<a href="Note.html" title="class in org.example">Note</a>&gt;&nbsp;notes,
+                java.time.format.DateTimeFormatter&nbsp;formatter)</pre>
 <div class="block">конструктор, создающий книжку по списку заметок.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -317,6 +346,22 @@ extends java.lang.Object</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>title</code> - - заголовок</dd>
+</dl>
+</li>
+</ul>
+<a id="showNotes(java.util.List)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>showNotes</h4>
+<pre class="methodSignature">public&nbsp;java.util.List&lt;<a href="Note.html" title="class in org.example">Note</a>&gt;&nbsp;showNotes&#8203;(java.util.List&lt;java.lang.String&gt;&nbsp;arguments)</pre>
+<div class="block">метод для получения заметок во временном интервале.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>arguments</code> - - аргументы командной строки</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- список заметок</dd>
 </dl>
 </li>
 </ul>

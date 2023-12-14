@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"org.example","l":"Json"},{"p":"org.example","l":"Main"},{"p":"org.example","l":"Note"},{"p":"org.example","l":"Notebook"},{"p":"org.example","l":"UserInterface"}]
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"org.example","l":"CommandLineParser"},{"p":"org.example","l":"Json"},{"p":"org.example","l":"Main"},{"p":"org.example","l":"Note"},{"p":"org.example","l":"Notebook"},{"p":"org.example","l":"NotebookApp"}]
