@@ -22,7 +22,8 @@ public class Notebook {
      */
     public Notebook(List<Note> notes) {
         this.notes = notes;
-        this.formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm").withZone(ZoneId.systemDefault());
+        this.formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")
+                .withZone(ZoneId.systemDefault());
     }
 
     /**
@@ -63,13 +64,16 @@ public class Notebook {
      * @param note - новая заметка
      */
     private void checkTimeZone(Note note) {
-        if (notes.isEmpty()) return;
+        if (notes.isEmpty()) {
+            return;
+        }
         var time1 = ZonedDateTime.parse(note.getNoteDate(), formatter);
         var time2 = ZonedDateTime.parse(notes.get(notes.size() - 1).getNoteDate(), formatter);
         if (time2.getZone().equals(time1.getZone())) {
             for (var n : notes) {
                 var newTime = ZonedDateTime.parse(n.getNoteDate(), formatter);
-                var neT = newTime.withZoneSameInstant(ZoneId.systemDefault()).toLocalDateTime().format(formatter);
+                var neT = newTime.withZoneSameInstant(ZoneId.systemDefault())
+                        .toLocalDateTime().format(formatter);
                 n.setNoteDate(neT);
             }
         }
