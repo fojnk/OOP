@@ -5,7 +5,6 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,6 +15,11 @@ public class Notebook {
     private final List<Note> notes;
     private DateTimeFormatter formatter;
 
+    /**
+     * Конструктор для создания книжки со стандартным форматирвоанием.
+     *
+     * @param notes - заметки
+     */
     public Notebook(List<Note> notes) {
         this.notes = notes;
         this.formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm").withZone(ZoneId.systemDefault());
@@ -53,12 +57,17 @@ public class Notebook {
         notes.add(note);
     }
 
-    public void checkTimeZone(Note note) {
+    /**
+     * метод для проверки временной зоны.
+     *
+     * @param note - новая заметка
+     */
+    private void checkTimeZone(Note note) {
         if (notes.isEmpty()) return;
         var time1 = ZonedDateTime.parse(note.getNoteDate(), formatter);
         var time2 = ZonedDateTime.parse(notes.get(notes.size() - 1).getNoteDate(), formatter);
-        if (time2.getZone().equals(time1.getZone())){
-            for (var n: notes) {
+        if (time2.getZone().equals(time1.getZone())) {
+            for (var n : notes) {
                 var newTime = ZonedDateTime.parse(n.getNoteDate(), formatter);
                 var neT = newTime.withZoneSameInstant(ZoneId.systemDefault()).toLocalDateTime().format(formatter);
                 n.setNoteDate(neT);
@@ -89,6 +98,12 @@ public class Notebook {
         }
     }
 
+    /**
+     * метод для получения заметок во временном интервале.
+     *
+     * @param arguments - аргументы командной строки
+     * @return - список заметок
+     */
     public List<Note> showNotes(List<String> arguments) {
         List<Note> output = new LinkedList<>();
         if (arguments.size() >= 3) {

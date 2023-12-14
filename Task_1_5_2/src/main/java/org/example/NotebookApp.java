@@ -3,15 +3,9 @@ package org.example;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
-import org.kohsuke.args4j.Argument;
 import org.kohsuke.args4j.CmdLineException;
-import org.kohsuke.args4j.CmdLineParser;
-import org.kohsuke.args4j.Option;
 
 /**
  * Класс, в которым реализовано взаиможействие с пользователем.
@@ -27,7 +21,6 @@ public class NotebookApp {
      * Создание интерфейса.
      *
      * @param filename - имя файла с заметками
-     * @throws IOException - исключение
      */
     public NotebookApp(String filename) {
         this.formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
@@ -35,12 +28,23 @@ public class NotebookApp {
         this.cmdParser = new CommandLineParser();
     }
 
+    /**
+     * конструктор для создания приложения со своим форматированмием.
+     *
+     * @param filename  - путь до файла
+     * @param formatter - форматирвоание
+     */
     public NotebookApp(String filename, DateTimeFormatter formatter) {
         this.formatter = formatter;
         getFile(filename);
         this.cmdParser = new CommandLineParser();
     }
 
+    /**
+     * метод для получения файла по имени.
+     *
+     * @param filename - имя файла
+     */
     private void getFile(String filename) {
         this.jsonFile = new File(filename);
         if (!jsonFile.exists()) {
@@ -128,7 +132,7 @@ public class NotebookApp {
      */
     private void showOp() {
         var list = notebook.showNotes(arguments);
-        for (var note: list) {
+        for (var note : list) {
             System.out.println(note.getNoteDate() + " "
                     + note.getTitle() + " " + note.getDescription());
         }

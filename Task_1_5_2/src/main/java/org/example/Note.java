@@ -35,6 +35,13 @@ public class Note {
         this.description = description;
     }
 
+    /**
+     * метод для создания заметок с кастомных форматированием.
+     *
+     * @param title       = заголовок
+     * @param description - описание
+     * @param formatter   - форматирвоание
+     */
     public Note(String title, String description, DateTimeFormatter formatter) {
         this.formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
         this.noteDate = LocalDateTime.now().format(formatter);
