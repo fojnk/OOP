@@ -133,9 +133,13 @@ public class NotebookApp {
     private void showOp() {
         var list = notebook.showNotes(arguments);
         for (var note : list) {
-            System.out.println(note.getNoteDate() + " "
-                    + note.getTitle() + " " + note.getDescription());
+            System.out.println("____________________________________");
+            System.out.println(note.getTitle() + "  |  " + note.getNoteDate());
+            System.out.println("^^^^^^^^^^^ Description ^^^^^^^^^^^");
+            System.out.println(note.getDescription());
+            System.out.println("____________________________________");
         }
+        new WindowNotebookApp(list);
     }
 
     /**

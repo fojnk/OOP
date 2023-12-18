@@ -111,8 +111,9 @@ public class Notebook {
     public List<Note> showNotes(List<String> arguments) {
         List<Note> output = new LinkedList<>();
         if (arguments.size() >= 3) {
-            var start = LocalDateTime.parse(arguments.get(0), formatter);
-            var end = LocalDateTime.parse(arguments.get(1), formatter);
+            var localFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+            var start = LocalDateTime.parse(arguments.get(0), localFormatter);
+            var end = LocalDateTime.parse(arguments.get(1), localFormatter);
             ;
             for (var note : notes) {
                 var time = LocalDateTime.parse(note.getNoteDate(), formatter);
