@@ -1,12 +1,11 @@
 package org.example;
 
-import org.kohsuke.args4j.CmdLineException;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import org.kohsuke.args4j.CmdLineException;
 
 /**
  * Класс, в которым реализовано взаиможействие с пользователем.
@@ -155,7 +154,8 @@ public class NotebookApp {
      * тоже небольшая инструкция.
      */
     private void help() {
-        System.out.println("All commands:\n-add: a new note with the specified title and description");
+        System.out.println("All commands:\n-add: a new"
+                + "note with the specified title and description");
         System.out.println("-show: show all notes sorted by date");
         System.out.println("-rm: remove notes by title");
         System.out.println("--help: show all commands");
