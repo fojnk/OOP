@@ -1,11 +1,12 @@
 package org.example;
 
+import org.kohsuke.args4j.CmdLineException;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import org.kohsuke.args4j.CmdLineException;
 
 /**
  * Класс, в которым реализовано взаиможействие с пользователем.
@@ -139,7 +140,7 @@ public class NotebookApp {
             System.out.println(note.getDescription());
             System.out.println("____________________________________");
         }
-        new WindowNotebookApp(list);
+        //new WindowNotebookApp(list);
     }
 
     /**

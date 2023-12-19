@@ -1,11 +1,18 @@
 package org.example;
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
+/**
+ * Класс для визуализации заметок.
+ */
 public class WindowNotebookApp extends JFrame {
+    /**
+     * создание и установка параметров окна.
+     *
+     * @param list - список заметок
+     */
     public WindowNotebookApp(List<Note> list) {
         JFrame frame = new JFrame("Notes");
         frame.setBackground(Color.BLACK);
