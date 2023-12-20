@@ -139,7 +139,7 @@ public class NotebookApp {
             System.out.println(note.getDescription());
             System.out.println("____________________________________");
         }
-        new WindowNotebookApp(list);
+        //new WindowNotebookApp(list);
     }
 
     /**
