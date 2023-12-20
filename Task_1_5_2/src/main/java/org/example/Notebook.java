@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Notebook {
     private final List<Note> notes;
-    private DateTimeFormatter formatter;
+    private final DateTimeFormatter formatter;
 
     /**
      * Конструктор для создания книжки со стандартным форматирвоанием.
@@ -22,7 +22,7 @@ public class Notebook {
      */
     public Notebook(List<Note> notes) {
         this.notes = notes;
-        this.formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")
+        this.formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm z")
                 .withZone(ZoneId.systemDefault());
     }
 
@@ -118,7 +118,6 @@ public class Notebook {
             var localFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
             var start = LocalDateTime.parse(arguments.get(0), localFormatter);
             var end = LocalDateTime.parse(arguments.get(1), localFormatter);
-            ;
             for (var note : notes) {
                 var time = LocalDateTime.parse(note.getNoteDate(), formatter);
                 if (time.isAfter(start) && time.isBefore(end)) {

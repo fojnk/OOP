@@ -3,6 +3,7 @@ package org.example;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import org.kohsuke.args4j.CmdLineException;
@@ -23,7 +24,8 @@ public class NotebookApp {
      * @param filename - имя файла с заметками
      */
     public NotebookApp(String filename) {
-        this.formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+        this.formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm z")
+                .withZone(ZoneId.systemDefault());
         getFile(filename);
         this.cmdParser = new CommandLineParser();
     }

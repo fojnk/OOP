@@ -17,7 +17,7 @@ public class Note {
      * Пустой конструктор заметки.
      */
     public Note() {
-        this.formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")
+        this.formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm z")
                 .withZone(ZoneId.systemDefault());
         this.noteDate = LocalDateTime.now().format(formatter);
         this.title = "";
@@ -31,7 +31,7 @@ public class Note {
      * @param description - описание
      */
     public Note(String title, String description) {
-        this.formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")
+        this.formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm z")
                 .withZone(ZoneId.systemDefault());
         this.noteDate = LocalDateTime.now().format(formatter);
         this.title = title;
