@@ -68,8 +68,8 @@ public class Notebook {
             return;
         }
         var time1 = ZonedDateTime.parse(note.getNoteDate(), formatter);
-        var time2 = ZonedDateTime.parse(notes.get(notes.size() - 1).getNoteDate(), formatter);
-        if (time2.getZone().equals(time1.getZone())) {
+        var time2 = ZonedDateTime.parse(notes.get(0).getNoteDate(), formatter);
+        if (!time2.getZone().equals(time1.getZone())) {
             for (var n : notes) {
                 var newTime = ZonedDateTime.parse(n.getNoteDate(), formatter);
                 var neT = newTime.withZoneSameInstant(ZoneId.systemDefault())
@@ -95,6 +95,8 @@ public class Notebook {
      * @param title - заголовок
      */
     public void removeNotes(String title) {
+        Note newNote = new Note("", "", formatter);
+        checkTimeZone(newNote);
         for (int i = 0; i < notes.size(); i++) {
             if (notes.get(i).getTitle().equals(title)) {
                 notes.remove(notes.get(i--));
@@ -109,6 +111,8 @@ public class Notebook {
      * @return - список заметок
      */
     public List<Note> showNotes(List<String> arguments) {
+        Note newNote = new Note("", "", formatter);
+        checkTimeZone(newNote);
         List<Note> output = new LinkedList<>();
         if (arguments.size() >= 3) {
             var localFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");

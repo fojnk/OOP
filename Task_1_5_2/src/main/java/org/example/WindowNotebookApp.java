@@ -24,7 +24,7 @@ public class WindowNotebookApp extends JFrame {
             JPanel wrapper = new JPanel();
             wrapper.setLayout(new BoxLayout(wrapper, BoxLayout.Y_AXIS));
             JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEADING));
-            panel.setBackground(Color.GRAY);
+            panel.setBackground(Color.lightGray);
             JLabel label1 = new JLabel(note.getTitle());
             JTextField date = new JTextField(note.getNoteDate());
             label1.setFont(new Font("Tahoma", Font.PLAIN, 20));

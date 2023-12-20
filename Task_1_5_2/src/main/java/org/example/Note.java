@@ -1,6 +1,7 @@
 package org.example;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -16,7 +17,8 @@ public class Note {
      * Пустой конструктор заметки.
      */
     public Note() {
-        this.formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+        this.formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")
+                .withZone(ZoneId.systemDefault());
         this.noteDate = LocalDateTime.now().format(formatter);
         this.title = "";
         this.description = "";
@@ -29,7 +31,8 @@ public class Note {
      * @param description - описание
      */
     public Note(String title, String description) {
-        this.formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+        this.formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")
+                .withZone(ZoneId.systemDefault());
         this.noteDate = LocalDateTime.now().format(formatter);
         this.title = title;
         this.description = description;
@@ -43,7 +46,7 @@ public class Note {
      * @param formatter   - форматирвоание
      */
     public Note(String title, String description, DateTimeFormatter formatter) {
-        this.formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+        this.formatter = formatter;
         this.noteDate = LocalDateTime.now().format(formatter);
         this.title = title;
         this.description = description;
