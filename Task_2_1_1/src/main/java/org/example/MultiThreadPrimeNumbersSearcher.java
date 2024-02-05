@@ -24,6 +24,7 @@ public class MultiThreadPrimeNumbersSearcher {
     public MultiThreadPrimeNumbersSearcher() {this.amount.set(0);}
 
     public boolean checkList(List<Integer> numbers, Integer amountOfThreads) throws InterruptedException {
+        this.amount.set(0);
         int part = numbers.size() / amountOfThreads;
         MyThread[] threads = new MyThread[amountOfThreads];
         int index = 0;
@@ -38,6 +39,6 @@ public class MultiThreadPrimeNumbersSearcher {
             threads[i].join();
         }
 
-        return amountOfThreads == amount.get();
+        return amount.get() > 0;
     }
 }
