@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":9};
+var data = {"i0":9,"i1":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -51,6 +51,7 @@ loadScripts(document, 'script');</script>
 <!--   -->
 </a>
 <ul class="navList" title="Navigation">
+<li><a href="../../index.html">Overview</a></li>
 <li><a href="package-summary.html">Package</a></li>
 <li class="navBarCell1Rev">Class</li>
 <li><a href="package-tree.html">Tree</a></li>
@@ -181,6 +182,11 @@ extends java.lang.Object</pre>
 <div class="block">Главный метод.</div>
 </td>
 </tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>static void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#test()">test</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
@@ -227,17 +233,35 @@ extends java.lang.Object</pre>
 <a id="main(java.lang.String[])">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>main</h4>
 <pre class="methodSignature">public static&nbsp;void&nbsp;main&#8203;(java.lang.String[]&nbsp;args)
-                 throws java.lang.InterruptedException</pre>
+                 throws java.lang.InterruptedException,
+                        java.util.concurrent.ExecutionException</pre>
 <div class="block">Главный метод.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>args</code> - - аргументы коммадной строки</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.lang.InterruptedException</code> - - ошибка выполнения потока</dd>
+<dd><code>java.util.concurrent.ExecutionException</code></dd>
+</dl>
+</li>
+</ul>
+<a id="test()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>test</h4>
+<pre class="methodSignature">public static&nbsp;void&nbsp;test()
+                 throws java.lang.InterruptedException,
+                        java.util.concurrent.ExecutionException</pre>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.lang.InterruptedException</code></dd>
+<dd><code>java.util.concurrent.ExecutionException</code></dd>
 </dl>
 </li>
 </ul>
@@ -261,6 +285,7 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <ul class="navList" title="Navigation">
+<li><a href="../../index.html">Overview</a></li>
 <li><a href="package-summary.html">Package</a></li>
 <li class="navBarCell1Rev">Class</li>
 <li><a href="package-tree.html">Tree</a></li>
