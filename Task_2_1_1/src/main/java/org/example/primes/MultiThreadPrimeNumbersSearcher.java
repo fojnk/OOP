@@ -1,4 +1,4 @@
-package org.example;
+package org.example.primes;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -15,17 +15,14 @@ public class MultiThreadPrimeNumbersSearcher extends PrimeNumbersChecker {
      */
     public class MyThread extends Thread {
         List<Integer> numbers;
-        MultiThreadPrimeNumbersSearcher link;
 
         /**
          * Инициализация класса.
          *
          * @param numbers - массив чисел
-         * @param link    - связь со старшим классом
          */
-        public MyThread(List<Integer> numbers, MultiThreadPrimeNumbersSearcher link) {
+        public MyThread(List<Integer> numbers) {
             this.numbers = numbers;
-            this.link = link;
         }
 
         /**
@@ -33,7 +30,7 @@ public class MultiThreadPrimeNumbersSearcher extends PrimeNumbersChecker {
          */
         @Override
         public void run() {
-            if (this.numbers.stream().anyMatch(this.link::IsPrime)) {
+            if (this.numbers.stream().anyMatch(PrimeNumbersChecker::IsPrime)) {
                 amount.incrementAndGet();
             }
         }
@@ -82,10 +79,10 @@ public class MultiThreadPrimeNumbersSearcher extends PrimeNumbersChecker {
         MyThread[] threads = new MyThread[amountOfThreads];
         int index = 0;
         for (int i = 0; i < amountOfThreads - 1; i++) {
-            threads[index] = new MyThread(numbers.subList(i * part, (i + 1) * part), this);
+            threads[index] = new MyThread(numbers.subList(i * part, (i + 1) * part));
             threads[index++].start();
         }
-        threads[index] = new MyThread(numbers.subList((amountOfThreads - 1) * part, numbers.size()), this);
+        threads[index] = new MyThread(numbers.subList((amountOfThreads - 1) * part, numbers.size()));
         threads[index].start();
 
         for (int i = 0; i < amountOfThreads; i++) {

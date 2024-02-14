@@ -1,4 +1,4 @@
-package org.example;
+package org.example.primes;
 
 import java.util.List;
 
@@ -13,6 +13,6 @@ public class SequentialPrimeNumbersSearcher extends PrimeNumbersChecker {
      * @return - true or false
      */
     public boolean checkList(List<Integer> numbers) {
-        return numbers.stream().anyMatch(this::IsPrime);
+        return numbers.stream().anyMatch(PrimeNumbersChecker::IsPrime);
     }
 }

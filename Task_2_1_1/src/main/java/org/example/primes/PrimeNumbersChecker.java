@@ -1,4 +1,4 @@
-package org.example;
+package org.example.primes;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ abstract public class PrimeNumbersChecker {
      * @param number - число
      * @return - true or false
      */
-    public boolean IsPrime(int number) {
+    public static boolean IsPrime(int number) {
         var i = 2;
         while (i * i <= number) {
             if (number % i == 0) {

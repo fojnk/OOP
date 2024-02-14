@@ -2,8 +2,14 @@ package org.example;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import java.util.stream.Stream;
+import org.example.primes.MultiThreadPrimeNumbersSearcher;
+import org.example.primes.ParallelsPrimeNumbersSearcher;
+import org.example.primes.PrimeNumbersChecker;
+import org.example.primes.SequentialPrimeNumbersSearcher;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -14,20 +20,17 @@ import org.junit.jupiter.params.provider.MethodSource;
 public class PrimeNumbersCheckerTest {
     /**
      * Проверка метода IsPrime во всех чекерах.
-     *
-     * @param checker - разные реализации чекеров
      */
-    @ParameterizedTest
-    @MethodSource("generateCheckersForTests")
-    public void primeTest(PrimeNumbersChecker checker) {
+    @Test
+    public void primeTest() {
         var list1 = Arrays.asList(1, 3, 5, 7, 2, 2, 2, 11, 13, 2, 1);
-        for (int i = 0; i < list1.size(); i++) {
-            Assertions.assertTrue(checker.IsPrime(list1.get(i)));
+        for (Integer integer : list1) {
+            Assertions.assertTrue(PrimeNumbersChecker.IsPrime(integer));
         }
 
         var list2 = Arrays.asList(18, 25, 9, 4, 6, 6, 8, 10, 12, 22, 32, 14);
-        for (int i = 0; i < list2.size(); i++) {
-            Assertions.assertFalse(checker.IsPrime(list2.get(i)));
+        for (Integer integer : list2) {
+            Assertions.assertFalse(PrimeNumbersChecker.IsPrime(integer));
         }
     }
 
@@ -61,6 +64,23 @@ public class PrimeNumbersCheckerTest {
         for (int i = 1; i < list.size(); i++) {
             checker1.setAmountOfThreads(i);
             Assertions.assertEquals(checker1.checkList(list), expected);
+        }
+    }
+
+    /**
+     * тест ParallelStream заданным пулом потоков.
+     *
+     * @param list     - список чисел
+     * @param expected - ожидаемое значение
+     * @throws ExecutionException   - ошибка выполнения
+     * @throws InterruptedException - прерывание
+     */
+    @ParameterizedTest
+    @MethodSource("generateListsForTests")
+    public void ParallelStream(List<Integer> list, boolean expected) throws ExecutionException, InterruptedException {
+        var checker = new ParallelsPrimeNumbersSearcher();
+        for (int i = 1; i < list.size(); i++) {
+            Assertions.assertEquals(checker.checkList(list, i), expected);
         }
     }
 
