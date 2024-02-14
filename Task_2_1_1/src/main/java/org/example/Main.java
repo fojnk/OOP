@@ -1,12 +1,11 @@
 package org.example;
 
-import org.example.primes.MultiThreadPrimeNumbersSearcher;
-import org.example.primes.ParallelsPrimeNumbersSearcher;
-import org.example.primes.SequentialPrimeNumbersSearcher;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+import org.example.primes.MultiThreadPrimeNumbersSearcher;
+import org.example.primes.ParallelsPrimeNumbersSearcher;
+import org.example.primes.SequentialPrimeNumbersSearcher;
 
 /**
  * Главный класс.

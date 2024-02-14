@@ -18,9 +18,11 @@ public class ParallelsPrimeNumbersSearcher extends PrimeNumbersChecker {
      * @throws ExecutionException   - ошибка выполнения
      * @throws InterruptedException - ошибка в одном из потоков
      */
-    public boolean checkList(List<Integer> numbers, Integer threadNumber) throws ExecutionException, InterruptedException {
+    public boolean checkList(List<Integer> numbers, Integer threadNumber) throws ExecutionException,
+            InterruptedException {
         ForkJoinPool customThreadPool = new ForkJoinPool(threadNumber);
-        var result = customThreadPool.submit(() -> numbers.parallelStream().anyMatch(PrimeNumbersChecker::IsPrime)).get();
+        var result = customThreadPool.submit(() ->
+                numbers.parallelStream().anyMatch(PrimeNumbersChecker::IsPrime)).get();
         customThreadPool.shutdown();
         return result;
     }
