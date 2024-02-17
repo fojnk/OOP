@@ -1,8 +1,8 @@
 package org.example;
 
-import org.example.client_server.Server;
 import java.io.IOException;
 import java.util.Arrays;
+import org.example.client_server.Server;
 
 /**
  * Главный класс.

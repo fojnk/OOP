@@ -9,10 +9,16 @@ import org.example.client_server.Server;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * класс для тестов.
+ */
 public class ClientServerTest {
 
     private boolean res;
 
+    /**
+     * простой тест isprime.
+     */
     @Test
     public void SimplePrimeTest() {
         var list1 = Arrays.asList(2, 3, 3, 3, 3, 5, 7, 11);
@@ -26,6 +32,12 @@ public class ClientServerTest {
         }
     }
 
+    /**
+     * тест клиента и сервера.
+     *
+     * @throws IOException          - ошибка ввода-вывода
+     * @throws InterruptedException - прерывание потока
+     */
     @Test
     public void ClientServerSimpleTest() throws IOException, InterruptedException {
         res = false;
@@ -41,16 +53,28 @@ public class ClientServerTest {
         Assertions.assertTrue(res);
     }
 
+    /**
+     * подкласс для запуска сервера в потоке.
+     */
     public class ServerThread implements Runnable {
 
         private final int amountOfClients;
         private final List<Integer> data;
 
+        /**
+         * конструктор подкласса.
+         *
+         * @param amountOFClients - требуемое количество клиентов
+         * @param data            - данные
+         */
         public ServerThread(int amountOFClients, List<Integer> data) {
             this.data = data;
             this.amountOfClients = amountOFClients;
         }
 
+        /**
+         * метод, который запустится в новом потоке.
+         */
         @Override
         public void run() {
             var srv = new Server();
@@ -62,8 +86,14 @@ public class ClientServerTest {
         }
     }
 
+    /**
+     * подкласс для запуска клиента в потоке.
+     */
     public static class ClientThread implements Runnable {
 
+        /**
+         * метод, который запустится в потоке.
+         */
         @Override
         public void run() {
             try {
