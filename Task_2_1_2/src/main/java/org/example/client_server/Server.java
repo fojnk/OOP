@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 import java.nio.channels.IllegalBlockingModeException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,39 +18,65 @@ public class Server {
     private final AtomicInteger id = new AtomicInteger();
     private List<Integer> data;
     private final AtomicInteger amount = new AtomicInteger();
-    private int amountOfClients;
 
     /**
      * запуск сервера.
      *
-     * @param requiredAmountOfClients - требуемое количество клиентов
      * @param data                    - числа
      * @return - true or false
      * @throws IOException          - ошибка ввода-вывода
      * @throws InterruptedException - прерывание потока
      */
-    public boolean startServer(int requiredAmountOfClients, List<Integer> data) throws IOException, InterruptedException {
+    public boolean startServer(List<Integer> data) throws IOException, InterruptedException {
         this.amount.set(0);
         this.id.set(0);
         this.data = data;
-        amountOfClients = 0;
-        var serverSocket = new ServerSocket(8000);
-        List<Thread> threads = new ArrayList<>();
-
-        while (amountOfClients < requiredAmountOfClients) {
-            Socket socket = serverSocket.accept();
-            Thread t = new Thread(new ClientHandler(socket, id, amount, data));
-            t.start();
-            threads.add(t);
-            System.out.println("one more slave");
-            amountOfClients++;
-        }
-
-        for (int i = 0; i < amountOfClients; i++) {
-            threads.get(i).join();
-        }
-
+        Thread t = new Thread(new AcceptHandler());
+        t.start();
+        while (data.size() > id.get() && amount.get() == 0) {}
+        t.interrupt();
+        t.join();
         return amount.get() > 0;
+    }
+
+    /**
+     * Подкласс для обработки новых подключений.
+     */
+    public class AcceptHandler implements Runnable {
+
+        private int amountOfClt;
+        private List<Thread> threads;
+
+        /**
+         * Метод, который запуститься в новом потоке.
+         */
+        @Override
+        public void run() {
+            try {
+                var serverSocket = new ServerSocket(8000);
+                this.threads = new ArrayList<>();
+                this.amountOfClt = 0;
+                serverSocket.setSoTimeout(10000);
+
+                while (!Thread.currentThread().isInterrupted()) {
+                    try {
+                        Socket socket = serverSocket.accept();
+                        Thread t = new Thread(new ClientHandler(socket, id, amount, data));
+                        t.start();
+                        threads.add(t);
+                        System.out.println("one more slave");
+                        this.amountOfClt++;
+                    } catch (SocketTimeoutException ignore) {}
+                }
+
+                for (int i = 0; i < this.amountOfClt; i++) {
+                    try {
+                        threads.get(i).join();
+                    } catch (InterruptedException ignored) {}
+                }
+
+            } catch (IOException ignore) {}
+        }
     }
 
     /**
@@ -82,6 +109,7 @@ public class Server {
          */
         @Override
         public void run() {
+            int data_safe = id.get();
             try {
                 var in = new Scanner(socket.getInputStream());
                 var out = new PrintWriter(socket.getOutputStream());
@@ -90,10 +118,11 @@ public class Server {
                 out.flush();
                 while (run) {
                     try {
-                        var k = data.get(id.incrementAndGet());
+                        data_safe = id.incrementAndGet();
+                        var k = data.get(data_safe);
                         out.println(k);
                         out.flush();
-                    } catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
+                    } catch (NullPointerException | IndexOutOfBoundsException e) {
                         break;
                     }
 
@@ -105,7 +134,8 @@ public class Server {
                     }
                 }
 
-            } catch (IllegalBlockingModeException | IOException e) {
+            } catch (IllegalBlockingModeException | IOException | IndexOutOfBoundsException ignored) {
+                id.set(data_safe);
             }
         }
     }

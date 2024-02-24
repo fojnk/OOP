@@ -79,7 +79,7 @@ public class ClientServerTest {
         public void run() {
             var srv = new Server();
             try {
-                res = srv.startServer(amountOfClients, data);
+                res = srv.startServer(data);
             } catch (IOException | InterruptedException e) {
                 throw new RuntimeException(e);
             }
