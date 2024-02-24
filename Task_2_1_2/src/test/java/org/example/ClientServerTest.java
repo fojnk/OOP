@@ -20,7 +20,7 @@ public class ClientServerTest {
      * простой тест isprime.
      */
     @Test
-    public void SimplePrimeTest() {
+    public void simplePrimeTest() {
         var list1 = Arrays.asList(2, 3, 3, 3, 3, 5, 7, 11);
         for (var tmp : list1) {
             Assertions.assertTrue(IsPrime.isPrime(tmp));
@@ -35,13 +35,12 @@ public class ClientServerTest {
     /**
      * тест клиента и сервера.
      *
-     * @throws IOException          - ошибка ввода-вывода
      * @throws InterruptedException - прерывание потока
      */
     @Test
-    public void ClientServerSimpleTest() throws IOException, InterruptedException {
+    public void clientServerSimpleTest() throws InterruptedException {
         res = false;
-        Thread serverThread = new Thread(new ServerThread(2, Arrays.asList(4, 4, 4, 4, 4, 2)));
+        Thread serverThread = new Thread(new ServerThread(Arrays.asList(4, 4, 4, 4, 4, 2)));
         serverThread.start();
 
         Thread client1 = new Thread(new ClientThread());
@@ -57,19 +56,15 @@ public class ClientServerTest {
      * подкласс для запуска сервера в потоке.
      */
     public class ServerThread implements Runnable {
-
-        private final int amountOfClients;
         private final List<Integer> data;
 
         /**
          * конструктор подкласса.
          *
-         * @param amountOFClients - требуемое количество клиентов
          * @param data            - данные
          */
-        public ServerThread(int amountOFClients, List<Integer> data) {
+        public ServerThread(List<Integer> data) {
             this.data = data;
-            this.amountOfClients = amountOFClients;
         }
 
         /**

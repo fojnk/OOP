@@ -2,7 +2,6 @@ package org.example;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import org.example.client_server.Server;
 
 /**
@@ -29,7 +28,7 @@ public class Main {
     public static void example() throws IOException, InterruptedException {
         var srv = new Server();
         var list = new ArrayList<Integer>();
-        for (int i = 0; i < 200000; i ++){
+        for (int i = 0; i < 200000; i++) {
             list.add(49);
         }
         System.out.println(srv.startServer(list));

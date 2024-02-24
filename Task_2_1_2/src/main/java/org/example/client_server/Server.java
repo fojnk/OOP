@@ -22,7 +22,7 @@ public class Server {
     /**
      * запуск сервера.
      *
-     * @param data                    - числа
+     * @param data - числа
      * @return - true or false
      * @throws IOException          - ошибка ввода-вывода
      * @throws InterruptedException - прерывание потока
@@ -33,7 +33,8 @@ public class Server {
         this.data = data;
         Thread t = new Thread(new AcceptHandler());
         t.start();
-        while (data.size() > id.get() && amount.get() == 0) {}
+        while (data.size() > id.get() && amount.get() == 0) {
+        }
         t.interrupt();
         t.join();
         return amount.get() > 0;
@@ -44,9 +45,6 @@ public class Server {
      */
     public class AcceptHandler implements Runnable {
 
-        private int amountOfClt;
-        private List<Thread> threads;
-
         /**
          * Метод, который запуститься в новом потоке.
          */
@@ -54,9 +52,9 @@ public class Server {
         public void run() {
             try {
                 var serverSocket = new ServerSocket(8000);
-                this.threads = new ArrayList<>();
-                this.amountOfClt = 0;
-                serverSocket.setSoTimeout(10000);
+                List<Thread> threads = new ArrayList<>();
+                int amountOfClt = 0;
+                serverSocket.setSoTimeout(1000);
 
                 while (!Thread.currentThread().isInterrupted()) {
                     try {
@@ -65,17 +63,21 @@ public class Server {
                         t.start();
                         threads.add(t);
                         System.out.println("one more slave");
-                        this.amountOfClt++;
-                    } catch (SocketTimeoutException ignore) {}
+                        amountOfClt++;
+                    } catch (SocketTimeoutException ignore) {
+                    }
                 }
 
-                for (int i = 0; i < this.amountOfClt; i++) {
+                for (int i = 0; i < amountOfClt; i++) {
                     try {
                         threads.get(i).join();
-                    } catch (InterruptedException ignored) {}
+                    } catch (InterruptedException ignored) {
+                    }
                 }
+                serverSocket.close();
 
-            } catch (IOException ignore) {}
+            } catch (IOException ignore) {
+            }
         }
     }
 
@@ -84,10 +86,10 @@ public class Server {
      */
     public class ClientHandler implements Runnable {
 
-        private Socket socket;
-        private AtomicInteger id;
-        private List<Integer> data;
-        private AtomicInteger amount;
+        private final Socket socket;
+        private final AtomicInteger id;
+        private final List<Integer> data;
+        private final AtomicInteger amount;
 
         /**
          * контструктор обработчика клиента.
@@ -109,7 +111,7 @@ public class Server {
          */
         @Override
         public void run() {
-            int data_safe = id.get();
+            int dataSafe = id.get();
             try {
                 var in = new Scanner(socket.getInputStream());
                 var out = new PrintWriter(socket.getOutputStream());
@@ -118,8 +120,8 @@ public class Server {
                 out.flush();
                 while (run) {
                     try {
-                        data_safe = id.incrementAndGet();
-                        var k = data.get(data_safe);
+                        dataSafe = id.incrementAndGet();
+                        var k = data.get(dataSafe);
                         out.println(k);
                         out.flush();
                     } catch (NullPointerException | IndexOutOfBoundsException e) {
@@ -135,7 +137,7 @@ public class Server {
                 }
 
             } catch (IllegalBlockingModeException | IOException | IndexOutOfBoundsException ignored) {
-                id.set(data_safe);
+                id.set(dataSafe);
             }
         }
     }
