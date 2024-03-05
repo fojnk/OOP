@@ -81,11 +81,12 @@ public class ModelsTest {
         var orderQueue = new OrderQueue();
         orderQueue.putOrder(order);
         Assertions.assertEquals(order.getId(), orderQueue.getOrder().getId());
-        Assertions.assertTrue(orderQueue.contains(order));
+        Assertions.assertFalse(orderQueue.contains(order));
         var storage = new Storage(5);
         storage.putOrder(order);
         Assertions.assertTrue(storage.contains(order));
         Assertions.assertEquals(storage.getCapacity(), 5);
+        orderQueue.putOrder(order);
         Assertions.assertEquals(orderQueue.getAllOrders().get(0).getId(), order.getId());
     }
 }
