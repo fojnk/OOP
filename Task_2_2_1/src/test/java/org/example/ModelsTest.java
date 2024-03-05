@@ -38,6 +38,8 @@ public class ModelsTest {
             }
         }, 200);
 
+        var order2 = new Order(1002,"some pizza");
+        storage.putOrder(order2);
         var deliverer = new Deliverer(1000, 3, "Steve");
         deliverer.setStorageAndOrderQueue(storage, orderQueue);
 
@@ -54,6 +56,8 @@ public class ModelsTest {
                     throw new RuntimeException(e);
                 }
                 Assertions.assertEquals(order.getId(), orderQueue.getOrder().getId());
+                Assertions.assertTrue(orderQueue.contains(order));
+                Assertions.assertTrue(orderQueue.contains(order2));
                 timer.cancel();
             }
         }, 100);

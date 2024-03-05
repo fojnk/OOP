@@ -111,13 +111,13 @@ public class JsonHandle {
         return orders;
     }
 
-    public static void putOrdersInStorage(List<Order> orders) throws IOException {
+    public static void putOrdersInStorage(List<Order> orders, String path) throws IOException {
         Map<String, List<Order>> ord = new TreeMap<>();
         ord.put("orders", orders);
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
                 .create();
-        Writer writer = new FileWriter("src/main/resources/Storage.json");
+        Writer writer = new FileWriter(path);
         gson.toJson(ord, writer);
         writer.flush();
         writer.close();

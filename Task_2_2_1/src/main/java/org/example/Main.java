@@ -27,7 +27,7 @@ public class Main {
             public void run() {
                 System.out.println("Stopping work...");
                 try {
-                    pz.Stop();
+                    pz.Stop("src/main/resources/Storage.json");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

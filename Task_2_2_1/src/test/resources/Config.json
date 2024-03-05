@@ -1,0 +1,16 @@
+{
+  "storage_size": 10,
+  "bakers": [
+    {
+      "name": "Vasya",
+      "cooking_time": 9000
+    }
+  ],
+  "deliverers": [
+    {
+      "name": "Steve",
+      "delivery_time": 10000,
+      "trunk_size": 3
+    }
+  ]
+}

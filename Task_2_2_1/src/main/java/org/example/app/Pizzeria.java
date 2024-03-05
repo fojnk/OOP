@@ -57,7 +57,7 @@ public class Pizzeria {
         }
     }
 
-    public void Stop() throws IOException {
+    public void Stop(String path) throws IOException {
         bakersThreads.forEach(Thread::interrupt);
         deliverersThreads.forEach(Thread::interrupt);
 
@@ -74,7 +74,7 @@ public class Pizzeria {
         }
 
         if (orderQueue.getAmountOfOrders() != 0) {
-            JsonHandle.putOrdersInStorage(orderQueue.getAllOrders());
+            JsonHandle.putOrdersInStorage(orderQueue.getAllOrders(), path);
         }
     }
 }

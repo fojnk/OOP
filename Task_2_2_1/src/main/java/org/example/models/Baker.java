@@ -26,6 +26,14 @@ public class Baker implements Runnable {
         this.orderQueue = orderQueue;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public int getCookingTime() {
+        return this.cookingTime;
+    }
+
     public void takeOrder () {
         currOrder = orderQueue.getOrder();
         isBusy = true;

@@ -22,6 +22,18 @@ public class Deliverer implements Runnable {
         this.trunkCapacity = trunkCapacity;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public int getDeliveryTime() {
+        return this.deliveryTime;
+    }
+
+    public int getTrunkCapacity() {
+        return this.trunkCapacity;
+    }
+
     public void setStorageAndOrderQueue(Storage storage, OrderQueue orderQueue) {
         this.storage = storage;
         this.orderQueue = orderQueue;
