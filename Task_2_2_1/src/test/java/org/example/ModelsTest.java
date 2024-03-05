@@ -19,6 +19,7 @@ public class ModelsTest {
         var baker = new Baker(1, "Bob");
         baker.setStorageAndOrderQueue(storage, orderQueue);
 
+        //Проверка на передачу заказов на склад
         orderQueue.putOrder(order);
         var t1 = new Thread(baker);
         t1.start();
@@ -37,9 +38,10 @@ public class ModelsTest {
             }
         }, 200);
 
-        var deliverer = new Deliverer(10000, 3, "Steve");
+        var deliverer = new Deliverer(1000, 3, "Steve");
         deliverer.setStorageAndOrderQueue(storage, orderQueue);
 
+        // Проверка действий курьера при прерывании доставки
         var t2 = new Thread(deliverer);
         t2.start();
         timer.schedule(new java.util.TimerTask() {
@@ -55,5 +57,35 @@ public class ModelsTest {
                 timer.cancel();
             }
         }, 100);
+
+        // Проверка на выполнение доставки
+        var t3 = new Thread(deliverer);
+        timer.schedule(new java.util.TimerTask() {
+            @Override
+            public void run() {
+                t3.interrupt();
+                try {
+                    t3.join();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                Assertions.assertFalse(storage.contains(order));
+                timer.cancel();
+            }
+        }, 2000);
+    }
+
+    @Test
+    public void StorageAndOrderQueueTest() {
+        var order = new Order(1001, "some pizza");
+        var orderQueue = new OrderQueue();
+        orderQueue.putOrder(order);
+        Assertions.assertEquals(order.getId(), orderQueue.getOrder().getId());
+        Assertions.assertTrue(orderQueue.contains(order));
+        var storage = new Storage(5);
+        storage.putOrder(order);
+        Assertions.assertTrue(storage.contains(order));
+        Assertions.assertEquals(storage.getCapacity(), 5);
+        Assertions.assertEquals(orderQueue.getAllOrders().get(0).getId(), order.getId());
     }
 }

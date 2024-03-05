@@ -12,6 +12,10 @@ public class OrderQueue {
         this.orders = new LinkedList<>();
     }
 
+    public boolean contains(Order order) {
+        return orders.contains(order);
+    }
+
     public int getAmountOfOrders() {
         return orders.size();
     }

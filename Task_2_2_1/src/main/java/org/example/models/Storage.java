@@ -16,6 +16,10 @@ public class Storage {
         return this.capacity;
     }
 
+    public boolean contains(Order order) {
+        return this.orders.contains(order);
+    }
+
     public synchronized void putOrder(Order order) {
         while (orders.size() >= this.capacity) {
             try {
