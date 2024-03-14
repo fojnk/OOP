@@ -42,7 +42,7 @@ public class JsonTest {
         Assertions.assertEquals(bakers.get(0).getCookingTime(), 9000);
 
         Assertions.assertEquals(deliverers.get(0).getName(), "Steve");
-        Assertions.assertEquals(deliverers.get(0).getDeliveryTime(), 10000);
+        Assertions.assertEquals(deliverers.get(0).getDeliveryTime(), 5000);
         Assertions.assertEquals(deliverers.get(0).getTrunkCapacity(), 3);
 
         Assertions.assertEquals(storage.getCapacity(), 10);
