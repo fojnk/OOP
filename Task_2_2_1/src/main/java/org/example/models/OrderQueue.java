@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Queue;
 
 public class OrderQueue {
-    private final Queue<Order> orders;
+    private final LinkedList<Order> orders;
 
     public OrderQueue() {
         this.orders = new LinkedList<>();
@@ -22,6 +22,10 @@ public class OrderQueue {
 
     public synchronized void putOrder(Order order) {
         orders.add(order);
+    }
+
+    public synchronized void putFirstInOrder(Order order) {
+        orders.addFirst(order);
     }
 
     public List<Order> getAllOrders(){

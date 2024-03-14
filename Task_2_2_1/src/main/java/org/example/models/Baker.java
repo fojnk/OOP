@@ -1,23 +1,22 @@
 package org.example.models;
 
+import org.example.app.Pizzeria;
 import org.example.types.OrderStats;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Baker implements Runnable {
-    private String name;
-    private int cookingTime;
+    private static final Logger logger = LogManager.getLogger(Baker.class);;
+    private final String name;
+    private final int cookingTime;
     private Storage storage;
     private OrderQueue orderQueue;
     private boolean isBusy;
     private Order currOrder;
 
-    private boolean hardStopWork;
-    private boolean lightStopWork;
-
     public Baker(int cookingTime, String name) {
         this.name = name;
         this.cookingTime = cookingTime;
-        this.hardStopWork = false;
-        this.lightStopWork = false;
         this.isBusy = false;
     }
 
@@ -34,22 +33,31 @@ public class Baker implements Runnable {
         return this.cookingTime;
     }
 
-    public void takeOrder () {
+    private void takeOrder () {
         currOrder = orderQueue.getOrder();
-        isBusy = true;
-        System.out.println(currOrder.updateStatus(OrderStats.ACCEPTED));
+        if (currOrder != null) {
+            isBusy = true;
+            logger.info(currOrder.updateStatus(OrderStats.ACCEPTED));
+        } else {
+            isBusy = false;
+            Thread.currentThread().interrupt();
+        }
     }
 
-    public void cook() throws InterruptedException {
-        System.out.println(currOrder.updateStatus(OrderStats.IS_COOKING));
-        Thread.sleep(this.cookingTime);
+    private void cook() throws InterruptedException {
+        if (isBusy) {
+            logger.info(currOrder.updateStatus(OrderStats.IS_COOKING));
+            Thread.sleep(this.cookingTime);
+        }
     }
 
-    public void putInStorage() {
-        System.out.println(currOrder.updateStatus(OrderStats.WAITING_TO_BE_SENT_TO_STORAGE));
-        storage.putOrder(currOrder);
-        System.out.println(currOrder.updateStatus(OrderStats.IN_STORAGE));
-        isBusy = false;
+    private void putInStorage() {
+        if (isBusy) {
+            logger.info(currOrder.updateStatus(OrderStats.WAITING_TO_BE_SENT_TO_STORAGE));
+            storage.putOrder(currOrder);
+            logger.info(currOrder.updateStatus(OrderStats.IN_STORAGE));
+            isBusy = false;
+        }
     }
 
     @Override
@@ -61,7 +69,7 @@ public class Baker implements Runnable {
                 putInStorage();
             } catch (InterruptedException e) {
                 if (isBusy) {
-                    orderQueue.putOrder(currOrder);
+                    orderQueue.putFirstInOrder(currOrder);
                 }
                 return;
             }

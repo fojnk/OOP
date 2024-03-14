@@ -1,5 +1,7 @@
 package org.example.app;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.example.models.Baker;
 import org.example.models.Deliverer;
 import org.example.models.OrderQueue;
@@ -11,11 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pizzeria {
+
+    private static final Logger logger = LogManager.getLogger(Pizzeria.class);
     private List<Baker> bakers;
     private List<Deliverer> deliverers;
-    private Storage storage;
-    private OrderQueue orderQueue;
-
+    private final OrderQueue orderQueue;
     private List<Thread> bakersThreads;
     private List<Thread> deliverersThreads;
 
@@ -26,38 +28,45 @@ public class Pizzeria {
     private void loadConfiguration(String configPath, String orderPath, List<String> storagesPaths) {
         bakers = JsonHandle.getBakersFromJson(configPath);
         deliverers = JsonHandle.getDeliverersFromJson(configPath);
-        storage = JsonHandle.getStorageFromJson(configPath);
+        Storage storage = JsonHandle.getStorageFromJson(configPath);
         storagesPaths.add(orderPath);
         var orders = JsonHandle.getOrdersFromJson(storagesPaths);
         for (var order : orders) {
             this.orderQueue.putOrder(order);
         }
         for (var baker: bakers) {
-            baker.setStorageAndOrderQueue(this.storage, this.orderQueue);
+            baker.setStorageAndOrderQueue(storage, this.orderQueue);
         }
         for (var deliverer: deliverers) {
-            deliverer.setStorageAndOrderQueue(this.storage, this.orderQueue);
+            deliverer.setStorageAndOrderQueue(storage, this.orderQueue);
         }
     }
 
     public void Start(String configPath, String orderPath, List<String> storages) {
+        logger.info("Loading configuration...");
         loadConfiguration(configPath, orderPath, storages);
         this.bakersThreads = new ArrayList<>();
         this.deliverersThreads = new ArrayList<>();
 
+        logger.info("Setting bakers...");
         for (var baker: bakers) {
             Thread t = new Thread(baker);
             t.start();
             bakersThreads.add(t);
         }
+
+        logger.info("Setting deliverers...");
         for (var deliverer: deliverers) {
             Thread t = new Thread(deliverer);
             t.start();
             deliverersThreads.add(t);
         }
+
+        logger.info("Pizzeria started");
     }
 
     public void Stop(String path) throws IOException {
+        logger.info("Stopping work...");
         bakersThreads.forEach(Thread::interrupt);
         deliverersThreads.forEach(Thread::interrupt);
 
@@ -76,5 +85,6 @@ public class Pizzeria {
         if (orderQueue.getAmountOfOrders() != 0) {
             JsonHandle.putOrdersInStorage(orderQueue.getAllOrders(), path);
         }
+        logger.info("Pizzeria stopped...");
     }
 }

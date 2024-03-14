@@ -1,19 +1,19 @@
 package org.example.models;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.example.types.OrderStats;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class Deliverer implements Runnable {
-    private String name;
+    private static final Logger logger = LogManager.getLogger(Deliverer.class);;
+    private final String name;
     private final int deliveryTime;
     private Storage storage;
     private final int trunkCapacity;
     private OrderQueue orderQueue;
-    private boolean isBusy;
-
     private Queue<Order> trunk;
 
     public Deliverer(int deliveryTime, int trunkCapacity, String name) {
@@ -39,7 +39,7 @@ public class Deliverer implements Runnable {
         this.orderQueue = orderQueue;
     }
 
-    public void TakeOrders() {
+    private void TakeOrders() {
         var amountOfTakenOrders = 0;
         trunk = new LinkedList<>();
         Order order = storage.getOrder();
@@ -53,18 +53,16 @@ public class Deliverer implements Runnable {
         }
     }
 
-    public void Delivering() throws InterruptedException {
-        isBusy = true;
+    private void Delivering() throws InterruptedException {
         for (var order : trunk) {
             if (order != null) {
-                System.out.println(order.updateStatus(OrderStats.DELIVERING));
+                logger.info(order.updateStatus(OrderStats.DELIVERING));
                 Thread.sleep(this.deliveryTime);
-                System.out.println(order.updateStatus(OrderStats.DONE));
+                logger.info(order.updateStatus(OrderStats.DONE));
             } else {
                 Thread.currentThread().interrupt();
             }
         }
-        isBusy = false;
     }
 
     @Override
@@ -76,7 +74,7 @@ public class Deliverer implements Runnable {
             } catch (InterruptedException e) {
                 if (!trunk.isEmpty()) {
                     while (!trunk.isEmpty() ) {
-                        orderQueue.putOrder(trunk.poll());
+                        orderQueue.putFirstInOrder(trunk.poll());
                     }
                 }
                 return;
