@@ -10,11 +10,6 @@ import java.util.List;
 
 public class PizzeriaTest {
     @Test
-    public void checkWorkTest() {
-        Main.main(new String[]{});
-    }
-
-    @Test
     public void loadingConfigurationTest() {
         var pz = new Pizzeria();
         List<String> list = new ArrayList<>();
@@ -53,5 +48,10 @@ public class PizzeriaTest {
         var orders = pz.getOrdersFromOrderQueue();
         Assertions.assertEquals(orders.get(0).getId(), 1001);
         Assertions.assertEquals(orders.get(1).getId(), 1002);
+    }
+
+    @Test
+    public void checkWorkTest() {
+        Main.main(new String[]{});
     }
 }

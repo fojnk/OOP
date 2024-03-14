@@ -30,6 +30,9 @@ public class JsonTest {
             Assertions.assertEquals(order.getId(), list.get(i - 1000).getId());
             Assertions.assertEquals(order.getDescription(), list.get(i - 1000).getDescription());
         }
+
+        list = new ArrayList<>();
+        JsonHandle.putOrdersInStorage(list, STORAGE_PATH);
     }
 
     @Test
