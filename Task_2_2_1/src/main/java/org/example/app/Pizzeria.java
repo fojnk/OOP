@@ -2,10 +2,7 @@ package org.example.app;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.example.models.Baker;
-import org.example.models.Deliverer;
-import org.example.models.OrderQueue;
-import org.example.models.Storage;
+import org.example.models.*;
 import org.example.repository.JsonHandle;
 
 import java.io.IOException;
@@ -27,6 +24,10 @@ public class Pizzeria {
             result.add(new Baker(baker.getCookingTime(), baker.getName()));
         }
         return result;
+    }
+
+    public List<Order> getOrdersFromOrderQueue() {
+        return orderQueue.getAllOrders();
     }
 
     public List<Deliverer> getDeliverers() {
