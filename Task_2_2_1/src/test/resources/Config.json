@@ -9,7 +9,7 @@
   "deliverers": [
     {
       "name": "Steve",
-      "delivery_time": 10000,
+      "delivery_time": 5000,
       "trunk_size": 3
     }
   ]

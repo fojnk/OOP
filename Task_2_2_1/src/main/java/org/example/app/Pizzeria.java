@@ -21,11 +21,28 @@ public class Pizzeria {
     private List<Thread> bakersThreads;
     private List<Thread> deliverersThreads;
 
+    public List<Baker> getBakers() {
+        List<Baker> result = new ArrayList<>();
+        for (var baker: bakers) {
+            result.add(new Baker(baker.getCookingTime(), baker.getName()));
+        }
+        return result;
+    }
+
+    public List<Deliverer> getDeliverers() {
+        List<Deliverer> result = new ArrayList<>();
+        for (var deliverer: deliverers) {
+            result.add(new Deliverer(deliverer.getDeliveryTime(), deliverer.getTrunkCapacity(),
+                    deliverer.getName()));
+        }
+        return result;
+    }
+
     public Pizzeria() {
         this.orderQueue = new OrderQueue();
     }
 
-    private void loadConfiguration(String configPath, String orderPath, List<String> storagesPaths) {
+    public void loadConfiguration(String configPath, String orderPath, List<String> storagesPaths) {
         bakers = JsonHandle.getBakersFromJson(configPath);
         deliverers = JsonHandle.getDeliverersFromJson(configPath);
         Storage storage = JsonHandle.getStorageFromJson(configPath);
