@@ -1,8 +1,8 @@
-package org.example.models;
+package com.example.task_2_3_1.models;
 
 public class SnakePart {
-    private int positionX;
-    private int positionY;
+    private final int positionX;
+    private final int positionY;
 
     public SnakePart(int positionX, int positionY) {
         this.positionX = positionX;
