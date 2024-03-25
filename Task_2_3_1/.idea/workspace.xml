@@ -5,27 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d6e2be2-35a4-4eca-bbc3-f362a22fb276" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/game/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/game/Settings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/Field.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/Food.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/Snake.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/SnakePart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/types/Direction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/app/SnakeApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/controllers/SceneController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/controllers/StartScreenController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/task_2_3_1/screens/ExitScreen.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/task_2_3_1/screens/Field.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/task_2_3_1/screens/Settings.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/task_2_3_1/screens/StartScreen.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/models/Field.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/models/Snake.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/models/SnakePart.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/types/Direction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/game/Game.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,24 +26,39 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2e7VLWL2JhunLrw8JivBkS71aGY" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Task__2__3__1"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Task__2__3__1&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/task_2_3_1/screens" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/task_2_3_1" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/controllers" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Game" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.task_2_3_1.Game" />
@@ -85,5 +89,9 @@
       <updated>1711255548067</updated>
     </task>
     <servers />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

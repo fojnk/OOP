@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Arc?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.CubicCurve?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #A2D149;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.task_2_3_1.controllers.SceneController">
+   <children>
+      <Circle fill="#eb261b" layoutX="541.0" layoutY="306.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#bcbcbc" layoutX="239.0" layoutY="264.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#bcbcbc" layoutX="230.0" layoutY="268.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#bcbcbc" layoutX="221.0" layoutY="276.0" radius="9.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#bcbcbc" layoutX="219.0" layoutY="285.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#bcbcbc" layoutX="230.0" layoutY="295.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#bcbcbc" layoutX="244.0" layoutY="301.0" radius="16.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#bcbcbc" layoutX="258.0" layoutY="309.0" radius="18.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#bcbcbc" layoutX="273.0" layoutY="324.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#bcbcbc" layoutX="264.0" layoutY="344.0" radius="23.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#bcbcbc" layoutX="235.0" layoutY="356.0" radius="26.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#bcbcbc" layoutX="201.0" layoutY="359.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#bcbcbc" layoutX="162.0" layoutY="344.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#bcbcbc" layoutX="132.0" layoutY="318.0" radius="36.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#bcbcbc" layoutX="119.0" layoutY="280.0" radius="34.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#bcbcbc" layoutX="124.0" layoutY="244.0" radius="34.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="WHITE" layoutX="153.0" layoutY="156.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Arc fill="#bcbcbc" layoutX="155.0" layoutY="197.0" length="270.0" radiusX="59.0" radiusY="43.0" startAngle="45.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" />
+      <Circle fill="WHITE" layoutX="133.0" layoutY="164.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle layoutX="140.0" layoutY="157.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle layoutX="160.0" layoutY="146.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+      <Button fx:id="start" layoutX="333.0" layoutY="134.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="127.0" style="-fx-background-color: #333;" text="Start" textFill="#fff8f8" textOverrun="CLIP">
+         <effect>
+            <Lighting diffuseConstant="1.51" specularConstant="1.42" specularExponent="20.47" surfaceScale="2.21">
+               <bumpInput>
+                  <Shadow blurType="TWO_PASS_BOX" height="9.13" radius="4.065" width="9.13" />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Button>
+      <Label layoutX="251.0" layoutY="45.0" text="Snake Game">
+         <font>
+            <Font size="55.0" />
+         </font>
+         <effect>
+            <Lighting specularConstant="0.35" surfaceScale="7.95">
+               <bumpInput>
+                  <Shadow radius="9.2575" width="18.03" />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Label>
+      <Circle fill="#ffc548" layoutX="24.0" layoutY="26.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#ffc548" layoutX="121.0" layoutY="59.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#ffc548" layoutX="39.0" layoutY="102.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#eb261b" layoutX="500.0" layoutY="331.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+      <CubicCurve controlX1="-59.4598388671875" controlX2="-24.163543701171875" controlY1="-32.63336181640625" controlY2="-18.728759765625" endX="-59.4598388671875" endY="-2.0" fill="#51ff1f" layoutX="561.0" layoutY="303.0" startX="-61.0" startY="-2.0" stroke="BLACK" />
+      <CubicCurve controlX1="-53.873443603515625" controlX2="-50.1298828125" controlY1="-10.89373779296875" controlY2="-26.937530517578125" endX="-27.02447509765625" endY="-10.89373779296875" fill="#1fff4b" layoutX="526.0" layoutY="308.0" startX="-33.01654052734375" startY="-7.0" stroke="BLACK" />
+      <Circle fill="WHITE" layoutX="50.0" layoutY="26.0" radius="7.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fill="WHITE" layoutX="140.0" layoutY="63.0" radius="4.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fill="WHITE" layoutX="134.0" layoutY="48.0" radius="7.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fill="WHITE" layoutX="50.0" layoutY="47.0" radius="4.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fill="WHITE" layoutX="51.0" layoutY="95.0" radius="4.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fill="WHITE" layoutX="489.0" layoutY="318.0" radius="7.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fill="WHITE" layoutX="503.0" layoutY="314.0" radius="4.0" stroke="WHITE" strokeType="INSIDE" />
+      <CubicCurve controlX1="-59.4598388671875" controlX2="-24.163543701171875" controlY1="-32.63336181640625" controlY2="-18.728759765625" endX="-59.4598388671875" endY="-2.0" fill="#51ff1f" layoutX="602.0" layoutY="287.0" startX="-61.0" startY="-2.0" stroke="BLACK" />
+      <CubicCurve controlX1="-53.873443603515625" controlX2="-50.1298828125" controlY1="-10.89373779296875" controlY2="-26.937530517578125" endX="-27.02447509765625" endY="-10.89373779296875" fill="#1fff4b" layoutX="567.0" layoutY="292.0" startX="-33.01654052734375" startY="-7.0" stroke="BLACK" />
+      <Circle fill="WHITE" layoutX="534.0" layoutY="295.0" radius="2.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fill="WHITE" layoutX="541.0" layoutY="292.0" radius="3.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fill="#eb261b" layoutX="553.0" layoutY="335.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+      <CubicCurve controlX1="-59.4598388671875" controlX2="-7.109619140625" controlY1="-32.63336181640625" controlY2="-29.4027099609375" endX="-59.4598388671875" endY="-2.0" fill="#51ff1f" layoutX="612.0" layoutY="309.0" startX="-61.0" startY="-2.0" stroke="BLACK" />
+      <CubicCurve controlX1="-65.69830322265625" controlX2="-50.1298828125" controlY1="-14.615386962890625" controlY2="-26.937530517578125" endX="-27.02447509765625" endY="-10.89373779296875" fill="#1fff4b" layoutX="577.0" layoutY="314.0" startX="-33.01654052734375" startY="-7.0" stroke="BLACK" />
+      <Circle fill="WHITE" layoutX="540.0" layoutY="324.0" radius="7.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fill="WHITE" layoutX="554.0" layoutY="320.0" radius="4.0" stroke="WHITE" strokeType="INSIDE" />
+      <Button fx:id="settings" layoutX="333.0" layoutY="179.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="127.0" style="-fx-background-color: #333;" text="Settings" textFill="#fff8f8" textOverrun="CLIP">
+         <effect>
+            <Lighting diffuseConstant="1.51" specularConstant="1.42" specularExponent="20.47" surfaceScale="2.21">
+               <bumpInput>
+                  <Shadow blurType="TWO_PASS_BOX" height="9.13" radius="4.065" width="9.13" />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="exit" layoutX="333.0" layoutY="223.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="127.0" style="-fx-background-color: #333;" text="Exit" textFill="#fff8f8" textOverrun="CLIP">
+         <effect>
+            <Lighting diffuseConstant="1.51" specularConstant="1.42" specularExponent="20.47" surfaceScale="2.21">
+               <bumpInput>
+                  <Shadow blurType="TWO_PASS_BOX" height="9.13" radius="4.065" width="9.13" />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

@@ -1,4 +1,4 @@
-package com.example.task_2_3_1.game;
+package com.example.task_2_3_1.controllers;
 
 import com.example.task_2_3_1.game.Settings;
 import com.example.task_2_3_1.models.Field;
@@ -8,38 +8,36 @@ import com.example.task_2_3_1.types.Direction;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.CycleMethod;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.Stop;
-import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.Random;
 
-public class Game extends Application {
+public class SceneController {
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
     private Settings settings;
     private Snake player;
     private GraphicsContext gc;
@@ -47,12 +45,22 @@ public class Game extends Application {
     private boolean gameOver;
     private ArrayList<Food> foodList;
     private Timeline timeline;
-    private Group root;
-    private Stage stage;
-    private Scene scene;
 
-    @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void switchToSettingsScreen(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("SettingsScreen.fxml")));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.show();
+    }
+
+    public void switchToExitScreen(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ExitScreen.fxml")));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.show();
+    }
+
+    public void startGame(ActionEvent event) {
         gameOver = false;
         settings = new Settings();
         player = new Snake(6, 6, 1, Direction.DOWN);
@@ -60,16 +68,17 @@ public class Game extends Application {
         field.addSnake( player);
         foodList = new ArrayList<>();
 
-        primaryStage.setTitle("Snake");
+        stage.setTitle("Snake");
         root = new Group();
 
         Canvas canvas = new Canvas(settings.getWIDTH(), settings.getHEIGHT());
-        root.getChildren().add(canvas);
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
+        root.getChildrenUnmodifiable().add(canvas);
+        scene = new Scene(root);
+        stage.setScene(scene);
         gc = canvas.getGraphicsContext2D();
 
-        primaryStage.show();
+        //initMainMenu(root);
+        stage.show();
         scene.setOnKeyPressed(new KeyHandler());
 
         timeline = new Timeline(new KeyFrame(Duration.seconds(0.2), e -> run()));
@@ -97,11 +106,6 @@ public class Game extends Application {
     private void exit() {
         timeline.stop();
     }
-
-    public static void main(String[] args) {
-        launch();
-    }
-
 
     private void run () {
         if (gameOver) {
@@ -204,5 +208,4 @@ public class Game extends Application {
                     20, 20);
         }
     }
-
 }
