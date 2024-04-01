@@ -6,12 +6,13 @@ import java.util.LinkedList;
 
 public class Snake {
     private final LinkedList<SnakePart> snake;
+    private int size;
     private boolean isAlive;
     private Direction direction;
     private int speed;
     private int xChange;
     private int yChange;
-    private boolean increase;
+    private int increase;
 
 
     public Snake(int startPositionX, int startPositionY, int speed, Direction direction) {
@@ -19,7 +20,7 @@ public class Snake {
         snake.addFirst(new SnakePart(startPositionX, startPositionY));
         isAlive = true;
         this.speed = speed;
-        this.increase = false;
+        this.increase = 0;
         setDirection(direction);
     }
 
@@ -29,6 +30,10 @@ public class Snake {
             snake.add(new SnakePart(part.getPositionX(), part.getPositionY()));
         }
         return snake;
+    }
+
+    public int getSnakeSize() {
+        return this.size;
     }
 
     public Direction getDirection() {
@@ -53,8 +58,8 @@ public class Snake {
         }
     }
 
-    public void increaseSnake() {
-        this.increase = true;
+    public void increaseSnake(int change) {
+        this.increase = change;
     }
 
     public void setDirection(Direction direction) {
@@ -101,10 +106,11 @@ public class Snake {
         var newHead = new SnakePart(snake.getFirst().getPositionX() + xChange,
                 snake.getFirst().getPositionY() + yChange);
         snake.addFirst(newHead);
-        if (!this.increase) {
+        if (this.increase == 0) {
             snake.pollLast();
         } else {
-            this.increase = false;
+            this.increase--;
+            size++;
         }
         checkBodyCollision();
     }

@@ -1,6 +1,6 @@
-package com.example.task_2_3_1.models;
+package com.example.task_2_3_1.models.food;
 
-public class Food {
+abstract public class Food {
     private final String ImagePath;
     private final int positionX;
     private final int positionY;
@@ -22,4 +22,8 @@ public class Food {
     public String getImagePath() {
         return this.ImagePath;
     }
+
+    public abstract int getChange();
+
+    public abstract int getType();
 }

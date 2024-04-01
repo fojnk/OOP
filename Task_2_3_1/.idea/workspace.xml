@@ -5,16 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d6e2be2-35a4-4eca-bbc3-f362a22fb276" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/app/SnakeApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/controllers/SceneController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/controllers/StartScreenController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/task_2_3_1/screens/ExitScreen.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/task_2_3_1/screens/Field.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/task_2_3_1/screens/Settings.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/task_2_3_1/screens/StartScreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/controllers/SettingsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/food/Apple.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/food/ChilliPepper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/food/GoldApple.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/apple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/chilliPaper.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/goldApple.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/app/SnakeApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/SnakeApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/controllers/SceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/controllers/SceneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/controllers/StartScreenController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/game/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/game/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/food/Food.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/Snake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/Snake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/task_2_3_1/hello-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/task_2_3_1/screens/Settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/task_2_3_1/screens/Settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/task_2_3_1/screens/StartScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/task_2_3_1/screens/StartScreen.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,18 +66,23 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/images" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/task_2_3_1/screens" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/task_2_3_1/screens/controllers" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/task_2_3_1" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/controllers" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.task_2_3_1" />
     </key>
   </component>
   <component name="RunManager">
     <configuration name="Game" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.task_2_3_1.Game" />
+      <option name="MAIN_CLASS_NAME" value="com.example.task_2_3_1.game.Game" />
       <module name="Task_2_3_1.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.task_2_3_1.*" />
+          <option name="PATTERN" value="com.example.task_2_3_1.game.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>

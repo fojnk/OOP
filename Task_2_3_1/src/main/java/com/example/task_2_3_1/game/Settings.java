@@ -1,9 +1,9 @@
 package com.example.task_2_3_1.game;
 
 public class Settings {
-    private static int WIDTH = 1600;
-    private static int HEIGHT = 800;
-    private static int ROWS = 20;
+    private static int WIDTH = 800;
+    private static int HEIGHT = 500;
+    private static int ROWS = 25;
     private static int COLUMNS = 40;
     private static int blockXSideSize = WIDTH / COLUMNS;
     private static int blockYSideSize = HEIGHT / ROWS;
