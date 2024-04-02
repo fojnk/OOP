@@ -29,14 +29,17 @@ public class Field {
         return this.snakes;
     }
 
-    public void checkCollisions() {
+    public boolean checkCollisions() {
+        var result = false;
         for (var snake : snakes) {
             var head = snake.getHead();
             if (head.getPositionX() < 0 || head.getPositionX() > this.xSize ||
                 head.getPositionY() < 0 || head.getPositionY() > this.ySize) {
                 snake.setIsAlive(false);
+                result = true;
             }
         }
+        return result;
     }
 
     public void deleteSnake() {

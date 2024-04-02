@@ -1,10 +1,11 @@
 package com.example.task_2_3_1.models.food;
 
 import com.example.task_2_3_1.models.food.Food;
+import com.example.task_2_3_1.types.FoodTypes;
 
 public class ChilliPepper extends Food {
     private int change = 0;
-    private int type = 2;
+    private FoodTypes type = FoodTypes.CHILLIPEPPER;
 
     public ChilliPepper(String imagePath, int positionX, int positionY) {
         super(imagePath, positionX, positionY);
@@ -16,7 +17,7 @@ public class ChilliPepper extends Food {
     }
 
     @Override
-    public int getType() {
+    public FoodTypes getType() {
         return type;
     }
 }

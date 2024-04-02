@@ -5,28 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d6e2be2-35a4-4eca-bbc3-f362a22fb276" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/controllers/SettingsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/food/Apple.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/food/ChilliPepper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/food/GoldApple.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/apple.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/chilliPaper.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/goldApple.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/types/FoodTypes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/task_2_3_1/FieldTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/task_2_3_1/FoodTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/task_2_3_1/SnakeTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/HelloController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/app/SnakeApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/SnakeApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/controllers/SceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/controllers/SceneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/controllers/StartScreenController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/game/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/game/Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/food/Food.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/Field.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/Snake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/Snake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/task_2_3_1/hello-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/task_2_3_1/screens/Settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/task_2_3_1/screens/Settings.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/task_2_3_1/screens/StartScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/task_2_3_1/screens/StartScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/food/Apple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/food/Apple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/food/ChilliPepper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/food/ChilliPepper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/food/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/food/Food.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/food/GoldApple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/food/GoldApple.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

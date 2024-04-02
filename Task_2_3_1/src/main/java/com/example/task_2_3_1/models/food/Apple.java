@@ -1,8 +1,10 @@
 package com.example.task_2_3_1.models.food;
 
+import com.example.task_2_3_1.types.FoodTypes;
+
 public class Apple extends Food {
     private int change = 1;
-    private int type = 0;
+    private FoodTypes type = FoodTypes.APPLE;
 
     public Apple(String imagePath, int positionX, int positionY) {
         super(imagePath, positionX, positionY);
@@ -14,7 +16,7 @@ public class Apple extends Food {
     }
 
     @Override
-    public int getType() {
+    public FoodTypes getType() {
         return type;
     }
 }

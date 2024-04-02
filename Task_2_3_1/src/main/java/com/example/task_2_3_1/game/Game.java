@@ -7,6 +7,7 @@ import com.example.task_2_3_1.models.food.Food;
 import com.example.task_2_3_1.models.Snake;
 import com.example.task_2_3_1.models.food.GoldApple;
 import com.example.task_2_3_1.types.Direction;
+import com.example.task_2_3_1.types.FoodTypes;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -43,7 +44,7 @@ public class Game {
     public Game(Stage primaryStage, Settings settings) throws IOException {
         gameOver = false;
         this.settings = settings;
-        player = new Snake(6, 6, 1, Direction.DOWN);
+        player = new Snake(6, 6,Direction.DOWN);
         field = new Field(settings.getCOLUMNS(), settings.getROWS());
         field.addSnake(player);
         this.speedBoost = false;
@@ -66,7 +67,7 @@ public class Game {
     }
 
     public void startGame() {
-        timeline = new Timeline(new KeyFrame(Duration.seconds(0.25), e -> run()));
+        timeline = new Timeline(new KeyFrame(Duration.seconds(0.2), e -> run()));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
     }
@@ -169,7 +170,7 @@ public class Game {
             for (var food : foodList) {
                 if (food.getPositionX() == head.getPositionX() && food.getPositionY() == head.getPositionY()) {
                     snake.increaseSnake(food.getChange());
-                    speedBoost = food.getType() == 1;
+                    speedBoost = food.getType() == FoodTypes.CHILLIPEPPER;
                     foodList.remove(food);
                     break;
                 }

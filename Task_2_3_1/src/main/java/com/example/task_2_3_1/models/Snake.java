@@ -9,17 +9,16 @@ public class Snake {
     private int size;
     private boolean isAlive;
     private Direction direction;
-    private int speed;
+    private int speed = 1;
     private int xChange;
     private int yChange;
     private int increase;
 
 
-    public Snake(int startPositionX, int startPositionY, int speed, Direction direction) {
+    public Snake(int startPositionX, int startPositionY, Direction direction) {
         snake = new LinkedList<>();
         snake.addFirst(new SnakePart(startPositionX, startPositionY));
         isAlive = true;
-        this.speed = speed;
         this.increase = 0;
         setDirection(direction);
     }
@@ -46,16 +45,6 @@ public class Snake {
 
     public SnakePart getTail() {
         return snake.getLast();
-    }
-
-    public int getSpeed() {
-        return this.speed;
-    }
-
-    public void setSpeed(int newSpeed) {
-        if (newSpeed > 0) {
-            this.speed = newSpeed;
-        }
     }
 
     public void increaseSnake(int change) {

@@ -1,5 +1,7 @@
 package com.example.task_2_3_1.models.food;
 
+import com.example.task_2_3_1.types.FoodTypes;
+
 abstract public class Food {
     private final String ImagePath;
     private final int positionX;
@@ -25,5 +27,5 @@ abstract public class Food {
 
     public abstract int getChange();
 
-    public abstract int getType();
+    public abstract FoodTypes getType();
 }
