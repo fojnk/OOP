@@ -6,10 +6,12 @@ public class Field {
     private final int xSize;
     private final int ySize;
     private final LinkedList<Snake> snakes;
+    private final Snake player;
 
-    public Field(int xSize, int ySize) {
+    public Field(int xSize, int ySize, Snake player) {
         this.xSize = xSize;
         this.ySize = ySize;
+        this.player = player;
         this.snakes = new LinkedList<>();
     }
 
@@ -28,6 +30,8 @@ public class Field {
     public LinkedList<Snake> getSnakes() {
         return this.snakes;
     }
+
+    public Snake getPlayer() { return this.player; }
 
     public boolean checkCollisions() {
         var result = false;

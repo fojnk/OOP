@@ -24,5 +24,8 @@ public class FoodTest {
         Assertions.assertEquals(apple.getType(), FoodTypes.APPLE);
         Assertions.assertEquals(goldApple.getType(), FoodTypes.GOLDAPPLE);
         Assertions.assertEquals(chilliPepper.getType(), FoodTypes.CHILLIPEPPER);
+        Assertions.assertEquals(apple.getImagePath(), "image1");
+        Assertions.assertEquals(goldApple.getImagePath(), "image2");
+        Assertions.assertEquals(chilliPepper.getImagePath(), "image3");
     }
 }

@@ -5,19 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d6e2be2-35a4-4eca-bbc3-f362a22fb276" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/types/FoodTypes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/task_2_3_1/FieldTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/task_2_3_1/FoodTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/task_2_3_1/SnakeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/game/Drawer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/task_2_3_1/SettingsTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/game/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/game/Settings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/Field.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/Snake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/Snake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/food/Apple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/food/Apple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/food/ChilliPepper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/food/ChilliPepper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/food/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/food/Food.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/food/GoldApple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/food/GoldApple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/task_2_3_1/FieldTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/task_2_3_1/FieldTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/task_2_3_1/FoodTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/task_2_3_1/FoodTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/task_2_3_1/SnakeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/task_2_3_1/SnakeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,8 +77,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Tests in 'Task_2_3_1'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Tests in 'Task_2_3_1'" />
         <item itemvalue="Application.Game" />
       </list>
     </recent_temporary>
@@ -101,5 +120,8 @@
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Task_2_3_1$Tests_in__Task_2_3_1_.ic" NAME="Tests in 'Task_2_3_1' Coverage Results" MODIFIED="1712074850351" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

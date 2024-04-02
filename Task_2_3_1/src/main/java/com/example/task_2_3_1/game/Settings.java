@@ -8,7 +8,7 @@ public class Settings {
     private static int blockXSideSize = WIDTH / COLUMNS;
     private static int blockYSideSize = HEIGHT / ROWS;
     private static int amountOfFood = 3;
-    private static int winLength = (ROWS * COLUMNS) - 5;
+    private static int winLength = 50;
 
     public int getWIDTH() {
         return WIDTH;

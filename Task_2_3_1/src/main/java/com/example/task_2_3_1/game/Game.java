@@ -16,7 +16,6 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
@@ -31,39 +30,36 @@ import java.util.Random;
 
 public class Game {
     private final Settings settings;
-    private final Snake player;
     private final GraphicsContext gc;
+    private final Drawer drawer;
     private final Field field;
     private boolean gameOver;
     private final ArrayList<Food> foodList;
     private Timeline timeline;
-    private Group root;
-    private Scene scene;
     private boolean speedBoost;
 
     public Game(Stage primaryStage, Settings settings) throws IOException {
-        gameOver = false;
-        this.settings = settings;
-        player = new Snake(6, 6,Direction.DOWN);
-        field = new Field(settings.getCOLUMNS(), settings.getROWS());
-        field.addSnake(player);
-        this.speedBoost = false;
-        foodList = new ArrayList<>();
         primaryStage.setTitle("Snake");
-        root = new Group();
+        gameOver = false;
+        speedBoost = false;
+        this.settings = settings;
 
+        var player = new Snake(6, 6,Direction.DOWN);
+        field = new Field(settings.getCOLUMNS(), settings.getROWS(), player);
+        field.addSnake(player);
+
+        foodList = new ArrayList<>();
+        var root = new Group();
         Canvas canvas = new Canvas(settings.getWIDTH(), settings.getHEIGHT());
         root.getChildren().add(canvas);
-        scene = new Scene(root);
+
+        var scene = new Scene(root);
         primaryStage.setScene(scene);
         gc = canvas.getGraphicsContext2D();
+        drawer = new Drawer(gc, foodList, settings, field, player);
 
         primaryStage.show();
         scene.setOnKeyPressed(new KeyHandler());
-    }
-
-    public Scene getScene() {
-        return this.scene;
     }
 
     public void startGame() {
@@ -82,13 +78,13 @@ public class Game {
         public void handle(KeyEvent event) {
             var kCode = event.getCode();
             if (kCode == KeyCode.RIGHT || kCode == KeyCode.D) {
-                player.setDirection(Direction.RIGHT);
+                field.getPlayer().setDirection(Direction.RIGHT);
             } else if (kCode == KeyCode.LEFT || kCode == KeyCode.A) {
-                player.setDirection(Direction.LEFT);
+                field.getPlayer().setDirection(Direction.LEFT);
             } else if (kCode == KeyCode.UP || kCode == KeyCode.W) {
-                player.setDirection(Direction.UP);
+                field.getPlayer().setDirection(Direction.UP);
             } else if (kCode == KeyCode.DOWN || kCode == KeyCode.S) {
-                player.setDirection(Direction.DOWN);
+                field.getPlayer().setDirection(Direction.DOWN);
             }
         }
     }
@@ -107,19 +103,10 @@ public class Game {
         }
 
         generateFood(field.getSnakes());
-        drawBackground(gc);
         field.getSnakes().forEach(Snake::move);
         eatFood(field.getSnakes());
         field.checkCollisions();
-        for (var snake : field.getSnakes()) {
-            drawSnake(gc, snake);
-        }
-        drawFood();
-
-        gc.setFill(Color.GRAY);
-        gc.setFont(new Font("Digital-7", 25));
-        var score = String.format("Score: %d", player.getSnakeSize());
-        gc.fillText(score, 1, settings.getHEIGHT()/20.0);
+        drawer.drawFrame();
 
         checkGameOver();
     }
@@ -156,14 +143,6 @@ public class Game {
         }
     }
 
-    private void drawFood() {
-        for (var food : foodList) {
-            gc.drawImage(new Image(food.getImagePath()),food.getPositionX() * settings.getBlockXSideSize(),
-                    food.getPositionY() * settings.getBlockYSideSize(),
-                    settings.getBlockXSideSize() - 1, settings.getBlockYSideSize() - 1);
-        }
-    }
-
     private void eatFood(LinkedList<Snake> snakes) {
         for (var snake : snakes) {
             var head = snake.getHead();
@@ -178,38 +157,9 @@ public class Game {
         }
     }
 
-    private void drawBackground(GraphicsContext gc) {
-        for (int i = 0; i < settings.getCOLUMNS(); i ++) {
-            for (int j = 0; j < settings.getROWS(); j ++) {
-                if ((i + j) % 2 == 0) {
-                    gc.setFill(Color.web("AAD751"));
-                } else {
-                    gc.setFill(Color.web("A2D149"));
-                }
-                gc.fillRect(i * settings.getBlockYSideSize(), j * settings.getBlockXSideSize(),
-                        settings.getBlockXSideSize(), settings.getBlockYSideSize());
-            }
-        }
-    }
-
     private void checkGameOver() {
-        if (!player.getIsAlive()) {
+        if (!field.getPlayer().getIsAlive()) {
             gameOver = true;
-        }
-    }
-
-    private void drawSnake(GraphicsContext gc, Snake snake) {
-        var body = snake.getSnake();
-        gc.setFill(Color.web("70706e"));
-        gc.fillRoundRect(body.getFirst().getPositionX() * settings.getBlockXSideSize(),
-                body.getFirst().getPositionY() * settings.getBlockYSideSize(),
-                settings.getBlockXSideSize() - 1, settings.getBlockYSideSize() - 1, 35, 35);
-
-        for (int i = 1; i < body.size(); i++) {
-            gc.fillRoundRect(body.get(i).getPositionX() * settings.getBlockXSideSize(),
-                    body.get(i).getPositionY() * settings.getBlockYSideSize(),
-                    settings.getBlockXSideSize() - 1, settings.getBlockYSideSize() - 1,
-                    20, 20);
         }
     }
 
