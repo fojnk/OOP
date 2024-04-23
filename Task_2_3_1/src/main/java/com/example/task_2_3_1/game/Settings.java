@@ -8,7 +8,31 @@ public class Settings {
     private static int blockXSideSize = WIDTH / COLUMNS;
     private static int blockYSideSize = HEIGHT / ROWS;
     private static int amountOfFood = 3;
+    private static int amountOfRocks = 6;
     private static int winLength = 50;
+    private static int speed = 2;
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public int getAmountOfRocks() {
+        return amountOfRocks;
+    }
+
+    public void setAmountOfRocks(int amount) {
+        amountOfRocks = amount;
+    }
+
+    public void setSpeed(int newSpeed) {
+        if (newSpeed > 3) {
+            speed = 3;
+        } else if (speed < 0) {
+            speed = 0;
+        } else {
+            speed = newSpeed;
+        }
+    }
 
     public int getWIDTH() {
         return WIDTH;

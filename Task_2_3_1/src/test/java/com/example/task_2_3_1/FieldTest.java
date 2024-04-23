@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public class FieldTest {
     @Test
     public void simpleFieldTest() {
-        var field = new Field(10, 10, player);
+        var field = new Field(10, 10, null, 3, 3);
         Assertions.assertEquals(field.getXSize(), 10);
         Assertions.assertEquals(field.getYSize(), 10);
         var snake = new Snake(1, 1, Direction.RIGHT);

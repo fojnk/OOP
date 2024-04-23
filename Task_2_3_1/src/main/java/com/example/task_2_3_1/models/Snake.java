@@ -1,7 +1,10 @@
 package com.example.task_2_3_1.models;
 
+import com.example.task_2_3_1.models.food.Food;
 import com.example.task_2_3_1.types.Direction;
+import com.example.task_2_3_1.types.FoodTypes;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Snake {
@@ -13,6 +16,9 @@ public class Snake {
     private int xChange;
     private int yChange;
     private int increase;
+    private int speedBoost;
+
+    private SnakePart removed;
 
 
     public Snake(int startPositionX, int startPositionY, Direction direction) {
@@ -21,14 +27,24 @@ public class Snake {
         isAlive = true;
         this.increase = 0;
         setDirection(direction);
+        speedBoost = 0;
+        removed = null;
+    }
+
+    public SnakePart getRemoved() {
+        return this.removed;
+    }
+
+    public int getSpeedBoost() {
+        return  speedBoost;
+    }
+
+    public void setSpeedBoost(int val) {
+        this.speedBoost = val;
     }
 
     public LinkedList<SnakePart> getSnake() {
-        var snake = new LinkedList<SnakePart>();
-        for (var part : this.snake) {
-            snake.add(new SnakePart(part.getPositionX(), part.getPositionY()));
-        }
-        return snake;
+        return this.snake;
     }
 
     public int getSnakeSize() {
@@ -48,7 +64,7 @@ public class Snake {
     }
 
     public void increaseSnake(int change) {
-        this.increase = change;
+        this.increase += change;
     }
 
     public void setDirection(Direction direction) {
@@ -96,12 +112,12 @@ public class Snake {
                 snake.getFirst().getPositionY() + yChange);
         snake.addFirst(newHead);
         if (this.increase == 0) {
-            snake.pollLast();
+            removed = snake.pollLast();
         } else {
+            removed = null;
             this.increase--;
             size++;
         }
-        checkBodyCollision();
     }
 
     private void checkBodyCollision() {
@@ -115,5 +131,14 @@ public class Snake {
                 }
             }
         }
+    }
+
+    public void eatFood(Food food) {
+            this.increaseSnake(food.getChange());
+            if (food.getType() == FoodTypes.CHILLIPEPPER) {
+                speedBoost = 1;
+            } else {
+                speedBoost = 0;
+            }
     }
 }
