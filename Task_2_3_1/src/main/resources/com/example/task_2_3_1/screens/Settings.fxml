@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" scaleShape="false" style="-fx-background-color: #A2D149;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.task_2_3_1.controllers.SettingsController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="24.0" layoutY="28.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="150.0" layoutY="411.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="23.0" layoutY="415.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="86.0" layoutY="93.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="86.0" layoutY="349.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="24.0" layoutY="157.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="585.0" layoutY="21.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="718.0" layoutY="292.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="717.0" layoutY="21.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="656.0" layoutY="84.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="718.0" layoutY="415.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="657.0" layoutY="354.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Label layoutX="294.0" layoutY="27.0" prefHeight="91.0" prefWidth="271.0" text="Settings">
+         <font>
+            <Font size="72.0" />
+         </font>
+         <effect>
+            <Lighting specularConstant="0.35" surfaceScale="7.95">
+               <bumpInput>
+                  <Shadow radius="9.2575" width="18.03" />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Label>
+      <Button fx:id="start" layoutX="341.0" layoutY="423.0" mnemonicParsing="false" onAction="#startGame" prefHeight="34.0" prefWidth="127.0" style="-fx-background-color: #333;" text="Start" textFill="#fff8f8" textOverrun="CLIP">
+         <effect>
+            <Lighting diffuseConstant="1.51" specularConstant="1.42" specularExponent="20.47" surfaceScale="2.21">
+               <bumpInput>
+                  <Shadow blurType="TWO_PASS_BOX" height="9.13" radius="4.065" width="9.13" />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Button>
+      <Label layoutX="118.0" layoutY="162.0" prefHeight="58.0" prefWidth="78.0" text="Speed">
+         <font>
+            <Font size="25.0" />
+         </font>
+         <effect>
+            <Lighting specularConstant="0.35" surfaceScale="7.95">
+               <bumpInput>
+                  <Shadow radius="9.2575" width="18.03" />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Label>
+      <Label layoutX="78.0" layoutY="263.0" prefHeight="58.0" prefWidth="138.0" text="Win Length">
+         <font>
+            <Font size="25.0" />
+         </font>
+         <effect>
+            <Lighting specularConstant="0.35" surfaceScale="7.95">
+               <bumpInput>
+                  <Shadow radius="9.2575" width="18.03" />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Label>
+      <Label layoutX="41.0" layoutY="214.0" prefHeight="58.0" prefWidth="181.0" text="Amount of food">
+         <font>
+            <Font size="25.0" />
+         </font>
+         <effect>
+            <Lighting specularConstant="0.35" surfaceScale="7.95">
+               <bumpInput>
+                  <Shadow radius="9.2575" width="18.03" />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Label>
+      <Slider fx:id="speed" layoutX="224.0" layoutY="183.0" majorTickUnit="1.0" max="3.0" min="1.0" showTickLabels="true" showTickMarks="true" value="1.0" />
+      <Slider fx:id="amountOfFood" layoutX="223.0" layoutY="233.0" majorTickUnit="14.0" max="25.0" min="1.0" minorTickCount="5" showTickLabels="true" snapToTicks="true" value="3.0" />
+      <Slider fx:id="winLength" layoutX="223.0" layoutY="282.0" majorTickUnit="10.0" min="10.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" value="50.0" />
+      <Label layoutX="384.0" layoutY="263.0" prefHeight="58.0" prefWidth="181.0" text="Amount of rocks">
+         <font>
+            <Font size="25.0" />
+         </font>
+         <effect>
+            <Lighting specularConstant="0.35" surfaceScale="7.95">
+               <bumpInput>
+                  <Shadow radius="9.2575" width="18.03" />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Label>
+      <Slider fx:id="amountOfRocks" layoutX="568.0" layoutY="284.0" majorTickUnit="14.0" max="25.0" min="1.0" minorTickCount="5" showTickLabels="true" snapToTicks="true" value="3.0" />
+      <Label layoutX="429.0" layoutY="162.0" prefHeight="58.0" prefWidth="78.0" text="Rows">
+         <font>
+            <Font size="25.0" />
+         </font>
+         <effect>
+            <Lighting specularConstant="0.35" surfaceScale="7.95">
+               <bumpInput>
+                  <Shadow radius="9.2575" width="18.03" />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Label>
+      <Label layoutX="415.0" layoutY="214.0" prefHeight="58.0" prefWidth="107.0" text="Columns">
+         <font>
+            <Font size="25.0" />
+         </font>
+         <effect>
+            <Lighting specularConstant="0.35" surfaceScale="7.95">
+               <bumpInput>
+                  <Shadow radius="9.2575" width="18.03" />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Label>
+      <Slider fx:id="rows" layoutX="568.0" layoutY="183.0" majorTickUnit="1.0" min="20.0" showTickLabels="true" value="25.0" />
+      <Slider fx:id="columns" layoutX="568.0" layoutY="233.0" majorTickUnit="14.0" min="20.0" minorTickCount="5" showTickLabels="true" snapToTicks="true" value="40.0" />
+   </children>
+</AnchorPane>
