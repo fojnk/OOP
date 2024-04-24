@@ -27,9 +27,8 @@ public class Drawer {
     }
 
     public void updateFrame() {
-        if (field.getFoodChanged()) {
+        if (!field.getNewFoodList().isEmpty()) {
             drawFood();
-            field.setFoodChanged(false);
         }
         for (var snake : field.getSnakes()) {
             var head = snake.getHead();
@@ -39,7 +38,7 @@ public class Drawer {
                     settings.getBlockXSideSize() - 1,
                     settings.getBlockYSideSize() - 1, 35, 35);
             var removed = snake.getRemoved();
-            drawSnake(snake);
+            //drawSnake(snake);
             if (removed != null) {
                     if ((removed.getPositionX() + removed.getPositionY()) % 2 == 0) {
                         gc.setFill(Color.web("AAD751"));
@@ -51,8 +50,14 @@ public class Drawer {
                             settings.getBlockXSideSize(), settings.getBlockYSideSize());
                 }
             }
+        drawScore();
+    }
 
-
+    private void drawScore() {
+        gc.setFill(Color.web("AAD751"));
+        gc.fillRect( 0,
+                0,
+                5 * settings.getBlockXSideSize(), 2 * settings.getBlockYSideSize());
         gc.setFill(Color.GRAY);
         gc.setFont(new Font("Digital-7", 25));
         var score = String.format("Score: %d", field.getPlayer().getSnakeSize());
@@ -88,11 +93,12 @@ public class Drawer {
     }
 
     public void drawFood() {
-        for (var food : field.getFoodList()) {
+        for (var food : field.getNewFoodList()) {
             gc.drawImage(new Image(food.getImagePath()),food.getPositionX() * settings.getBlockXSideSize(),
                     food.getPositionY() * settings.getBlockYSideSize(),
                     settings.getBlockXSideSize() - 1, settings.getBlockYSideSize() - 1);
         }
+        field.clearNewFoodList();
     }
 
 

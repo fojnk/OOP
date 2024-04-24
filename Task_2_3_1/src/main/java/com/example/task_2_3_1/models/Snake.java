@@ -12,7 +12,6 @@ public class Snake {
     private int size;
     private boolean isAlive;
     private Direction direction;
-    private int speed = 1;
     private int xChange;
     private int yChange;
     private int increase;
@@ -37,10 +36,6 @@ public class Snake {
 
     public int getSpeedBoost() {
         return  speedBoost;
-    }
-
-    public void setSpeedBoost(int val) {
-        this.speedBoost = val;
     }
 
     public LinkedList<SnakePart> getSnake() {
@@ -72,14 +67,14 @@ public class Snake {
             case UP:
                 if (this.direction != Direction.DOWN) {
                     this.direction = direction;
-                    yChange = -speed;
+                    yChange = -1;
                     xChange = 0;
                 }
                 break;
             case DOWN:
                 if (this.direction != Direction.UP) {
                     this.direction = direction;
-                    yChange = speed;
+                    yChange = 1;
                     xChange = 0;
                 }
                 break;
@@ -87,14 +82,14 @@ public class Snake {
                 if (this.direction != Direction.RIGHT) {
                     this.direction = direction;
                     yChange = 0;
-                    xChange = -speed;
+                    xChange = -1;
                 }
                 break;
             case RIGHT:
                 if (this.direction != Direction.LEFT) {
                     this.direction = direction;
                     yChange = 0;
-                    xChange = speed;
+                    xChange = 1;
                 }
         }
     }
@@ -117,19 +112,6 @@ public class Snake {
             removed = null;
             this.increase--;
             size++;
-        }
-    }
-
-    private void checkBodyCollision() {
-        var head = this.snake.getFirst();
-        for (var part : this.snake) {
-            if (part != head) {
-                if (head.getPositionX() == part.getPositionX() &&
-                        head.getPositionY() == part.getPositionY()) {
-                    isAlive = false;
-                    break;
-                }
-            }
         }
     }
 

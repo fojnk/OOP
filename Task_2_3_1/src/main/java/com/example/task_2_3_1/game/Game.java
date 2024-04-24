@@ -64,7 +64,7 @@ public class Game implements Runnable {
         scene.setOnKeyPressed(new KeyHandler());
     }
 
-    private void init() {
+    private void init() throws InterruptedException {
         field.generateFood();
         field.generateRocks();
         drawer.initField();
@@ -76,14 +76,18 @@ public class Game implements Runnable {
 
     @Override
     public void run() {
-        init();
+        try {
+            init();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         gameloop = new Thread(() -> {
             long lastTick = System.currentTimeMillis();
             while(!gameOver.get()) {
                 var currTime = System.currentTimeMillis();
-                var tmp = 300 - settings.getSpeed() * 100L;
+                var tmp = 330 - settings.getSpeed() * 90L;
                 if (field.getPlayer().getSpeedBoost() == 1) {
-                    tmp = 100;
+                    tmp = 50;
                 }
                 if (currTime - lastTick > tmp) {
                     update();
@@ -103,17 +107,16 @@ public class Game implements Runnable {
 
         var foodSpawner = new Thread(() -> {
             while(!gameOver.get()) {
-                if (field.getFoodList().size() + 1 < settings.getAmountOfFood()) {
+                try {
                     field.generateFood();
-                } else {
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException ignore) {
-                    }
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
-
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException ignore) {
+                }
             }
-            drawer.drawGameOver(win);
         });
 
         gameloop.start();
@@ -124,8 +127,6 @@ public class Game implements Runnable {
         gameloop.interrupt();
         gameloop.join();
     }
-
-
 
     public class KeyHandler implements EventHandler<KeyEvent> {
 

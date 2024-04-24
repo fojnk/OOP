@@ -18,9 +18,9 @@ public class Field {
     private final LinkedList<Snake> snakes;
     private final Snake player;
     private final ArrayList<Food> foodList;
+    private ArrayList<Food> newFood;
     private final ArrayList<Rock> rocks;
     private final CellType[][] matrix;
-    private boolean foodChanged;
     private ArrayList<CellCoordinates> emptyBlocksList;
 
     public Field(int xSize, int ySize, Snake player, int amountOfFood, int amountOfRocks) {
@@ -33,16 +33,8 @@ public class Field {
         matrix = new CellType[ySize][xSize];
         foodList = new ArrayList<>();
         rocks = new ArrayList<>();
-        foodChanged = false;
         emptyBlocksList = new ArrayList<>();
-    }
-
-    public boolean getFoodChanged() {
-        return this.foodChanged;
-    }
-
-    public void setFoodChanged(boolean changed) {
-        this.foodChanged = changed;
+        newFood = new ArrayList<>();
     }
     public CellType getVal(int yPos, int xPos) {
         return matrix[yPos][xPos];
@@ -110,12 +102,9 @@ public class Field {
         snakes.removeIf(snake -> !snake.getIsAlive());
     }
 
-    public void generateFood() {
-        if (foodList.size() < amountOfFood) {
-            foodChanged = true;
-        }
+    public void generateFood() throws InterruptedException {
         Random rand = new Random();
-        if (foodList.size() < amountOfFood) {
+        while (foodList.size() < amountOfFood) {
             var goodPosition = true;
             int yPos = rand.nextInt(ySize - 2) + 1;
             int xPos = rand.nextInt(xSize - 2) + 1;
@@ -123,15 +112,26 @@ public class Field {
             goodPosition = checkPosition(yPos, xPos);
 
             if (goodPosition) {
+                Food tmp;
                 if (typeOfFood == 0) {
-                    foodList.add(new Apple("images/apple.png", xPos, yPos));
+                    tmp = new Apple("images/apple.png", xPos, yPos);
                 } else if (typeOfFood == 1) {
-                    foodList.add(new GoldApple("images/goldApple.png", xPos, yPos));
+                    tmp = new GoldApple("images/goldApple.png", xPos, yPos);
                 } else {
-                    foodList.add(new ChilliPepper("images/chilliPaper.png", xPos, yPos));
+                    tmp = new ChilliPepper("images/chilliPaper.png", xPos, yPos);
                 }
+                foodList.add(tmp);
+                newFood.add(tmp);
             }
         }
+    }
+
+    public ArrayList<Food> getNewFoodList() {
+        return newFood;
+    }
+
+    public void clearNewFoodList() {
+        newFood = new ArrayList<>();
     }
 
     private boolean checkPosition(int yPos, int xPos) {
