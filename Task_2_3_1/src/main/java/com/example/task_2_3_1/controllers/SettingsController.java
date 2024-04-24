@@ -68,8 +68,6 @@ public class SettingsController implements Initializable {
     public void startGame(ActionEvent event) throws InterruptedException {
         var stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         var game = new Game(stage, settings);
-        Thread t = new Thread(game);
-        t.start();
-        t.join();
+        game.run();
     }
 }

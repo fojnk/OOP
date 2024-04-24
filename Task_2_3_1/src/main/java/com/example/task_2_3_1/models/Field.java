@@ -15,25 +15,22 @@ public class Field {
     private final int ySize;
     private final int amountOfFood;
     private final int amountOfRocks;
-    private final LinkedList<Snake> snakes;
-    private final Snake player;
-    private final ArrayList<Food> foodList;
+    private LinkedList<Snake> snakes;
+    private Snake player;
+    private ArrayList<Food> foodList;
     private ArrayList<Food> newFood;
-    private final ArrayList<Rock> rocks;
+    private ArrayList<Rock> rocks;
     private final CellType[][] matrix;
-    private ArrayList<CellCoordinates> emptyBlocksList;
 
-    public Field(int xSize, int ySize, Snake player, int amountOfFood, int amountOfRocks) {
+    public Field(int xSize, int ySize, int amountOfFood, int amountOfRocks) {
         this.xSize = xSize;
         this.ySize = ySize;
-        this.player = player;
         this.amountOfFood = amountOfFood;
         this.amountOfRocks = amountOfRocks;
         this.snakes = new LinkedList<>();
         matrix = new CellType[ySize][xSize];
         foodList = new ArrayList<>();
         rocks = new ArrayList<>();
-        emptyBlocksList = new ArrayList<>();
         newFood = new ArrayList<>();
     }
     public CellType getVal(int yPos, int xPos) {
@@ -102,7 +99,7 @@ public class Field {
         snakes.removeIf(snake -> !snake.getIsAlive());
     }
 
-    public void generateFood() throws InterruptedException {
+    public void generateFood() {
         Random rand = new Random();
         while (foodList.size() < amountOfFood) {
             var goodPosition = true;
@@ -122,8 +119,13 @@ public class Field {
                 }
                 foodList.add(tmp);
                 newFood.add(tmp);
+                matrix[yPos][xPos] = CellType.FOOD;
             }
         }
+    }
+
+    public void setPlayer(Snake snake) {
+        player = snake;
     }
 
     public ArrayList<Food> getNewFoodList() {
@@ -161,7 +163,6 @@ public class Field {
                         if (res) {
                             rocks.add(new Rock(xPos + 1, yPos, "images/rock.png"));
                         }
-
                         res = checkPosition(yPos, xPos - 1);
                         if (res) {
                             rocks.add(new Rock(xPos - 1, yPos, "images/rock.png"));
@@ -171,11 +172,9 @@ public class Field {
                         if (res) {
                             rocks.add(new Rock(xPos, yPos + 1, "images/rock.png"));
                         }
-
                         res = checkPosition(yPos - 1, xPos);
                         if (res) {
                             rocks.add(new Rock(xPos, yPos - 1, "images/rock.png"));
-
                         }
                     }
                 }
@@ -189,5 +188,8 @@ public class Field {
                 matrix[i][j] = CellType.FIELD;
             }
         }
+        snakes = new LinkedList<>();
+        foodList = new ArrayList<>();
+        rocks = new ArrayList<>();
     }
 }

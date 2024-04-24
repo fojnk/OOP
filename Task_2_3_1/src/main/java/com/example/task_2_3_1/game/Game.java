@@ -29,13 +29,13 @@ import java.util.LinkedList;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class Game implements Runnable {
+public class Game {
     private final Settings settings;
-    private final GraphicsContext gc;
     private final Drawer drawer;
     private final Field field;
     private AtomicBoolean gameOver;
-    private Thread gameloop;
+    private Thread gameLoop;
+    private Thread foodSpawner;
     private boolean win;
 
 
@@ -46,10 +46,8 @@ public class Game implements Runnable {
         win = false;
         this.settings = settings;
 
-        var player = new Snake(6, 6,Direction.DOWN);
-        field = new Field(settings.getCOLUMNS(), settings.getROWS(), player, settings.getAmountOfFood(), settings.getAmountOfRocks());
-        field.addSnake(player);
-        field.cleanField();
+
+        field = new Field(settings.getCOLUMNS(), settings.getROWS(), settings.getAmountOfFood(), settings.getAmountOfRocks());
 
         var root = new Group();
         Canvas canvas = new Canvas(settings.getWIDTH(), settings.getHEIGHT());
@@ -57,14 +55,18 @@ public class Game implements Runnable {
 
         var scene = new Scene(root);
         primaryStage.setScene(scene);
-        gc = canvas.getGraphicsContext2D();
+        GraphicsContext gc = canvas.getGraphicsContext2D();
         drawer = new Drawer(gc, field, settings);
-        drawer.initField();
         primaryStage.show();
         scene.setOnKeyPressed(new KeyHandler());
     }
 
-    private void init() throws InterruptedException {
+    private void init() {
+        gameOver.set(false);
+        field.cleanField();
+        var player = new Snake(6, 6,Direction.DOWN);
+        field.addSnake(player);
+        field.setPlayer(player);
         field.generateFood();
         field.generateRocks();
         drawer.initField();
@@ -74,16 +76,11 @@ public class Game implements Runnable {
         return gameOver.get();
     }
 
-    @Override
     public void run() {
-        try {
-            init();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        gameloop = new Thread(() -> {
+        init();
+        gameLoop = new Thread(() -> {
             long lastTick = System.currentTimeMillis();
-            while(!gameOver.get()) {
+            while(!gameOver.get() && !Thread.currentThread().isInterrupted()) {
                 var currTime = System.currentTimeMillis();
                 var tmp = 330 - settings.getSpeed() * 90L;
                 if (field.getPlayer().getSpeedBoost() == 1) {
@@ -105,27 +102,23 @@ public class Game implements Runnable {
             drawer.drawGameOver(win);
         });
 
-        var foodSpawner = new Thread(() -> {
-            while(!gameOver.get()) {
+        foodSpawner = new Thread(() -> {
+            while(!gameOver.get() && !Thread.currentThread().isInterrupted()) {
                 try {
                     field.generateFood();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                try {
                     Thread.sleep(100);
                 } catch (InterruptedException ignore) {
                 }
             }
         });
 
-        gameloop.start();
+        gameLoop.start();
         foodSpawner.start();
     }
 
     public void stop() throws InterruptedException {
-        gameloop.interrupt();
-        gameloop.join();
+        gameLoop.interrupt();
+        foodSpawner.interrupt();
     }
 
     public class KeyHandler implements EventHandler<KeyEvent> {
@@ -141,9 +134,10 @@ public class Game implements Runnable {
                 field.getPlayer().setDirection(Direction.UP);
             } else if (kCode == KeyCode.DOWN || kCode == KeyCode.S) {
                 field.getPlayer().setDirection(Direction.DOWN);
-            } else if (kCode == KeyCode.ESCAPE || kCode == KeyCode.Q) {
+            } else if (kCode == KeyCode.R) {
                 try {
                     stop();
+                    run();
                 } catch (InterruptedException ignore) {
                 }
             }

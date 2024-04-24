@@ -9,8 +9,8 @@ import javafx.scene.text.Font;
 
 
 public class Drawer {
-    private Settings settings;
-    private Field field = null;
+    private final Settings settings;
+    private final Field field;
 
     private final GraphicsContext gc;
 

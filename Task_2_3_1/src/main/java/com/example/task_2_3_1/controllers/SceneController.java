@@ -29,21 +29,10 @@ public class SceneController {
         stage.show();
     }
 
-    public void loadSettingsScreen() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(
-                SceneController.class.getResource("/com/example/task_2_3_1/screens/Settings.fxml"));
-        AnchorPane root = fxmlLoader.load();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
     public void startGame(ActionEvent event) throws InterruptedException, IOException {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         settings = new Settings();
         game = new Game(stage, settings);
-        Thread t = new Thread(game);
-        t.start();
-        t.join();
+        game.run();
     }
 }
