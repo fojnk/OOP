@@ -12,6 +12,25 @@ public class Settings {
     private static int winLength = 50;
     private static int speed = 2;
 
+    public Settings() {}
+    public Settings(int rows, int columns) {
+        updateRC(rows, columns);
+    }
+
+    private void updateRC(int rows, int columns) {
+        var size1 = WIDTH / columns;
+        var size2 = HEIGHT / rows;
+        ROWS = rows;
+        COLUMNS = columns;
+        if (size2 > size1) {
+            blockXSideSize = size1;
+            blockYSideSize = size1;
+        } else {
+            blockXSideSize = size2;
+            blockYSideSize = size2;
+        }
+    }
+
     public int getSpeed() {
         return speed;
     }
@@ -89,16 +108,10 @@ public class Settings {
     }
 
     public void setColumns(int amount) {
-        if (amount >= 4 && WIDTH / amount > 0) {
-            COLUMNS = amount;
-            blockXSideSize = WIDTH / amount;
-        }
+        updateRC(ROWS, amount);
     }
 
     public void setRows(int amount) {
-        if (amount > 4 && HEIGHT / amount > 0) {
-            ROWS = amount;
-            blockYSideSize = HEIGHT / amount;
-        }
+        updateRC(amount, COLUMNS);
     }
 }

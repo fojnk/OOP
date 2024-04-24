@@ -6,13 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="4d6e2be2-35a4-4eca-bbc3-f362a22fb276" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/controllers/SceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/controllers/SceneController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/controllers/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/controllers/SettingsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/game/Drawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/game/Drawer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/CellCoordinates.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/models/Field.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/task_2_3_1/FieldTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/task_2_3_1/FieldTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/game/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/task_2_3_1/game/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/task_2_3_1/screens/Settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/task_2_3_1/screens/Settings.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

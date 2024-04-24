@@ -13,17 +13,17 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="800.0" scaleShape="false" style="-fx-background-color: #A2D149;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.task_2_3_1.controllers.SettingsController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="86.0" layoutY="227.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="24.0" layoutY="286.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="24.0" layoutY="28.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="150.0" layoutY="411.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="23.0" layoutY="415.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="86.0" layoutY="93.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="86.0" layoutY="349.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="24.0" layoutY="157.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="718.0" layoutY="152.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="585.0" layoutY="21.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="718.0" layoutY="292.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="717.0" layoutY="21.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="656.0" layoutY="84.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="656.0" layoutY="219.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="718.0" layoutY="415.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6aff72" height="60.0" layoutX="657.0" layoutY="354.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="60.0" />
       <Label layoutX="294.0" layoutY="27.0" prefHeight="91.0" prefWidth="271.0" text="Settings">
          <font>
@@ -55,7 +55,7 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </Button>
-      <Label layoutX="275.0" layoutY="132.0" prefHeight="58.0" prefWidth="78.0" text="Speed">
+      <Label layoutX="118.0" layoutY="162.0" prefHeight="58.0" prefWidth="78.0" text="Speed">
          <font>
             <Font size="25.0" />
          </font>
@@ -70,7 +70,7 @@
             </Lighting>
          </effect>
       </Label>
-      <Label layoutX="216.0" layoutY="246.0" prefHeight="58.0" prefWidth="138.0" text="Win Length">
+      <Label layoutX="78.0" layoutY="263.0" prefHeight="58.0" prefWidth="138.0" text="Win Length">
          <font>
             <Font size="25.0" />
          </font>
@@ -85,7 +85,7 @@
             </Lighting>
          </effect>
       </Label>
-      <Label layoutX="177.0" layoutY="192.0" prefHeight="58.0" prefWidth="181.0" text="Amount of food">
+      <Label layoutX="41.0" layoutY="214.0" prefHeight="58.0" prefWidth="181.0" text="Amount of food">
          <font>
             <Font size="25.0" />
          </font>
@@ -100,10 +100,10 @@
             </Lighting>
          </effect>
       </Label>
-      <Slider fx:id="speed" layoutX="379.0" layoutY="158.0" majorTickUnit="1.0" max="3.0" min="1.0" showTickLabels="true" showTickMarks="true" value="1.0" />
-      <Slider fx:id="amountOfFood" layoutX="375.0" layoutY="211.0" majorTickUnit="14.0" max="25.0" min="1.0" minorTickCount="5" showTickLabels="true" snapToTicks="true" value="3.0" />
-      <Slider fx:id="winLength" layoutX="378.0" layoutY="265.0" majorTickUnit="10.0" min="10.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" value="50.0" />
-      <Label layoutX="168.0" layoutY="298.0" prefHeight="58.0" prefWidth="181.0" text="Amount of rocks">
+      <Slider fx:id="speed" layoutX="224.0" layoutY="183.0" majorTickUnit="1.0" max="3.0" min="1.0" showTickLabels="true" showTickMarks="true" value="1.0" />
+      <Slider fx:id="amountOfFood" layoutX="223.0" layoutY="233.0" majorTickUnit="14.0" max="25.0" min="1.0" minorTickCount="5" showTickLabels="true" snapToTicks="true" value="3.0" />
+      <Slider fx:id="winLength" layoutX="223.0" layoutY="282.0" majorTickUnit="10.0" min="10.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" value="50.0" />
+      <Label layoutX="384.0" layoutY="263.0" prefHeight="58.0" prefWidth="181.0" text="Amount of rocks">
          <font>
             <Font size="25.0" />
          </font>
@@ -118,6 +118,38 @@
             </Lighting>
          </effect>
       </Label>
-      <Slider fx:id="amountOfRocks" layoutX="379.0" layoutY="318.0" majorTickUnit="14.0" max="25.0" min="1.0" minorTickCount="5" showTickLabels="true" snapToTicks="true" value="3.0" />
+      <Slider fx:id="amountOfRocks" layoutX="568.0" layoutY="284.0" majorTickUnit="14.0" max="25.0" min="1.0" minorTickCount="5" showTickLabels="true" snapToTicks="true" value="3.0" />
+      <Label layoutX="429.0" layoutY="162.0" prefHeight="58.0" prefWidth="78.0" text="Rows">
+         <font>
+            <Font size="25.0" />
+         </font>
+         <effect>
+            <Lighting specularConstant="0.35" surfaceScale="7.95">
+               <bumpInput>
+                  <Shadow radius="9.2575" width="18.03" />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Label>
+      <Label layoutX="415.0" layoutY="214.0" prefHeight="58.0" prefWidth="107.0" text="Columns">
+         <font>
+            <Font size="25.0" />
+         </font>
+         <effect>
+            <Lighting specularConstant="0.35" surfaceScale="7.95">
+               <bumpInput>
+                  <Shadow radius="9.2575" width="18.03" />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Label>
+      <Slider fx:id="rows" layoutX="568.0" layoutY="183.0" majorTickUnit="1.0" min="20.0" showTickLabels="true" value="25.0" />
+      <Slider fx:id="columns" layoutX="568.0" layoutY="233.0" majorTickUnit="14.0" min="20.0" minorTickCount="5" showTickLabels="true" snapToTicks="true" value="40.0" />
    </children>
 </AnchorPane>

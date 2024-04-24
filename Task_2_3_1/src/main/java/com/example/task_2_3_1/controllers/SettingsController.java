@@ -27,6 +27,13 @@ public class SettingsController implements Initializable {
     private Slider amountOfRocks;
 
     @FXML
+    private Slider columns;
+
+    @FXML
+    private Slider rows;
+
+
+    @FXML
     private Slider speed;
 
     @FXML
@@ -61,6 +68,20 @@ public class SettingsController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 settings.setAmountOfRocks((int) amountOfRocks.getValue());
+            }
+        });
+
+        rows.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                settings.setRows((int) rows.getValue());
+            }
+        });
+
+        columns.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                settings.setColumns((int) columns.getValue());
             }
         });
     }

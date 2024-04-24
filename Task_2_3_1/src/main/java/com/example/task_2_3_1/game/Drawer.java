@@ -57,7 +57,7 @@ public class Drawer {
         gc.setFill(Color.web("AAD751"));
         gc.fillRect( 0,
                 0,
-                5 * settings.getBlockXSideSize(), 2 * settings.getBlockYSideSize());
+                5 * 30, 2 * 30);
         gc.setFill(Color.GRAY);
         gc.setFont(new Font("Digital-7", 25));
         var score = String.format("Score: %d", field.getPlayer().getSnakeSize());
