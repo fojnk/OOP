@@ -91,11 +91,7 @@ public class ClientServerTest {
          */
         @Override
         public void run() {
-            try {
                 Client.main(new String[]{});
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
         }
     }
 }
