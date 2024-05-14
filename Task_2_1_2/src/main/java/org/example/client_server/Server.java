@@ -1,5 +1,6 @@
 package org.example.client_server;
 
+import java.io.Flushable;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
@@ -9,14 +10,15 @@ import java.nio.channels.IllegalBlockingModeException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Серверная часть.
  */
 public class Server {
-    private final AtomicInteger id = new AtomicInteger();
-    private List<Integer> data;
+    private BlockingQueue<Integer> data;
     private final AtomicInteger amount = new AtomicInteger();
 
     /**
@@ -29,13 +31,10 @@ public class Server {
      */
     public boolean startServer(List<Integer> data) throws IOException, InterruptedException {
         this.amount.set(0);
-        this.id.set(0);
-        this.data = data;
+        this.data = new LinkedBlockingDeque<>();
+        this.data.addAll(data);
         Thread t = new Thread(new AcceptHandler());
         t.start();
-        while (data.size() > id.get() && amount.get() == 0) {
-        }
-        t.interrupt();
         t.join();
         return amount.get() > 0;
     }
@@ -59,17 +58,21 @@ public class Server {
                 while (!Thread.currentThread().isInterrupted()) {
                     try {
                         Socket socket = serverSocket.accept();
-                        Thread t = new Thread(new ClientHandler(socket, id, amount, data));
+                        Thread t = new Thread(new ClientHandler(socket, amount, data));
                         t.start();
                         threads.add(t);
                         System.out.println("one more slave");
                         amountOfClt++;
                     } catch (SocketTimeoutException ignore) {
+                        if (amount.get() > 0 || data.isEmpty()) {
+                            break;
+                        }
                     }
                 }
 
                 for (int i = 0; i < amountOfClt; i++) {
                     try {
+                        threads.get(i).interrupt();
                         threads.get(i).join();
                     } catch (InterruptedException ignored) {
                     }
@@ -87,21 +90,18 @@ public class Server {
     public class ClientHandler implements Runnable {
 
         private final Socket socket;
-        private final AtomicInteger id;
-        private final List<Integer> data;
+        private final BlockingQueue<Integer> data;
         private final AtomicInteger amount;
 
         /**
          * контструктор обработчика клиента.
          *
          * @param socket - сокет
-         * @param id     - позиция в списки
          * @param amount - количество найденных простых чисел
          * @param data   - данные
          */
-        public ClientHandler(Socket socket, AtomicInteger id, AtomicInteger amount, List<Integer> data) {
+        public ClientHandler(Socket socket, AtomicInteger amount, BlockingQueue<Integer> data) {
             this.socket = socket;
-            this.id = id;
             this.amount = amount;
             this.data = data;
         }
@@ -111,33 +111,30 @@ public class Server {
          */
         @Override
         public void run() {
-            int dataSafe = id.get();
+            Integer dataSafe = 4;
             try {
                 var in = new Scanner(socket.getInputStream());
-                var out = new PrintWriter(socket.getOutputStream());
-                boolean run = true;
+                var out = new PrintWriter(socket.getOutputStream(), true);
                 out.println("you are connected to server :)");
-                out.flush();
-                while (run) {
-                    try {
-                        dataSafe = id.incrementAndGet();
-                        var k = data.get(dataSafe);
-                        out.println(k);
-                        out.flush();
-                    } catch (NullPointerException | IndexOutOfBoundsException e) {
+                while (!Thread.currentThread().isInterrupted()) {
+                    dataSafe = data.poll();
+                    if (dataSafe == null) {
                         break;
                     }
-
+                    out.println(dataSafe);
                     if (in.hasNext()) {
                         if (in.nextInt() == 1) {
                             amount.incrementAndGet();
-                            run = false;
+                            break;
                         }
                     }
                 }
-
+                in.close();
+                out.close();
             } catch (IllegalBlockingModeException | IOException | IndexOutOfBoundsException ignored) {
-                id.set(dataSafe);
+                if (dataSafe != null) {
+                    data.add(dataSafe);
+                }
             }
         }
     }

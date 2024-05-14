@@ -1,6 +1,7 @@
 package org.example.client_server;
 
 import java.io.IOException;
+import java.io.InterruptedIOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
@@ -15,25 +16,31 @@ public class Client {
      * @param args - аргументы командной строки
      * @throws IOException - ошибка операции ввода-вывода
      */
-    public static void main(String[] args) throws IOException {
-        var socket = new Socket("localhost", 8000);
-        var in = new Scanner(socket.getInputStream());
-        var out = new PrintWriter(socket.getOutputStream());
-        if (in.hasNext()) {
-            System.out.println(in.nextLine());
-        }
-        while (in.hasNext()) {
-            var number = in.nextInt();
-            if (IsPrime.isPrime(number)) {
-                out.println(1);
-                out.flush();
-            } else {
-                out.println(0);
-                out.flush();
+    public static void main(String[] args) {
+        var waitConnection = true;
+
+            try (Socket socket = new Socket("localhost", 8000)) {
+                var in = new Scanner(socket.getInputStream());
+                var out = new PrintWriter(socket.getOutputStream(), true);
+                if (in.hasNext()) {
+                    waitConnection = false;
+                    System.out.println(in.nextLine());
+                }
+                while (in.hasNext()) {
+                    var number = in.nextInt();
+                    if (IsPrime.isPrime(number)) {
+                        out.println(1);
+                    } else {
+                        out.println(0);
+                    }
+                }
+                in.close();
+                out.close();
+            } catch (IOException e) {
+                if (!waitConnection) {
+                    System.out.println("brake connection");
+                }
             }
-        }
-        in.close();
-        out.close();
-        socket.close();
+
     }
 }
