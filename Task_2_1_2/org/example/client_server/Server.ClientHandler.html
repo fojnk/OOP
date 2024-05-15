@@ -163,10 +163,9 @@ implements java.lang.Runnable</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.net.Socket,java.util.concurrent.atomic.AtomicInteger,java.util.concurrent.atomic.AtomicInteger,java.util.List)">ClientHandler</a></span>&#8203;(java.net.Socket&nbsp;socket,
-             java.util.concurrent.atomic.AtomicInteger&nbsp;id,
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.net.Socket,java.util.concurrent.atomic.AtomicInteger,java.util.concurrent.BlockingQueue)">ClientHandler</a></span>&#8203;(java.net.Socket&nbsp;socket,
              java.util.concurrent.atomic.AtomicInteger&nbsp;amount,
-             java.util.List&lt;java.lang.Integer&gt;&nbsp;data)</code></th>
+             java.util.concurrent.BlockingQueue&lt;java.lang.Integer&gt;&nbsp;data)</code></th>
 <td class="colLast">
 <div class="block">контструктор обработчика клиента.</div>
 </td>
@@ -220,21 +219,19 @@ implements java.lang.Runnable</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;(java.net.Socket,java.util.concurrent.atomic.AtomicInteger,java.util.concurrent.atomic.AtomicInteger,java.util.List)">
+<a id="&lt;init&gt;(java.net.Socket,java.util.concurrent.atomic.AtomicInteger,java.util.concurrent.BlockingQueue)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>ClientHandler</h4>
 <pre>public&nbsp;ClientHandler&#8203;(java.net.Socket&nbsp;socket,
-                     java.util.concurrent.atomic.AtomicInteger&nbsp;id,
                      java.util.concurrent.atomic.AtomicInteger&nbsp;amount,
-                     java.util.List&lt;java.lang.Integer&gt;&nbsp;data)</pre>
+                     java.util.concurrent.BlockingQueue&lt;java.lang.Integer&gt;&nbsp;data)</pre>
 <div class="block">контструктор обработчика клиента.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>socket</code> - - сокет</dd>
-<dd><code>id</code> - - позиция в списки</dd>
 <dd><code>amount</code> - - количество найденных простых чисел</dd>
 <dd><code>data</code> - - данные</dd>
 </dl>
