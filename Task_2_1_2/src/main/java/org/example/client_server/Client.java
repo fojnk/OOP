@@ -14,7 +14,6 @@ public class Client {
      * входная точка клиентской части.
      *
      * @param args - аргументы командной строки
-     * @throws IOException - ошибка операции ввода-вывода
      */
     public static void main(String[] args) {
         var waitConnection = true;
