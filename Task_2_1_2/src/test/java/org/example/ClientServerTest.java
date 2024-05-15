@@ -40,16 +40,18 @@ public class ClientServerTest {
     @Test
     public void clientServerSimpleTest() throws InterruptedException {
         res = false;
-        Thread serverThread = new Thread(new ServerThread(Arrays.asList(4, 4, 4, 4, 4, 2)));
+        Thread serverThread = new Thread(new ServerThread(Arrays.asList(49, 49, 49, 49, 49)));
         serverThread.start();
-
+        Thread.sleep(100);
         Thread client1 = new Thread(new ClientThread());
         Thread client2 = new Thread(new ClientThread());
         client1.start();
         client2.start();
         serverThread.join();
+        client1.join();
+        client2.join();
 
-        Assertions.assertTrue(res);
+        Assertions.assertFalse(res);
     }
 
     /**

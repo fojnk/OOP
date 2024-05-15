@@ -116,7 +116,7 @@ public class Server {
                 var in = new Scanner(socket.getInputStream());
                 var out = new PrintWriter(socket.getOutputStream(), true);
                 out.println("you are connected to server :)");
-                while (!Thread.currentThread().isInterrupted()) {
+                while (!Thread.currentThread().isInterrupted() && !data.isEmpty() && (amount.get() == 0)) {
                     dataSafe = data.poll();
                     if (dataSafe == null) {
                         break;

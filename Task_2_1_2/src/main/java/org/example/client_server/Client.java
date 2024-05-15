@@ -18,7 +18,6 @@ public class Client {
      */
     public static void main(String[] args) {
         var waitConnection = true;
-
             try (Socket socket = new Socket("localhost", 8000)) {
                 var in = new Scanner(socket.getInputStream());
                 var out = new PrintWriter(socket.getOutputStream(), true);
@@ -41,6 +40,5 @@ public class Client {
                     System.out.println("brake connection");
                 }
             }
-
     }
 }
