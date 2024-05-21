@@ -42,8 +42,10 @@ public class Main {
                     var result1 = TaskService.runTask( taskPath, "test");
                     var result2 = TaskService.runTask( taskPath, "javadoc");
                     var res = TaskService.analyzeTestResults(taskPath);
+                    res.setBuild(result1);
+                    res.setJavadoc(result2);
                     System.out.println(task.getName() + ": " + " " + result1 + " " + result2 +
-                            " " + res.getAmountOfTests() + " " + res.getPassedTests() + " " + res.getFailedTests());
+                            " " + res.getAmountOfTests() + " " + res.getPassedTests() + " " + res.getSkippedTests());
                     results.get(student).put(task, res);
                 }
             }

@@ -2,10 +2,50 @@
 <html lang="en">
 <head>
     <title>Results</title>
+    <style>
+        .styled-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .styled-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+        }
+
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+        }
+
+        .styled-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+
+        .styled-table tbody tr.active-row {
+            font-weight: bold;
+            color: #009879;
+        }
+    </style>
 </head>
 <body>
-            <h1>Task_1_1_1</h1>
-        <table border = 1, style="width:50%">
+            <table border = 1, class="styled-table">
+            <tr>
+                <th>Task_1_1_1</th>
+            </tr>
             <tr>
                 <th>Name</th>
                 <th>Build</th>
@@ -16,13 +56,15 @@
             </tr>
                     <tr>
                         <th>Vova Petrov</th>
-                        <th>                            <span class="red"><b>-</b></span>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
                         </th>
                         <th>                            <span class="red"><b>-</b></span>
                         </th>
-                        <th>                            <span class="red"><b>-</b></span>
-                        </th>
-                        <th>4/4</th>
+                        <th>4/0/4</th>
                         <th>0</th>
                     </tr>
                     <tr>
@@ -33,12 +75,14 @@
                         </th>
                         <th>                            <span class="red"><b>-</b></span>
                         </th>
-                        <th>1/1</th>
+                        <th>1/0/1</th>
                         <th>0</th>
                     </tr>
         </table> 
-        <h1>Task_1_1_2</h1>
-        <table border = 1, style="width:50%">
+        <table border = 1, class="styled-table">
+            <tr>
+                <th>Task_1_1_2</th>
+            </tr>
             <tr>
                 <th>Name</th>
                 <th>Build</th>
@@ -49,13 +93,15 @@
             </tr>
                     <tr>
                         <th>Vova Petrov</th>
-                        <th>                            <span class="red"><b>-</b></span>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
                         </th>
                         <th>                            <span class="red"><b>-</b></span>
                         </th>
-                        <th>                            <span class="red"><b>-</b></span>
-                        </th>
-                        <th>28/28</th>
+                        <th>28/0/28</th>
                         <th>0</th>
                     </tr>
                     <tr>
@@ -66,12 +112,14 @@
                         </th>
                         <th>                            <span class="red"><b>-</b></span>
                         </th>
-                        <th>0/0</th>
+                        <th>0/0/0</th>
                         <th>0</th>
                     </tr>
         </table> 
-        <h1>Task_1_2_1</h1>
-        <table border = 1, style="width:50%">
+        <table border = 1, class="styled-table">
+            <tr>
+                <th>Task_1_2_1</th>
+            </tr>
             <tr>
                 <th>Name</th>
                 <th>Build</th>
@@ -82,29 +130,35 @@
             </tr>
                     <tr>
                         <th>Vova Petrov</th>
-                        <th>                            <span class="red"><b>-</b></span>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
                         </th>
                         <th>                            <span class="red"><b>-</b></span>
                         </th>
-                        <th>                            <span class="red"><b>-</b></span>
-                        </th>
-                        <th>1/1</th>
+                        <th>1/0/1</th>
                         <th>0</th>
                     </tr>
                     <tr>
                         <th>Kirill Macanin</th>
-                        <th>                            <span class="red"><b>-</b></span>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
                         </th>
                         <th>                            <span class="red"><b>-</b></span>
                         </th>
-                        <th>                            <span class="red"><b>-</b></span>
-                        </th>
-                        <th>8/8</th>
+                        <th>8/0/8</th>
                         <th>0</th>
                     </tr>
         </table> 
-        <h1>Task_1_2_2</h1>
-        <table border = 1, style="width:50%">
+        <table border = 1, class="styled-table">
+            <tr>
+                <th>Task_1_2_2</th>
+            </tr>
             <tr>
                 <th>Name</th>
                 <th>Build</th>
@@ -115,13 +169,15 @@
             </tr>
                     <tr>
                         <th>Vova Petrov</th>
-                        <th>                            <span class="red"><b>-</b></span>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
                         </th>
                         <th>                            <span class="red"><b>-</b></span>
                         </th>
-                        <th>                            <span class="red"><b>-</b></span>
-                        </th>
-                        <th>15/15</th>
+                        <th>15/0/15</th>
                         <th>0</th>
                     </tr>
                     <tr>
@@ -132,7 +188,7 @@
                         </th>
                         <th>                            <span class="red"><b>-</b></span>
                         </th>
-                        <th>0/0</th>
+                        <th>0/0/0</th>
                         <th>0</th>
                     </tr>
         </table> 

@@ -11,6 +11,6 @@ public class TaskResult {
     Boolean hardDeadline = false;
     Integer amountOfTests = 0;
     Integer passedTests = 0;
-    Integer failedTests = 0;
+    Integer skippedTests = 0;
     Double mark = (double) 0;
 }

@@ -60,11 +60,11 @@ public class TaskService {
             doc.getDocumentElement().normalize();
             var nList = doc.getElementsByTagName("testsuite").item(0).getAttributes();
             var passed = Integer.valueOf(nList.getNamedItem("tests").getNodeValue());
-            var failures = Integer.valueOf(nList.getNamedItem("failures").getNodeValue());
-            var total = Integer.parseInt(nList.getNamedItem("skipped").getNodeValue()) + passed + failures;
+            var skipped = Integer.valueOf(nList.getNamedItem("skipped").getNodeValue());
+            var total = Integer.parseInt(nList.getNamedItem("failures").getNodeValue()) + passed + skipped;
             res.setAmountOfTests(total);
             res.setPassedTests(passed);
-            res.setFailedTests(failures);
+            res.setSkippedTests(skipped);
         } catch (IOException | SAXException | ParserConfigurationException | NullPointerException ignore) {
         }
 
