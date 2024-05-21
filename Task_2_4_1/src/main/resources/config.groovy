@@ -41,11 +41,17 @@ studentsList = [
             username = "fojnk"
             repository = "https://github.com/fojnk/OOP.git"
             tasks = allTasks
+        },
+        {
+            name = "Kirill Macanin"
+            username = "McAninKirill"
+            repository = "https://github.com/McAninKirill/OOP"
+            tasks = allTasks
         }
 ]
 groups = [
         {
             number = "22216"
-            students = [studentsList[0]]
+            students = studentsList
         }
 ]

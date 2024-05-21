@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 public class Info extends GroovyConfig {
     private List<Group> groups;
-    private List<Student> students;
-    private List<Task> tasks;
+    private List<Student> studentsList;
+    private List<Task> allTasks;
     private Settings settings;
 }

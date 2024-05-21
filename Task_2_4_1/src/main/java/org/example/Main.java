@@ -9,6 +9,7 @@ import org.example.models.Info;
 import org.example.models.Student;
 import org.example.models.Task;
 import org.example.services.RepositoryCloner;
+import org.example.services.TaskService;
 
 import java.awt.*;
 import java.io.InputStreamReader;
@@ -28,12 +29,17 @@ public class Main {
         info.runFrom(configPath);
         info.postProcess();
         for (Group group : info.getGroups()) {
-            System.out.println(group.number);
+            System.out.println(group.getNumber());
             for (Student student : group.getStudents()) {
-                System.out.println(student.getRepository());
-                System.out.println(RepositoryCloner.cloneRepo(student.getRepository(), basePath + student.name, "main"));
-                for (Task task : student.getTasks()) {
-                    System.out.println(task.name);
+                System.out.println(student.getUsername() + " (" + student.getName() +")");
+                String path = basePath + group.getNumber() + "/" + student.getUsername();
+                RepositoryCloner.cloneRepo(student.getRepository(), path, info.getSettings().getBranch());
+                for (var task : info.getAllTasks()) {
+                    var result1 = TaskService.runTask( path + "/OOP/" + task.getName(), "test");
+                    var result2 = TaskService.runTask( path + "/OOP/" + task.getName(), "javadoc");
+                    var res = TaskService.analyzeTestResults(path + "/OOP/" + task.getName());
+                    System.out.println(task.getName() + ": " + " " + result1 + " " + result2 +
+                            " " + res.getAmountOfTests() + " " + res.getPassedTests() + " " + res.getFailedTests());
                 }
             }
         }

@@ -9,6 +9,6 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class Group extends GroovyConfig{
-    public String number;
+    private String number;
     private List<Student> students;
 }
