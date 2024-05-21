@@ -1,19 +1,37 @@
 package org.example;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import groovy.lang.GroovyShell;
+import groovy.util.DelegatingScript;
+import lombok.SneakyThrows;
+import org.codehaus.groovy.control.CompilerConfiguration;
+import org.example.models.Group;
+import org.example.models.Info;
+import org.example.models.Student;
+import org.example.models.Task;
+
+import java.awt.*;
+import java.io.InputStreamReader;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Objects;
+
 public class Main {
-    public static void main(String[] args) {
-        // Press Opt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
-
-        // Press Ctrl+R or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
-
-            // Press Ctrl+D to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Cmd+F8.
-            System.out.println("i = " + i);
+    @SneakyThrows
+    public static void main(String[] args) throws URISyntaxException {
+        Info info = new Info();
+        URI configPath = Objects.requireNonNull(Main.class.getClassLoader()
+                .getResource("config.groovy")).toURI();
+        info.runFrom(configPath);
+        info.postProcess();
+        for (Group group : info.getGroups()) {
+            System.out.println(group.number);
+            for (Student student : group.getStudents()) {
+                System.out.println(student.name);
+                for (Task task : student.getTasks()) {
+                    System.out.println(task.name);
+                }
+            }
         }
+
     }
 }
