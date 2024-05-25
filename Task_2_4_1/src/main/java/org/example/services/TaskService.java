@@ -1,5 +1,6 @@
 package org.example.services;
 
+import com.github.stefanbirkner.systemlambda.SystemLambda;
 import lombok.SneakyThrows;
 import org.example.models.Student;
 import org.example.models.Task;
@@ -7,14 +8,15 @@ import org.example.models.TaskResult;
 import org.gradle.tooling.GradleConnector;
 import org.gradle.tooling.ProjectConnection;
 import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import com.puppycrawl.tools.checkstyle.Main;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -34,12 +36,24 @@ public class TaskService {
         return result;
     }
 
-    static public boolean checkstyle(Task task) {
-        return true;
-    }
+    static public boolean checkstyle(String storage, String taskName) throws Exception {
 
-    static public boolean checkDeadlines(Task task) {
-        return true;
+        int status = SystemLambda.catchSystemExit(() -> {
+            var config = storage + "/.github/google_checks.xml";
+            Main.main("-c", config, "-o", storage + "result.txt", storage + "/" + taskName + "/src/main/java");
+        });
+
+        if (status != 0) return false;
+
+        BufferedReader reader = new BufferedReader(new FileReader(storage + "result.txt"));
+        int counter = 0;
+        while(reader.ready()) {
+            if (reader.readLine().contains("[WARN]")) {
+                counter++;
+            }
+        }
+        reader.close();
+        return counter <= 10;
     }
 
     static public TaskResult analyzeTestResults(String pathToTask) {

@@ -4,6 +4,7 @@ import groovy.lang.GroovyShell;
 import groovy.util.DelegatingScript;
 import lombok.SneakyThrows;
 import org.codehaus.groovy.control.CompilerConfiguration;
+import org.codehaus.groovy.transform.sc.StaticCompilationMetadataKeys;
 import org.example.models.*;
 import org.example.services.Render;
 import org.example.services.RepositoryCloner;
@@ -22,7 +23,7 @@ public class Main {
     private static HashMap<Student, HashMap<Task, TaskResult>> results;
 
     @SneakyThrows
-    public static void main(String[] args) throws URISyntaxException {
+    public static void main(String[] args) throws Exception {
         results = new HashMap<>();
         Info info = new Info();
         URI configPath = Objects.requireNonNull(Main.class.getClassLoader()
@@ -41,10 +42,20 @@ public class Main {
                     var taskPath = path + "/OOP/" + task.getName();
                     var result1 = TaskService.runTask( taskPath, "test");
                     var result2 = TaskService.runTask( taskPath, "javadoc");
+                    var result3 = TaskService.checkstyle(path + "/OOP/", task.getName());
                     var res = TaskService.analyzeTestResults(taskPath);
                     res.setBuild(result1);
                     res.setJavadoc(result2);
-                    System.out.println(task.getName() + ": " + " " + result1 + " " + result2 +
+                    res.setCheckstyle(result3);
+                    if (result1 && result2 && (res.getAmountOfTests() == res.getPassedTests())) {
+                        if (result3) {
+                            res.setMark(1.0);
+                        } else {
+                            res.setMark(0.5);
+                        }
+
+                    }
+                    System.out.println(task.getName() + ": " + " " + result1 + " " + result2 + " " + result3 +
                             " " + res.getAmountOfTests() + " " + res.getPassedTests() + " " + res.getSkippedTests());
                     results.get(student).put(task, res);
                 }

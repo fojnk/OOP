@@ -26,7 +26,7 @@ public class Render {
         root.put("tasks", tasks);
         root.put("tasksResults", tasksResults);
 
-        Template temp = cfg.getTemplate("template.ftl");
+        Template temp = cfg.getTemplate("tmp.ftl");
         Writer out = new OutputStreamWriter(new FileOutputStream("src/main/resources/index.html"));
         temp.process(root, out);
     }

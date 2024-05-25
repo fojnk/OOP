@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Results</title>
+    <title>Task Results</title>
     <style>
         .styled-table {
             border-collapse: collapse;
@@ -87,4 +87,22 @@
             </#list>
         </table> 
     </#list>
+    <h1>Total Result</h1>
+    <table border = 1, class="styled-table">
+            <tr>
+                <th>Name</th>
+                <th>Total</th>
+            </tr>
+        <#list tasksResults as student, tasks>
+                <#assign count = 0>
+                <#list tasks as task1, result>
+                           <#assign count = count + result.mark>
+                </#list>
+                <tr>
+                    <tr>
+                    <th>${student.name}</th>
+                    <th>${count}</th>
+                </tr>
+        </#list>
+    </table>
 </body>
