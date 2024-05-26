@@ -2,7 +2,6 @@ package org.example.models;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.example.models.Student;
 
 import java.util.List;
 

@@ -8,7 +8,6 @@ import org.codehaus.groovy.control.CompilerConfiguration;
 import org.example.Main;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
 import java.net.URI;
 import java.nio.file.Paths;

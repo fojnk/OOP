@@ -1,9 +1,6 @@
 package org.example.services;
 
 import com.github.stefanbirkner.systemlambda.SystemLambda;
-import lombok.SneakyThrows;
-import org.example.models.Student;
-import org.example.models.Task;
 import org.example.models.TaskResult;
 import org.gradle.tooling.GradleConnector;
 import org.gradle.tooling.ProjectConnection;

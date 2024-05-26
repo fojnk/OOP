@@ -1,19 +1,12 @@
 package org.example;
 
-import groovy.lang.GroovyShell;
-import groovy.util.DelegatingScript;
 import lombok.SneakyThrows;
-import org.codehaus.groovy.control.CompilerConfiguration;
-import org.codehaus.groovy.transform.sc.StaticCompilationMetadataKeys;
 import org.example.models.*;
 import org.example.services.Render;
 import org.example.services.RepositoryCloner;
 import org.example.services.TaskService;
 
-import java.awt.*;
-import java.io.InputStreamReader;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -37,7 +30,8 @@ public class Main {
                 results.put(student, new HashMap<>());
                 System.out.println(student.getUsername() + " (" + student.getName() +")");
                 String path = basePath + group.getNumber() + "/" + student.getUsername();
-                RepositoryCloner.cloneRepo(student.getRepository(), path, info.getSettings().getBranch());
+                var status = RepositoryCloner.cloneRepo(student.getRepository(), path, info.getSettings().getBranch());
+                if (status != 0 && status != 128) continue;
                 for (var task : info.getAllTasks()) {
                     var taskPath = path + "/OOP/" + task.getName();
                     var result1 = TaskService.runTask( taskPath, "test");
