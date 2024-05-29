@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Task Results</title>
+    <style>
+        .styled-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .styled-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+        }
+
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+        }
+
+        .styled-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+
+        .styled-table tbody tr.active-row {
+            font-weight: bold;
+            color: #009879;
+        }
+    </style>
+</head>
+<body>
+            <table border = 1, class="styled-table">
+            <tr>
+                <th>Task_1_1_1</th>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <th>Build</th>
+                <th>JavaDoc</th>
+                <th>Checkstyle</th>
+                <th>Tests</th>
+                <th>Mark</th>
+            </tr>
+                    <tr>
+                        <th>Ruslan Chudinov</th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>9/0/9</th>
+                        <th>1</th>
+                    </tr>
+                    <tr>
+                        <th>Andrew Kozubenko</th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>0/0/0</th>
+                        <th>0</th>
+                    </tr>
+                    <tr>
+                        <th>Vova Petrov</th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>4/0/4</th>
+                        <th>1</th>
+                    </tr>
+                    <tr>
+                        <th>Rustam Khamidullin</th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>5/0/5</th>
+                        <th>1</th>
+                    </tr>
+                    <tr>
+                        <th>Kirill Macanin</th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>1/0/1</th>
+                        <th>0</th>
+                    </tr>
+        </table> 
+        <table border = 1, class="styled-table">
+            <tr>
+                <th>Task_1_1_2</th>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <th>Build</th>
+                <th>JavaDoc</th>
+                <th>Checkstyle</th>
+                <th>Tests</th>
+                <th>Mark</th>
+            </tr>
+                    <tr>
+                        <th>Ruslan Chudinov</th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>45/0/45</th>
+                        <th>1</th>
+                    </tr>
+                    <tr>
+                        <th>Andrew Kozubenko</th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>0/0/0</th>
+                        <th>0</th>
+                    </tr>
+                    <tr>
+                        <th>Vova Petrov</th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>28/0/28</th>
+                        <th>1</th>
+                    </tr>
+                    <tr>
+                        <th>Rustam Khamidullin</th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>10/0/10</th>
+                        <th>0,5</th>
+                    </tr>
+                    <tr>
+                        <th>Kirill Macanin</th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>0/0/0</th>
+                        <th>0</th>
+                    </tr>
+        </table> 
+        <table border = 1, class="styled-table">
+            <tr>
+                <th>Task_1_2_1</th>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <th>Build</th>
+                <th>JavaDoc</th>
+                <th>Checkstyle</th>
+                <th>Tests</th>
+                <th>Mark</th>
+            </tr>
+                    <tr>
+                        <th>Ruslan Chudinov</th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>14/0/14</th>
+                        <th>1</th>
+                    </tr>
+                    <tr>
+                        <th>Andrew Kozubenko</th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>0/0/0</th>
+                        <th>0</th>
+                    </tr>
+                    <tr>
+                        <th>Vova Petrov</th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>1/0/1</th>
+                        <th>1</th>
+                    </tr>
+                    <tr>
+                        <th>Rustam Khamidullin</th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>13/0/13</th>
+                        <th>1</th>
+                    </tr>
+                    <tr>
+                        <th>Kirill Macanin</th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>8/0/8</th>
+                        <th>0,5</th>
+                    </tr>
+        </table> 
+        <table border = 1, class="styled-table">
+            <tr>
+                <th>Task_1_2_2</th>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <th>Build</th>
+                <th>JavaDoc</th>
+                <th>Checkstyle</th>
+                <th>Tests</th>
+                <th>Mark</th>
+            </tr>
+                    <tr>
+                        <th>Ruslan Chudinov</th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>4/0/4</th>
+                        <th>1</th>
+                    </tr>
+                    <tr>
+                        <th>Andrew Kozubenko</th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>0/0/0</th>
+                        <th>0</th>
+                    </tr>
+                    <tr>
+                        <th>Vova Petrov</th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>15/0/15</th>
+                        <th>1</th>
+                    </tr>
+                    <tr>
+                        <th>Rustam Khamidullin</th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>7/0/7</th>
+                        <th>1</th>
+                    </tr>
+                    <tr>
+                        <th>Kirill Macanin</th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>0/0/0</th>
+                        <th>0</th>
+                    </tr>
+        </table> 
+        <table border = 1, class="styled-table">
+            <tr>
+                <th>Task_1_3_1</th>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <th>Build</th>
+                <th>JavaDoc</th>
+                <th>Checkstyle</th>
+                <th>Tests</th>
+                <th>Mark</th>
+            </tr>
+                    <tr>
+                        <th>Ruslan Chudinov</th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>10/0/11</th>
+                        <th>0</th>
+                    </tr>
+                    <tr>
+                        <th>Andrew Kozubenko</th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>0/0/0</th>
+                        <th>0</th>
+                    </tr>
+                    <tr>
+                        <th>Vova Petrov</th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>1/0/2</th>
+                        <th>0</th>
+                    </tr>
+                    <tr>
+                        <th>Rustam Khamidullin</th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>7/0/7</th>
+                        <th>1</th>
+                    </tr>
+                    <tr>
+                        <th>Kirill Macanin</th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>4/0/4</th>
+                        <th>0</th>
+                    </tr>
+        </table> 
+        <table border = 1, class="styled-table">
+            <tr>
+                <th>Task_1_4_1</th>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <th>Build</th>
+                <th>JavaDoc</th>
+                <th>Checkstyle</th>
+                <th>Tests</th>
+                <th>Mark</th>
+            </tr>
+                    <tr>
+                        <th>Ruslan Chudinov</th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>3/0/3</th>
+                        <th>1</th>
+                    </tr>
+                    <tr>
+                        <th>Andrew Kozubenko</th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>0/0/0</th>
+                        <th>0</th>
+                    </tr>
+                    <tr>
+                        <th>Vova Petrov</th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>2/0/2</th>
+                        <th>1</th>
+                    </tr>
+                    <tr>
+                        <th>Rustam Khamidullin</th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>4/0/4</th>
+                        <th>1</th>
+                    </tr>
+                    <tr>
+                        <th>Kirill Macanin</th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>6/0/6</th>
+                        <th>0,5</th>
+                    </tr>
+        </table> 
+        <table border = 1, class="styled-table">
+            <tr>
+                <th>Task_1_5_1</th>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <th>Build</th>
+                <th>JavaDoc</th>
+                <th>Checkstyle</th>
+                <th>Tests</th>
+                <th>Mark</th>
+            </tr>
+                    <tr>
+                        <th>Ruslan Chudinov</th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>16/0/16</th>
+                        <th>1</th>
+                    </tr>
+                    <tr>
+                        <th>Andrew Kozubenko</th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>0/0/0</th>
+                        <th>0</th>
+                    </tr>
+                    <tr>
+                        <th>Vova Petrov</th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>3/0/3</th>
+                        <th>1</th>
+                    </tr>
+                    <tr>
+                        <th>Rustam Khamidullin</th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>21/0/21</th>
+                        <th>1</th>
+                    </tr>
+                    <tr>
+                        <th>Kirill Macanin</th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>0/0/0</th>
+                        <th>0</th>
+                    </tr>
+        </table> 
+        <table border = 1, class="styled-table">
+            <tr>
+                <th>Task_1_5_2</th>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <th>Build</th>
+                <th>JavaDoc</th>
+                <th>Checkstyle</th>
+                <th>Tests</th>
+                <th>Mark</th>
+            </tr>
+                    <tr>
+                        <th>Ruslan Chudinov</th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>5/0/5</th>
+                        <th>0,5</th>
+                    </tr>
+                    <tr>
+                        <th>Andrew Kozubenko</th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>0/0/0</th>
+                        <th>0</th>
+                    </tr>
+                    <tr>
+                        <th>Vova Petrov</th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>2/0/2</th>
+                        <th>1</th>
+                    </tr>
+                    <tr>
+                        <th>Rustam Khamidullin</th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>
+                           <span class="green"><b>+</b></span>
+                        </th>
+                        <th>1/0/2</th>
+                        <th>0</th>
+                    </tr>
+                    <tr>
+                        <th>Kirill Macanin</th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>                            <span class="red"><b>-</b></span>
+                        </th>
+                        <th>0/0/0</th>
+                        <th>0</th>
+                    </tr>
+        </table> 
+    <h1>Total Result</h1>
+    <table border = 1, class="styled-table">
+            <tr>
+                <th>Name</th>
+                <th>Total</th>
+            </tr>
+                <tr>
+                    <tr>
+                    <th>Ruslan Chudinov</th>
+                    <th>6,5</th>
+                </tr>
+                <tr>
+                    <tr>
+                    <th>Andrew Kozubenko</th>
+                    <th>0</th>
+                </tr>
+                <tr>
+                    <tr>
+                    <th>Vova Petrov</th>
+                    <th>7</th>
+                </tr>
+                <tr>
+                    <tr>
+                    <th>Rustam Khamidullin</th>
+                    <th>6,5</th>
+                </tr>
+                <tr>
+                    <tr>
+                    <th>Kirill Macanin</th>
+                    <th>1</th>
+                </tr>
+    </table>
+</body>
